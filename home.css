@@ -1,0 +1,41 @@
+#voluntariadoImg{
+    min-width: 675px;
+    max-height: 470px;
+    object-fit: contain;
+    width: 50%;
+}
+
+#voluntariado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#voluntariado > h2{
+    font-weight: 550;
+    margin: 25px 0;
+}
+
+#voluntariado > p{
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+#voluntariadoLinks{
+    display: flex;
+    gap:8rem;
+}
+
+#voluntariadoLinks > *{
+    font-size: 24px;
+    line-height: 28px;
+    width: 210px;
+    height: 50px;
+    border: 1px black solid;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 10px 0px;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: white;
+}
