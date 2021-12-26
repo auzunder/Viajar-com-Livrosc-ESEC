@@ -39,10 +39,12 @@ div{
 
 /* INICIO DE NAVBAR */
 header{
+    z-index: 1;
     position: fixed;
     width: 100vw;
     height: 100px;
     background-color: #C6E4E2;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
 
 }
 
