@@ -63,6 +63,7 @@ header{
 }
 
 #navBar{
+    gap: 1rem;
     display: flex;
     align-items: center;
 }
@@ -72,7 +73,7 @@ header{
 }
 
 #sobreNos, #calendario, #biblioteca, #galeria, #noticias{
-    width: 175px;
+    width: 150px;
     font-family: Maven Pro;
     font-style: normal;
     font-weight: normal;
@@ -214,9 +215,9 @@ header{
 #emailInput{
     border: 1px solid #000000;
     background-color: transparent;
-    min-width: 300px;
-    width: 25%;
-    max-width: 400px;
+    min-width: 240px;
+    width: 75%;
+    max-width: 350px;
 }
 
 #newsLetterButton{
@@ -227,3 +228,17 @@ header{
     background-color: white;
 }
 /* FIM DE FOOTER */
+
+@media only screen and (max-width: 1400px) {
+    h1 {
+      font-size: 90px;
+    }
+    h2 {
+        font-size: 60px;
+      }
+    #sobreNos, #calendario, #biblioteca, #galeria, #noticias{
+        font-size: 20px;
+        line-height: 20px;
+        width: 120px;
+    }
+}
