@@ -1,183 +1,193 @@
-#homePageIntro{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #C6E4E2;
-    background-image: url("/Imagens/Fundo\ Animado.jpg");
-    background-size: 100% 100%;
-    height: calc(100vh - 100px);
-}
-
-#homePageIntro > a > img{
-    padding: 20px;
-    flex-grow: 1;
-    max-height: 100px;
-    width: 200px;
-    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.6));
-}
-
-#homePageIntro > #textoEAnimaçao{
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 5rem;
+@media only screen and (min-width: 1200px) {
+    #homePageIntro{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: #C6E4E2;
+        background-image: url("/Imagens/Fundo\ Animado.jpg");
+        background-size: 100% 100%;
+        height: calc(100vh - 100px);
+    }
     
+    #homePageIntro > a > img{
+        padding: 20px;
+        flex-grow: 1;
+        max-height: 100px;
+        width: 200px;
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.6));
+    }
+    
+    #homePageIntro > #textoEAnimaçao{
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 5rem;
+        
+    }
+    
+    #tituloESlogan > p{
+        font-size: 30px;
+    }
+    
+    #animaçãoHome{
+        width: 38%;
+    }
+    
+    
+    
+    
+    #PesquisaOTeuLivro{
+        margin: 150px 0;
+    }
+    
+    #PesquisaOTeuLivro, #PesquisaOTeuLivro >* {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #PesquisaOTeuLivro >* {
+        gap: 1rem;
+    }
+    
+    #pesquisa{
+        width: 50%;
+        max-width: 700px;
+        min-width: 600px;
+    }
+    
+    #barraDePesquisa{
+        border: 1px solid #000000;
+        width: 80%;
+    }
+    
+    #barraDePesquisa, #submitPesquisa{
+        height: 45px;
+        box-sizing: border-box;
+        border-radius: 15px;
+    }
+    
+    #submitPesquisa{
+        width: 20%;
+        background-color: #C6E4E2;
+        border: none;
+    }
+    
+    #recomendados{
+        flex-direction: column;
+        height: calc(100vw*0.68);
+        width: 100%;
+        background-color: transparent;
+        background-image: url(/Imagens/FundoRecomendados.svg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+    #recomendados, #recomendados >*, #recomendados >* >*, #recomendados >* >* >*{
+        display: flex;
+        gap:3rem;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #PesquisaOTeuLivro, #recomendados >* >*{
+        flex-direction: column;
+    }
+    
+    #recomendados >* >* >*{
+        background-color: white;
+        border-radius: 56px;
+        padding: 20px;
+    }
+    
+    #recomendados >* >* >* >*{
+        width: calc(100vw/8);
+        text-align: center;
+    }
+    
+    .saberMais{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .saberMais > p{
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 31px;
+        margin-bottom: 35px;
+    }
+    
+    .saberMais > .saberMaisButton{
+        width: max-content;
+        padding: 5px 15px;
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 15px;
+    
+        font-size: 25px;
+        line-height: 31px;
+    }
+    
+    #categorias >* >*{
+        height: calc(calc(100vw*0.68)*0.2);
+        width: calc(100vw*0.35);
+    }
+    
+    #voluntariadoImg{
+        min-width: 675px;
+        max-height: 470px;
+        object-fit: contain;
+        width: 50%;
+    }
+    
+    #voluntariado{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #voluntariado > h2{
+        font-weight: 550;
+        margin: 25px 0;
+    }
+    
+    #voluntariado > p{
+        font-size: 25px;
+        margin-bottom: 50px;
+    }
+    
+    #voluntariadoLinks{
+        display: flex;
+        gap:8rem;
+    }
+    
+    #voluntariadoLinks > *{
+        font-size: 24px;
+        line-height: 28px;
+        width: 210px;
+        height: 50px;
+        border: 1px black solid;
+        border-radius: 15px;
+        box-sizing: border-box;
+        margin: 10px 0px;
+        padding-right: 40px;
+        padding-left: 40px;
+        background-color: white;
+    }
 }
 
-#tituloESlogan > p{
-    font-size: 30px;
+@media only screen and (max-width: 1200px) { 
 }
 
-#animaçãoHome{
-    width: 38%;
+@media only screen and (max-width: 992px) {
 }
 
-
-
-
-#PesquisaOTeuLivro{
-    margin: 150px 0;
+@media only screen and (max-width: 768px) {
 }
 
-#PesquisaOTeuLivro, #PesquisaOTeuLivro >* {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#PesquisaOTeuLivro >* {
-    gap: 1rem;
-}
-
-#pesquisa{
-    width: 50%;
-    max-width: 700px;
-    min-width: 600px;
-}
-
-#barraDePesquisa{
-    border: 1px solid #000000;
-    width: 80%;
-}
-
-#barraDePesquisa, #submitPesquisa{
-    height: 45px;
-    box-sizing: border-box;
-    border-radius: 15px;
-}
-
-#submitPesquisa{
-    width: 20%;
-    background-color: #C6E4E2;
-    border: none;
-}
-
-
-
-
-
-#recomendados{
-    flex-direction: column;
-    height: calc(100vw*0.68);
-    width: 100%;
-    background-color: transparent;
-    background-image: url(/Imagens/FundoRecomendados.svg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-#recomendados, #recomendados >*, #recomendados >* >*, #recomendados >* >* >*{
-    display: flex;
-    gap:3rem;
-    align-items: center;
-    justify-content: center;
-}
-
-#PesquisaOTeuLivro, #recomendados >* >*{
-    flex-direction: column;
-}
-
-#recomendados >* >* >*{
-    background-color: white;
-    border-radius: 56px;
-    padding: 20px;
-}
-
-#recomendados >* >* >* >*{
-    width: calc(100vw/8);
-    text-align: center;
-}
-
-.saberMais{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.saberMais > p{
-    font-weight: 900;
-    font-size: 25px;
-    line-height: 31px;
-    margin-bottom: 35px;
-}
-
-.saberMais > .saberMaisButton{
-    width: max-content;
-    padding: 5px 15px;
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 15px;
-
-    font-size: 25px;
-    line-height: 31px;
-}
-
-#categorias >* >*{
-    height: calc(calc(100vw*0.68)*0.2);
-    width: calc(100vw*0.35);
-}
-
-#voluntariadoImg{
-    min-width: 675px;
-    max-height: 470px;
-    object-fit: contain;
-    width: 50%;
-}
-
-#voluntariado{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#voluntariado > h2{
-    font-weight: 550;
-    margin: 25px 0;
-}
-
-#voluntariado > p{
-    font-size: 25px;
-    margin-bottom: 50px;
-}
-
-#voluntariadoLinks{
-    display: flex;
-    gap:8rem;
-}
-
-#voluntariadoLinks > *{
-    font-size: 24px;
-    line-height: 28px;
-    width: 210px;
-    height: 50px;
-    border: 1px black solid;
-    border-radius: 15px;
-    box-sizing: border-box;
-    margin: 10px 0px;
-    padding-right: 40px;
-    padding-left: 40px;
-    background-color: white;
+@media only screen and (max-width: 600px) {
 }

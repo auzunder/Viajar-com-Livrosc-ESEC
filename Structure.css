@@ -1,235 +1,260 @@
-body, *{
-    margin: 0;
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
-}
+    /**/
+    div{
+        border: 1px black solid;
+    }
+    /**/
 
-p {
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
-}
+    body, *{
+        margin: 0;
+        font-family: Maven Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+    }
 
-h1{
-    font-family: Caveat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 125px;
-    line-height: 150px;
-}
+    h1{
+        font-family: Caveat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 125px;
+        line-height: 125px;
+    }
 
-h2{
-    font-family: Caveat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 70px;
-    line-height: 90px;
-}
+    h2{
+        font-family: Caveat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 75px;
+        line-height: 75px;
+    }
 
-/**
-div{
-    border: 1px black solid;
-}
-/**/
-
-/* INICIO DE NAVBAR */
-header{
-    z-index: 1;
-    position: fixed;
-    width: 100vw;
-    height: 100px;
-    background-color: #C6E4E2;
-    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
-
-}
-
-#logo{
-    width: 100px;
-    height: 100px;
-    margin-left: 35px;
-    top: 0px;
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #C4C4C4;
-}
-
-#navBar{
-    gap: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-#navBar > * {
-    display: flex;
-}
-
-#sobreNos, #calendario, #biblioteca, #galeria, #noticias{
-    width: 150px;
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 25px;
-    justify-content: center;
-
-    color: #000000;
-}
-
-#areaLeitor{
-    position: absolute;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 15px;
-    right: 26px;
-}
-
-#leitorText{
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+    /**
+    #wrapper{
+        overflow-x: hidden;
+    }
+    /**/
     
-    color: #000000;
-    
+@media only screen and (min-width: 1200px) { 
+    /* INICIO DE NAVBAR */
+    header{
+        z-index: 1;
+        position: fixed;
+        width: 100vw;
+        height: 100px;
+        background-color: #C6E4E2;
+        filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+
+    }
+
+    #logo{
+        width: 100px;
+        height: 100px;
+        margin-left: 35px;
+        top: 0px;
+        font-family: Maven Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #C4C4C4;
+    }
+
+    #navBar{
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    #navBar > * {
+        display: flex;
+    }
+
+    #sobreNos, #calendario, #biblioteca, #galeria, #noticias{
+        width: 150px;
+        font-family: Maven Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 25px;
+        justify-content: center;
+
+        color: #000000;
+    }
+
+    #areaLeitor{
+        position: absolute;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 15px;
+        right: 26px;
+    }
+
+    #leitorText{
+        font-family: Maven Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        color: #000000;
+        
+    }
+
+    #leitorIcon{
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-top: 9px;
+        margin-bottom: 9px;
+    }
+
+    #leitorText{
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+
+    #resto{
+        height: 50px;
+        flex-grow: 1;
+        min-width: 250px;
+    }
+
+    /* FIM DE NAVBAR */
+
+
+
+    /* INICIO DE FOOTER */
+
+    #patrocinadores, #patrocinadoresCln1, #patrocinadoresCln2{
+        display: flex;
+    }
+
+    #patrocinadores{
+        border-top: black 2px solid;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #patrocinadoresCln1, #patrocinadoresCln2{
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    #patrocinadores > * > *{
+        flex-grow: 1;
+        min-width: 145px;
+        max-width: calc(100%/9);
+        max-height: calc(210px/2);
+        object-fit: contain;
+    }
+
+    #rodape{
+        background: #C6E4E2;
+        display: flex;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        gap: 2rem;
+        font-family: Maven Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    #hyperlinks, #hyperlinks > * {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .first{
+        margin-top: 9px;
+    }
+
+    #social, #newsletter{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+        width: 100px;
+    }
+
+    #hyperlinks > * > * {
+        list-style: none;
+        margin: auto;
+        font-weight: bolder;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    #hyperlinks > * > * > *{
+        font-weight: normal;
+    }
+
+    #calendarioLinks > *{
+        margin-top: 0;
+    }
+
+    #icons{
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
+    }
+
+    #emailInput, #newsLetterButton{
+        height: 44px;
+        box-sizing: border-box;
+        border-radius: 15px;
+    }
+
+    #emailInput{
+        border: 1px solid #000000;
+        background-color: transparent;
+        min-width: 240px;
+        width: 75%;
+        max-width: 350px;
+    }
+
+    #newsLetterButton{
+        border: 0;
+        margin: 10px 0px;
+        padding-right: 40px;
+        padding-left: 40px;
+        background-color: white;
+    }
+    /* FIM DE FOOTER */
 }
 
-#leitorIcon{
-    margin-left: 10px;
-    margin-right: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+@media only screen and (max-width: 1200px) { 
+    h1 {
+        font-size: 90px;
+    }
+    h2 {
+        font-size: 60px;
+        }
+    #sobreNos, #calendario, #biblioteca, #galeria, #noticias{
+        font-size: 20px;
+        line-height: 20px;
+        width: 120px;
+    }
 }
 
-#leitorText{
-    margin-left: 20px;
-    margin-right: 10px;
+@media only screen and (max-width: 992px) {
 }
 
-#resto{
-    height: 50px;
-    flex-grow: 1;
-    min-width: 250px;
+@media only screen and (max-width: 768px) {
 }
 
-/* FIM DE NAVBAR */
-
-
-
-/* INICIO DE FOOTER */
-
-#patrocinadores, #patrocinadoresCln1, #patrocinadoresCln2{
-    display: flex;
+@media only screen and (max-width: 600px) {
 }
 
-#patrocinadores{
-    border-top: black 2px solid;
-    flex-direction: column;
-    padding: 20px;
-}
 
-#patrocinadoresCln1, #patrocinadoresCln2{
-    justify-content: center;
-    gap: 2rem;
-}
-
-#patrocinadores > * > *{
-    flex-grow: 1;
-    min-width: 145px;
-    max-width: calc(100%/9);
-    max-height: calc(210px/2);
-    object-fit: contain;
-}
-
-#rodape{
-    background: #C6E4E2;
-    display: flex;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    gap: 2rem;
-    font-family: Maven Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-}
-
-#hyperlinks, #hyperlinks > * {
-    display: flex;
-    flex-grow: 1;
-}
-
-.first{
-    margin-top: 9px;
-}
-
-#social, #newsletter{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    text-align: center;
-    justify-content: center;
-    width: 100px;
-}
-
-#hyperlinks > * > * {
-    list-style: none;
-    margin: auto;
-    font-weight: bolder;
-    margin-top: 0;
-    padding: 0;
-}
-
-#hyperlinks > * > * > *{
-    font-weight: normal;
-}
-
-#calendarioLinks > *{
-    margin-top: 0;
-}
-
-#icons{
-    justify-content: center;
-    display: flex;
-    gap: 1rem;
-}
-
-#emailInput, #newsLetterButton{
-    height: 44px;
-    box-sizing: border-box;
-    border-radius: 15px;
-}
-
-#emailInput{
-    border: 1px solid #000000;
-    background-color: transparent;
-    min-width: 240px;
-    width: 75%;
-    max-width: 350px;
-}
-
-#newsLetterButton{
-    border: 0;
-    margin: 10px 0px;
-    padding-right: 40px;
-    padding-left: 40px;
-    background-color: white;
-}
-/* FIM DE FOOTER */
 
 @media only screen and (max-width: 1400px) {
     h1 {
