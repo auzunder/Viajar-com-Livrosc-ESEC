@@ -4,7 +4,6 @@
         align-items: center;
         flex-direction: column;
         background-color: #C6E4E2;
-        background-image: url("/Imagens/Fundo\ Animado.jpg");
         background-size: 100% 100%;
         height: calc(100vh - 100px);
     }
@@ -34,7 +33,12 @@
     #animaçãoHome{
         width: 38%;
     }
-    
+
+    #backgroundImg{
+        height: 100%;
+        width: 100%;
+        object-fit: fi;
+    }
     
     
     
