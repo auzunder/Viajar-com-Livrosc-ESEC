@@ -37,7 +37,8 @@
     #backgroundImg{
         height: 100%;
         width: 100%;
-        object-fit: fi;
+        position: absolute;
+        z-index: 0;
     }
     
     
