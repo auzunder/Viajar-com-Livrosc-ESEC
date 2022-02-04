@@ -4,6 +4,10 @@
     }
     /**/
 
+    html{
+        scroll-behavior: smooth;
+    }
+
     body, *{
         margin: 0;
         font-family: Maven Pro;
@@ -44,6 +48,7 @@
         background-color: #C6E4E2;
         filter: drop-shadow(0 5px 10px rgb(155, 155, 155));
         max-height: 100x;
+        z-index: 20;
     }
 
     .topnav a{
