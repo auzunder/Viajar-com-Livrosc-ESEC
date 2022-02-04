@@ -1,4 +1,9 @@
 @media only screen and (min-width: 1200px) {
+    #ghost{
+        height: 100px; 
+        width: 100%;
+    }
+
     #homePageIntro{
         display: flex;
         align-items: center;
@@ -48,7 +53,8 @@
         margin: 150px 0;
     }
     
-    #PesquisaOTeuLivro, #PesquisaOTeuLivro >* {
+    #PesquisaOTeuLivro, 
+    #PesquisaOTeuLivro >* {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,7 +75,8 @@
         width: 80%;
     }
     
-    #barraDePesquisa, #submitPesquisa{
+    #barraDePesquisa, 
+    #submitPesquisa{
         height: 45px;
         box-sizing: border-box;
         border-radius: 15px;
@@ -85,35 +92,63 @@
         flex-direction: column;
         height: calc(100vw*0.68);
         width: 100%;
-        background-color: transparent;
-        background-image: url(/Imagens/FundoRecomendados.svg);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
     }
     
-    #recomendados, #recomendados >*, #recomendados >* >*, #recomendados >* >* >*{
+    .backgroundRecomendados{
+        background-color: #C6E4E2;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .backgroundRecomendadosTop{
+        position: relative;
+        width: 100%;
+        top: calc(100vw*0.13);
+        z-index: 0;
+    }
+
+    .backgroundRecomendadosBottom{
+        position: relative;
+        width: 100%;
+        top: calc(100vw*-0.13);
+        z-index: 0;
+    }
+
+    .backgroundRecomendadosBottom img, 
+    .backgroundRecomendadosTop img{
+        width: 100%;
+    }
+    
+    #recomendados, 
+    #recomendados >*, 
+    #recomendados >* >*, 
+    #recomendados >* >* >*, 
+    #recomendados >* >* >* >*{
         display: flex;
         gap:3rem;
         align-items: center;
         justify-content: center;
     }
     
-    #PesquisaOTeuLivro, #recomendados >* >*{
+    #PesquisaOTeuLivro, 
+    #recomendados >* >* > *{
         flex-direction: column;
     }
     
-    #recomendados >* >* >*{
+    #osMaisProcurados, 
+    #infantis, 
+    #perfeitoParaAHoraDoConto, 
+    #OsMelhoresLivrosDeAventuras{
         background-color: white;
         border-radius: 56px;
         padding: 20px;
     }
     
-    #recomendados >* >* >* >*{
+    .saberMais{
         width: calc(100vw/8);
         text-align: center;
-    }
-    
-    .saberMais{
         display: flex;
         align-items: center;
         flex-direction: column;
