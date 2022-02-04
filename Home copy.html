@@ -41,14 +41,33 @@
                 <div id=homePageIntro>
                     <div id="backgroundImg">
                         <script src="lottie.js"></script>
-                        <script src="animations.js"></script>
+                        <script>
+                            var animation = bodymovin.loadAnimation({
+                                container: document.getElementById("backgroundImg"),
+                                renderer:"svg",
+                                loop: true,
+                                autoplay: true,
+                                path: "/Imagens/Animações/Animação_I_Background.json",
+                                resizeMode: cover
+                            })
+                        </script>
                     </div>
                     <div id=textoEAnimaçao>
                         <div id=tituloESlogan>
                             <h1>Viajar com Livros</h1>
                             <p>Ler é ganhar asas para o mundo!</p>
                         </div>
-                        <div id=animaçãoHome></div>
+                        <div id=animaçãoHome>
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animaçãoHome"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_I_Livro.json"
+                                })
+                            </script>
+                        </div>
                         
                     </div>
                     <a id="setaHref" href="#setaHref">
