@@ -7,51 +7,74 @@
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
         <link type="text/css" rel="stylesheet" href="home.css">
         <link type="text/css" rel="stylesheet" href="Structure.css">
+        <script src="Structure.js"></script>
         <script src="home.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
         <div id="wrapper">
             <header>
-                <div id=navBar>
-                    <div id=logo>
-                        LOGO
+                <div class="topnav" id="myTopnav">
+                    <a href="#wrapper" class="active" id="logo">Logo</a>
+                    <a href="#sobrenos" class="boxInnerShadow">Sobre Nós</a>
+                    <a href="#calenario" class="boxInnerShadow">Calendário</a>
+                    <a href="#biblioteca" class="boxInnerShadow">Biblioteca</a>
+                    <div class="dropdown boxInnerShadow" >
+                      <button class="dropbtn">
+                          Galeria
+                      </button>
+                      <div class="dropdown-content" id="GaleriaDropdown-content">
+                        <a href="#">Fotografias</a>
+                        <a href="#">Videos</a>
+                        <a href="#">Galeria Facebook</a>
+                      </div>
                     </div>
-                    <div id=sobreNos>
-                        Sobre Nós
+                    <a href="#noticias" class="boxInnerShadow">Noticias</a>
+                    <div id="areaLeitor" class="boxInnerOutterShadow pointer">
+                        <div id="leitorText">Area do Leitor</div>
+                        <img id="leitorIcon" src="Icons/AreaLeitor.svg">
                     </div>
-                    <div id=calendario>
-                        Calendário
-                    </div>
-                    <div id=biblioteca>
-                        Biblioteca
-                    </div>
-                    <div id=galeria>
-                        Galeria
-                    </div>
-                    <div id=noticias>
-                        Notícias
-                    </div>
-                    <div id=areaLeitor>
-                        <div id=leitorText>Area do Leitor</div>
-                        <img id=leitorIcon src="Icons/AreaLeitor.svg">
-                    </div>
-                    <div id=resto></div>
-                </div>
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+                  </div>
             </header>
 
             <!--Conteudo-->
 
             <div id=container>
-                <div id=navBarSpacing style="height: 100px;"></div>
-
+                <div id="ghost"></div>
                 <div id=homePageIntro>
+                    <div id="backgroundImg">
+                        <script src="lottie.js"></script>
+                        <script>
+                            var animation = bodymovin.loadAnimation({
+                                container: document.getElementById("backgroundImg"),
+                                renderer:"svg",
+                                loop: true,
+                                autoplay: true,
+                                path: "/Imagens/Animações/Animação_I_Background.json",
+                                rendererSettings: {
+                                    preserveAspectRatio: 'xMidYMid slice',
+                                }
+                            })
+                        </script>
+                    </div>
                     <div id=textoEAnimaçao>
                         <div id=tituloESlogan>
                             <h1>Viajar com Livros</h1>
                             <p>Ler é ganhar asas para o mundo!</p>
                         </div>
-                        <img id=animaçãoHome src="Imagens/ANIMAÇÂO.png">
+                        <div id=animaçãoHome>
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animaçãoHome"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_I_Livro.json"
+                                })
+                            </script>
+                        </div>
+                        
                     </div>
                     <a id="setaHref" href="#setaHref">
                         <img src="Imagens/Seta Para Baixo.svg">
@@ -69,48 +92,56 @@
                 </div>
 
                 <div id=recomendados>
-                    <h1>Recomendamos</h1>
-                    <div id=categorias>
-                        <div id=ColunaHorizontalSup>
-                            <div id=osMaisProcurados>
-                                <img src="Imagens/MaisProcurados.svg">
-                                <div class=saberMais>
-                                    <p>Os mais procurados</p>
-                                    <div class=saberMaisButton>
-                                        Saber Mais
+                    <div class="backgroundRecomendadosTop">
+                        <img src="/Imagens/FundoRecomendadosTop.svg">
+                    </div>
+                    <div class="backgroundRecomendados">
+                        <h1>Recomendamos</h1>
+                        <div id=categorias>
+                            <div id=ColunaHorizontalSup>
+                                <div id=osMaisProcurados>
+                                    <img src="Imagens/MaisProcurados.svg">
+                                    <div class=saberMais>
+                                        <p>Os mais procurados</p>
+                                        <div class=saberMaisButton>
+                                            Saber Mais
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id=infantis>
+                                    <img src="Imagens/HoraDoConto.svg">
+                                    <div class=saberMais>
+                                        <p>Perfeito para a Hora do Conto</p>
+                                        <div class=saberMaisButton>
+                                            Saber Mais
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id=infantis>
-                                <img src="Imagens/HoraDoConto.svg">
-                                <div class=saberMais>
-                                    <p>Perfeito para a Hora do Conto</p>
-                                    <div class=saberMaisButton>
-                                        Saber Mais
+                            <div id=ColunaHorizontalInf>
+                                <div id=perfeitoParaAHoraDoConto>
+                                    <div class=saberMais>
+                                        <p>Infantis 0-3</p>
+                                        <div class=saberMaisButton>
+                                            Saber Mais
+                                        </div>
                                     </div>
+                                    <img src="Imagens/Infantis.svg">
+                                </div>
+                                <div id=OsMelhoresLivrosDeAventuras>
+                                    <div class=saberMais>
+                                        <p>Os melhores Livros de Aventuras</p>
+                                        <div class=saberMaisButton>
+                                            Saber Mais
+                                        </div>
+                                    </div>
+                                    <img src="Imagens/LivrodeAventura.svg">
                                 </div>
                             </div>
                         </div>
-                        <div id=ColunaHorizontalInf>
-                            <div id=perfeitoParaAHoraDoConto>
-                                <div class=saberMais>
-                                    <p>Infantis 0-3</p>
-                                    <div class=saberMaisButton>
-                                        Saber Mais
-                                    </div>
-                                </div>
-                                <img src="Imagens/Infantis.svg">
-                            </div>
-                            <div id=OsMelhoresLivrosDeAventuras>
-                                <div class=saberMais>
-                                    <p>Os melhores Livros de Aventuras</p>
-                                    <div class=saberMaisButton>
-                                        Saber Mais
-                                    </div>
-                                </div>
-                                <img src="Imagens/LivrodeAventura.svg">
-                            </div>
-                        </div>
+                    </div>
+                    <div class="backgroundRecomendadosBottom">
+                        <img src="/Imagens/FundoRecomendadosBottom.svg">
                     </div>
                 </div>
 
