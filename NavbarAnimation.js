@@ -20,8 +20,13 @@ window.onload = function () {
             ELEMENTS_SPAN[index] = element.querySelector("span");
     
         element.addEventListener("mouseover", e => {
-            ELEMENTS_SPAN[index].style.left = e.pageX - element.offsetLeft + "px";
-            ELEMENTS_SPAN[index].style.top = e.pageY - element.offsetTop + "px";
+            ELEMENTS_SPAN[index].style.left = e.pageX - e.offsetLeft + "px";
+            ELEMENTS_SPAN[index].style.top = 100 - e.pageY - element.offsetTop + "px";
+            console.log(ELEMENTS_SPAN[index])
+            console.log(e)
+            console.log(e.pageY)
+            console.log(element.offsetTop)
+            console.log(100 - e.pageY - element.offsetTop + "px")
     
             // Adicionar class de animação
             if (addAnimation) element.classList.add(ANIMATEDCLASSNAME);

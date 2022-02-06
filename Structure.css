@@ -280,6 +280,7 @@ h3{
 /* FIM DE NAVBAR */
 
 #setaCima{
+    display: none;
     position: fixed;
     z-index: 99;
     right: 5vw;
