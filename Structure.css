@@ -1,4 +1,4 @@
-/**
+/**/
 div{
     border: 1px black solid;
 }
@@ -37,7 +37,7 @@ h1{
     font-style: normal;
     font-weight: bold;
     font-size: 125px;
-    line-height: 125px;
+    line-height: 130px;
 }
 
 h2{
@@ -45,7 +45,15 @@ h2{
     font-style: normal;
     font-weight: bold;
     font-size: 75px;
-    line-height: 75px;
+    line-height: 80px;
+}
+
+h3{
+    font-family: Caveat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 55px;
 }
 
 /**
@@ -265,7 +273,26 @@ h2{
     margin-bottom: 9px;
 }
 
+#ghost{
+    width: 100%;
+    height: 100px;
+}
 /* FIM DE NAVBAR */
+
+#setaCima{
+    position: fixed;
+    z-index: 99;
+    right: 5vw;
+    bottom: 20vh;
+    width: 5vw;
+    height: 5vw;
+}
+
+#setaCima a img, #setaCima a{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
 /* INICIO DE FOOTER */
 
@@ -403,6 +430,7 @@ h2{
 }
 /* FIM DE FOOTER */
 
+/**
 h1 {
     font-size: 90px;
 }
@@ -414,7 +442,7 @@ h2 {
     line-height: 20px;
     width: 120px;
 }
-
+/**/
 
 @media only screen and (max-width: 992px) {
     .topnav {
