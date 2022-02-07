@@ -1,4 +1,4 @@
-/**/
+/**
 div{
     border: 1px black solid;
 }
@@ -56,11 +56,10 @@ h3{
     line-height: 55px;
 }
 
-/**
-#wrapper{
-    overflow-x: hidden;
+body, #wrapper{
+    width: 100%;
+    margin: 0;
 }
-/**/
 
 
 /* INICIO DE NAVBAR */

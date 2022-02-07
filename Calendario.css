@@ -6,6 +6,150 @@
 #calendarIllustration img,
 #calendarIllustration{
     width: 100%;
+    margin: 10px 0;
+}
+
+.coluna{
+    flex: 1;
+}
+
+h2 {
+    margin: 30px 0 10px 0;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Caveat;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.timeline {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #C6E4E2;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.coluna.left, .coluna.right{
+      flex: 1;
+}
+
+.container {
+    padding: 20px 50px;
+    position: relative;
+    background: inherit;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(30% - 8px);
+    right: -8px;
+    background: #ffffff;
+    border: 2px solid #C6E4E2;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+.container.right::after {
+    left: -8px;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    width: calc(50px - 8px);
+    height: 2px;
+    top: calc(30% - 1px);
+    right: 8px;
+    background: #C6E4E2;
+    z-index: 1;
+}
+
+    .container.right::before {
+    left: 8px;
+}
+
+.container .content {
+    display: flex;
+    padding: 1vw;
+    background: #ffffff;
+    position: relative;
+    border-radius: 1vw;
+    border: 2px dotted #C6E4E2;
+    box-shadow: 7px 7px 20px #0000006b;
+}
+
+.container .content h2 {
+    margin: 30px 0 10px 0;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Caveat;
+}
+
+.container .content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: "Maven Pro";
+    color: #000000;
+}
+
+.container .content button{
+    width: 75%;
+    padding: 0.3vw 1vw;
+    margin: 20px 0 40px 0;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 1vw;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.container .content .imgLivro img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.infoLivro, .imgLivro{
+    flex: 1;
+}
+
+.imgLivro{
+    padding: 0.5vw;
+}
+
+.container .content .infoLivro{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .content .infoLivro .infoSessao, 
+.container .content .infoLivro .infoOrador{
+    flex-grow: 1;
 }
 
 #colunas{
@@ -13,22 +157,35 @@
     text-align: center;
 }
 
-.coluna{
-    flex: 1;
-}
-
 .filtros{
     display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 0.5rem;
 }
 
 .filtroSelect{
+    width: 30%;
 }
 
-#buttonFiltrar, .filtroSelect select{
-    width: 40%;
+#buttonFiltrar, .filtroSelect select,  .filtroSelect button{
+    width: 100%;
+    height: 100%;
     padding: 0.3vw 1vw;
-    
     border: 2px solid #000000;
     box-sizing: border-box;
     border-radius: 1vw;
+    font-size: 16px;
+    line-height: 22px;
 }
+
+#buttonDivFiltrar{
+    margin: auto;
+}
+
+/**/
+@media (max-width: 1100px) {
+    .imgLivro{
+    display: none;
+    }
+}/**/
