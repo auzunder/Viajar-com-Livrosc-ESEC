@@ -49,31 +49,63 @@
                 </div>
                 <div id="calendarIllustration"><img src="Imagens/Calendário/CalendarIllustration.svg"></div>
                 <div id="colunas">
-                    <div id="colunaEsquerda">
+                    <div id="colunaEsquerda" class="coluna">
                         <div id="filtros">
                             <h3>Filtros</h3>
-                            <div id="filtrosOradorData">
-                                <div id="filtroOrador">
-
+                            <form id="filtrosForm">
+                                <div id="filtrosOradorData" class="filtros">
+                                    <div id="filtroOrador" class="filtroSelect">
+                                        <!-- Opções de filtragem via Oradores -->
+                                        <select id="listaOradores">
+                                            <option selected value="Orador">Orador</option>
+                                        </select>
+                                    </div>
+                                    <div id="filtroData" class="filtroSelect">
+                                        <!-- Opções de filtragem via Data -->
+                                        <select id="listaData">
+                                            <option selected value="Data">Data</option>
+                                            <option value="hoje">Hoje</option>
+                                            <option value="estaSemana">Esta Semana</option>
+                                            <option value="proximaSemana">Próxima Semana</option>
+                                            <option value="trintaDias">Próximos 30 dias</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div id="filtroData">
-
+                                <div id="filtrosOrganizarPlataforma" class="filtros">
+                                    <div id="filtroOrganizar" class="filtroSelect">
+                                        <!-- Opções de filtragem via Organizar -->
+                                        <select id="listaOrganizar">
+                                            <option selected value="Organizar">Organizar</option>
+                                            <option value="title_a_z">Título (A a Z)</option>
+                                            <option value="title_z_a">Título (Z a A)</option>
+                                            <option value="orador_a_z">Orador (A a Z)</option>
+                                            <option value="orador_z_a">Orador (Z a A)</option>
+                                            <option value="tempoCrescente">Tempo Crescente</option>
+                                            <option value="tempoDecrescente">Tempo Decrescente</option>
+                                        </select>
+                                    </div>
+                                    <div id="filtroPlataforma" class="filtroSelect">
+                                        <!-- Opções de filtragem via Plataforma -->
+                                        <select id="listaPlataforma">
+                                            <option selected value="Plataforma">Plataforma</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="filtrosOrganizarPlataforma">
-                                <div id="filtroOrganizar">
-
+                                <div id="filtroCategoriaEBottaoFiltrar" class="filtros">
+                                    <div id="filtroCategoria" class="filtroSelect">
+                                        <!-- Opções de filtragem via Categoria -->
+                                        <select id="listaCategoria">
+                                            <option selected value="Categoria">Categoria</option>
+                                        </select>
+                                    </div>
+                                    <div id="buttonDivFiltrar" class="filtroSelect">
+                                        <button id="buttonFiltrar" type='button' onclick=''>Filtrar</button>
+                                    </div>
                                 </div>
-                                <div id="filtroPlataforma">
-
-                                </div>
-                            </div>
-                            <div id="filtroCategoria">
-
-                            </div>
+                            </form>
                         </div>
                     </div>
-                    <div id="colunaDireita">
+                    <div id="colunaDireita" class="coluna">
 
                     </div>
                 </div>

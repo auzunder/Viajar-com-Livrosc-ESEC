@@ -7,3 +7,28 @@
 #calendarIllustration{
     width: 100%;
 }
+
+#colunas{
+    display: flex;
+    text-align: center;
+}
+
+.coluna{
+    flex: 1;
+}
+
+.filtros{
+    display: flex;
+}
+
+.filtroSelect{
+}
+
+#buttonFiltrar, .filtroSelect select{
+    width: 40%;
+    padding: 0.3vw 1vw;
+    
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 1vw;
+}
