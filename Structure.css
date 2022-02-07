@@ -113,6 +113,17 @@ body, #wrapper{
     box-shadow: 0px 0px 20px #6f9996, inset 0 50px 0 0 #6f9996, inset 0 -50px 0 0 #6f9996;
 }
 
+.boxInnerOutterShadowBlack{
+    color: #000000;
+    box-shadow: 0px 0px 0px #5a5a5a, inset 0 0 0 0 #5a5a5a, inset 0 0 0 0 #5a5a5a;
+    transition: 300ms;
+}
+
+.boxInnerOutterShadowBlack:hover{
+    color: white;
+    box-shadow: 0px 0px 20px #5a5a5a, inset 0 50px 0 0 #5a5a5a, inset 0 -50px 0 0 #5a5a5a;
+}
+
 .topnav #logo{
     width: 100px;
 }
