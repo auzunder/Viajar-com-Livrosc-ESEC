@@ -95,7 +95,7 @@ h2 {
     background: #ffffff;
     position: relative;
     border-radius: 1vw;
-    border: 2px dotted #C6E4E2;
+    border: 3px dashed #C6E4E2;
     box-shadow: 7px 7px 20px #0000006b;
 }
 
@@ -162,6 +162,10 @@ h2 {
     justify-content: center;
     gap: 3rem;
     padding: 0.5rem;
+}
+
+#filtros{
+    margin: 10px 0 40px 0;
 }
 
 .filtroSelect{
