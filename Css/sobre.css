@@ -184,7 +184,7 @@
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
-  margin-bottom: 160px;
+  margin-bottom: 220px;
 }
 .about-contadores p{
   text-align: center;
@@ -316,6 +316,7 @@ top: 0;
 .about-voluntario-img {
   width: 40%;
   height: auto;
+  margin-bottom: -4px
 }
 .voluntario-img{
   width: 35%;
