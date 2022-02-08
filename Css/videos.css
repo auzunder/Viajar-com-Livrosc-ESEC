@@ -1,0 +1,22 @@
+/* Galeria Videos*/
+
+.container-gallery-videos{
+    margin: auto;
+     width: 70%;
+     display: flex;
+     margin-top: 60px;
+     justify-content: space-evenly;
+     margin-bottom: 40px;
+ }
+ 
+   .responsive-videos {
+     width: 50%;
+   }
+   .responsive-videos:first-child {
+     margin-right: 30px;
+   }
+   
+   .responsive-videos video {
+     width: 100%;
+     border: 2px solid black;
+   }

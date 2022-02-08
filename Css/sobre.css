@@ -1,0 +1,335 @@
+/* Sobre */
+
+.about-info {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 400px;
+    margin-bottom: 100px;
+
+}
+.about-info-text{
+    width: 50%;
+    font-family: 'Maven Pro', sans-serif;
+}
+.about-info-img {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.about-info-img-size{
+    width: 100%;
+}
+
+.about-info-text-title{
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+    margin-bottom: 20px ;
+}
+
+.about-founder{
+    padding: 50px 0 100px 0;
+    width: 100%;
+    background-color: #C6E4E2;
+}
+.about-founder p{
+    text-align: center;
+    width: 100%;
+    padding-bottom: 20px;
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+}
+.about-founders-content{
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 20px; 
+  grid-template-areas: 
+    "founder1 founder2 founder3"; 
+  width: 80%;
+  margin: auto;
+  height: calc(80vw * .33);
+}
+
+.founder1{
+  width: 100%;
+    height: 100%;
+    position: relative;
+}
+.founder2{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.founder3{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.founder1 img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  padding: 20px 0 0 20px;
+  
+}
+.founder2 img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  padding: 20px 0 0 20px;
+  
+}
+.founder3 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  padding: 20px 0 0 20px;
+}
+.child{
+  position: absolute;
+  top: 0;
+}
+
+.about-founders-dashed{
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 2px dashed white;
+    border-radius: 7px;
+    
+}
+
+.about-founders-img {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.about-founders-img img{
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 0 20px;
+}
+
+.about-history {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+}
+.about-history-text{
+  font-family: 'Maven Pro', sans-serif;
+  width: 100%;
+}
+
+.about-history-text-title{
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  margin-bottom: 60px ;
+  text-align: center;
+}
+
+.about-history-text li {
+  padding-bottom: 17px;
+}
+
+.about-contacts{
+  padding: 50px 0;
+  width: 100%;
+  background-color: #C6E4E2;
+}
+
+.about-contacts-text{
+    width: 100%;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.about-contacts-title{
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  margin-bottom: 60px ;
+  text-align: center;
+}
+
+.about-contacts-content {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.about-contacts_localization {
+  width: 50%;
+  height: 100%;
+}
+.about-contacts-map {
+  width: 50%;
+  height: calc(100vw * .4);
+}
+
+.gmap{
+  width: 100%;
+  height: 100%;
+}
+
+.about-contadores{
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  margin-bottom: 160px;
+}
+.about-contadores p{
+  text-align: center;
+  width: 100%;
+  padding-bottom: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+}
+.about-contadores-content{
+display: grid; 
+grid-template-columns: 1fr 1fr 1fr 1fr; 
+grid-template-rows: 1fr; 
+gap: 0px 20px; 
+grid-template-areas: 
+  "contadores1 contadores2 contadores3 contadores4"; 
+width:80%;
+margin: auto;
+height: calc(80vw * .25);
+margin-bottom: 40px;
+}
+
+.contadores1{
+width: 100%;
+  height: 100%;
+  position: relative;
+}
+.contadores2{
+width: 100%;
+height: 100%;
+position: relative;
+}
+.contadores3{
+width: 100%;
+height: 100%;
+position: relative;
+}
+.contadores4{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  }
+
+.contadores1 img{
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  object-fit: cover;
+  margin: 20px 0 0 20px;
+  border: 5px solid #C6E4E2;
+  border-radius: 10px;
+
+}
+.contadores2 img{
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  object-fit: cover;
+  margin: 20px 0 0 20px;
+  border: 5px solid #C6E4E2;
+  border-radius: 10px;
+
+}
+.contadores3 img {
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  object-fit: cover;
+  margin: 20px 0 0 20px;
+  border: 5px solid #C6E4E2;
+  border-radius: 10px;
+}
+
+.contadores4 img {
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  object-fit: cover;
+  margin: 20px 0 0 20px;
+  border: 5px solid #C6E4E2;
+  border-radius: 10px;
+}
+
+  
+
+.child{
+position: absolute;
+top: 0;
+}
+
+.about-contadores-dashed{
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border: 2px dashed #C6E4E2;
+  border-radius: 7px;
+  
+}
+
+.about-contadores-img {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.about-contadores-img img{
+  width: 100%;
+  height: 100%;
+  padding: 20px 0 0 20px;
+}
+
+.about-voluntario {
+  width: 100%;
+  margin-bottom: 60px;
+  position: relative;
+}
+.about-voluntario-content {
+  width: 80%;
+  margin: auto;
+  position: relative;
+
+}
+.about-voluntario-text {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.about-voluntario-text-info {
+  font-family: 'Maven Pro', sans-serif;
+  text-align: center;
+  position: absolute;
+  top: -100px;
+}
+
+.about-voluntario-img {
+  width: 40%;
+  height: auto;
+}
+.voluntario-img{
+  width: 35%;
+}
+
+.about-voluntario-text-title{
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  margin-bottom: 20px ;
+}
+
+button.inscrever-btn {
+  border: 1px solid black;
+  margin-top: 30px;
+  background: transparent;
+  border-radius: 10px;
+  padding: 7px 30px;
+}
