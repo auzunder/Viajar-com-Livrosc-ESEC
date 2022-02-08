@@ -16,7 +16,7 @@
 .founders-info-text-title{
     width: 50%;
     font-family: 'Caveat', cursive;
-    font-size: 30px;
+    font-size: 35px;
     margin-bottom: 30px;
 }    
 
@@ -31,6 +31,7 @@
 
 .founders-info-img img {
     width: calc(60% - 20px);
+    height: calc(60% - 20px);
     z-index: 1;
 }
 
