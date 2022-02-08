@@ -1,5 +1,43 @@
 /* Galeria Videos*/
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
 
+.container
+{
+  margin: auto;
+  width: 70%;
+  margin-top: 60px;
+
+}
+
+.container-gallery
+{
+  margin: auto;
+  width: calc(70% + 20px);
+  margin-top: 60px;
+
+}
+
+  .banner {
+      position: relative;
+      width: 100vw;
+      height: 350px;
+      font-family: 'Caveat', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #C6E4E2;
+      font-size: 65px;
+      font-weight: 500;
+  }
+  .bannerimg {
+      height: 100%;
+      margin-top: -10%;
+      width: 100%;
+  }
 .container-gallery-videos{
     margin: auto;
      width: 70%;
