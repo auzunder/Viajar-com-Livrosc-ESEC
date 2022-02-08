@@ -29,12 +29,12 @@
     position: relative;
 }
 
-.contadores-info-img {
+.contadores-img-contador {
     height: calc(100% - 20px);
     margin: 20px 0 0 20px;
     z-index: 1;
 }
-.contadores-info-img img {
+.contadores-img-contador img {
     width: 100%;
     height: 100%;
 }
