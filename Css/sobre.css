@@ -171,7 +171,7 @@
 }
 .about-contacts-map {
   width: 50%;
-  height: calc(100vw * .3);
+  height: calc(100vw * .25);
 }
 
 .gmap{
