@@ -39,7 +39,7 @@
 .founders-dashed{
     width: calc(100% - 20px);
     height: calc(100% - 20px);
-    border: 2px dashed white;
+    border: 2px dashed rgb(121, 13, 13);
     border-radius: 7px;
     
 }
