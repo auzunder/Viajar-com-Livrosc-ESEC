@@ -60,4 +60,5 @@
     width: calc(50vw * .5);
     height: calc(50vw * .5);
     position: relative;
+    margin-right: 20px;
 }
