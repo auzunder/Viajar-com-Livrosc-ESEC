@@ -334,4 +334,5 @@ button.inscrever-btn {
   background: transparent;
   border-radius: 10px;
   padding: 7px 30px;
+  cursor: pointer;
 }
