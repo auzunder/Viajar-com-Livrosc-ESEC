@@ -6,16 +6,17 @@
     height: 400px;
     margin-bottom: 100px;
     margin-top: 40px;
-
 }
+
 .founders-info-text{
-    width: 50%;
     font-family: 'Maven Pro', sans-serif;
 }
 
 .founders-info-text-title{
-width: 50%;
+    width: 50%;
     font-family: 'Caveat', cursive;
+    font-size: 30px;
+    margin-bottom: 30px;
 }    
 
 .founders-info-img {
@@ -24,4 +25,12 @@ width: 50%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-  }
+}
+
+.img {
+    width: 60%;
+}
+
+.founders-info-text-age{
+    margin-bottom: 10px;
+}
