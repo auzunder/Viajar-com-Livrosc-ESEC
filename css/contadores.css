@@ -1,0 +1,49 @@
+.contadores-info {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 400px;
+    margin-bottom: 100px;
+    margin-top: 40px;
+}
+
+.contadores-info-text{
+    font-family: 'Maven Pro', sans-serif;
+    width: 50%;
+}
+
+.contadores-info-text-title{
+    width: 50%;
+    font-family: 'Caveat', cursive;
+    font-size: 35px;
+    margin-bottom: 30px;
+}    
+
+.contadores-info-img {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.contadores-info-img img {
+    width: calc(60% - 20px);
+    z-index: 1;
+}
+
+.contadores-info-text-age{
+    margin-bottom: 10px;
+}
+
+.contadores-dashed{
+    width: calc(60% - 20px);
+    height: calc(60% - 20px);
+    border: 2px dashed #C6E4E2;
+    border-radius: 7px;
+    position: absolute;
+    margin: 0 20px 20px 0px;
+    
+}
