@@ -29,8 +29,17 @@
 
 .founders-info-img img {
     width: 60%;
+    z-index: 1;
 }
 
 .founders-info-text-age{
     margin-bottom: 10px;
+}
+
+.founders-dashed{
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 2px dashed white;
+    border-radius: 7px;
+    
 }
