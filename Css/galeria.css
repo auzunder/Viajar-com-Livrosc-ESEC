@@ -32,6 +32,12 @@
         font-size: 65px;
         font-weight: 500;
     }
+    .banner p {
+      font-family: 'Caveat', cursive;
+      font-size: 65px;
+      font-weight: 500;
+    }  
+    
     .bannerimg {
         height: 100%;
         margin-top: -10%;
