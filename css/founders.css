@@ -31,7 +31,6 @@
 
 .founders-info-img img {
     width: calc(60% - 20px);
-    height: calc(60% - 20px);
     z-index: 1;
 }
 
