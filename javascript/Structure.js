@@ -22,7 +22,7 @@ $(document).scroll(function () {
 });
 
 
-
+// Tentativa de corrigir pos navbar em hyperlink
 //window.addEventListener('load', function () {
 //  if (String(window.location.href).includes("#")){
 //    console.log("structure loaded")
