@@ -30,8 +30,19 @@ p.forms-num {
 }
 
 .forms-content-wrap{
-    width: 90%;
+    width: 80%;
+    margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
+}
+
+.info-pessoal{
+
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
