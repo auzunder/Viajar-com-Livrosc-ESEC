@@ -6,6 +6,10 @@
     margin-top: 1.5vw;
 }
 
+.marginTopBottom{
+    margin: 1.5vw 0;
+}
+
 .separadorAreaLeitor{
     width: 100%;
 }
@@ -38,3 +42,26 @@
     opacity: 1 !important;
 }
 
+.areaLeitorBackground{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+}
+
+.areaLeitorContentContainer{
+    border-radius: 1vw;
+    background-color: white;
+    width: 65%;
+}
+
+.imgContainer{
+    padding: 3vw;
+}
+
+.fotoDePerfil{
+    width: 15vw;
+    object-fit: fill;
+    border: #467C79 dashed 0.3vw;
+    border-radius: 100%;
+}
