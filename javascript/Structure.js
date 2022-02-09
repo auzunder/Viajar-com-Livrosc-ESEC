@@ -20,3 +20,12 @@ $(document).scroll(function () {
   }
 
 });
+
+
+
+//window.addEventListener('load', function () {
+//  if (String(window.location.href).includes("#")){
+//    console.log("structure loaded")
+//    window.scrollBy(0, -100)
+//  };
+//})
