@@ -1,0 +1,56 @@
+*{
+    font-family: Maven Pro;
+}
+
+.marginTop{
+    margin-top: 1.5vw;
+}
+
+.marginTopBottom{
+    margin: 1.5vw 0;
+}
+
+.separadorAreaLeitor{
+    width: 100%;
+}
+
+.separadorAreaLeitor img{
+    width: 100%;
+    margin: 0;
+}
+
+.navBarAreaLeitor{
+    display: flex;
+    background-color: #E5E5E5;
+    padding: 0 10%;
+    justify-content: space-evenly;
+}
+
+.navBarAreaLeitor a{
+    padding: 0.5vw 1vw;
+    text-decoration: none;
+}
+
+.navBarAreaLeitor a text{
+    font-size: 1.5vw;
+    line-height: 2vw;
+    color: black;
+    opacity: 0.5;
+}
+
+.ativo{
+    opacity: 1 !important;
+}
+
+.areaLeitorBackground{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+}
+
+.areaLeitorContentContainer{
+    border-radius: 1vw;
+    background-color: white;
+    width: 65%;
+}
