@@ -11,9 +11,22 @@
     width: 33.3%;
     display: flex;
     align-items: center;
-    margin: 100px;
+    margin: 0 100px 0 100px;
 }
 
 p.forms-num {
-    width: 10%;
-}    
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 15px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}  
+
+.p.forms-text {
+    font-size: 20px;
+}
