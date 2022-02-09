@@ -10,12 +10,10 @@
 .forms-content-dados {
     width: 33.3%;
     display: flex;
+    align-items: center;
+    margin: 100px;
 }
 
-.p.forms-num {
-    width: 50%;
-}
-
-.p.forms-text{
-    width: 50%;
-}
+p.forms-num {
+    width: 10%;
+}    
