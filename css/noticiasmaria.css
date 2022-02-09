@@ -1,0 +1,126 @@
+* {
+  list-style:none; 
+    margin: 0;
+    padding: 0;
+  }
+
+ /*div{
+   border: solid 1px black
+  } /**/
+
+  .body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html{
+
+    text-align:left;
+  
+    background-image: url("imagens/bgnoticias.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+  
+    margin:0;
+  
+    padding:0;
+
+    height: 100%;
+  }
+
+
+#conteudo1{
+  display: flex; /* cria flexbox*/
+  justify-content: center; /*atributos para a disposição da flexbox*/
+  gap: 8vw; /*é o espaçamento entre as divs*/
+  margin-left: 15%;
+  margin-right: 15%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}
+
+#conteudo2{
+  display: flex; /* cria flexbox*/
+  flex-direction: row; /*atributos para a disposição da flexbox*/
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: top;
+  gap: 0vw; /*zero, para tentar alinhar o espaçamento entre todas as noticias*/
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#conteudo3{
+  display: flex; /* cria flexbox*/
+  flex-direction: row; /*atributos para a disposição da flexbox*/
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.noticiaimg{ /*divisão do container 1 referente às imagens*/
+  display: flex; /* cria flexbox*/
+  flex-direction: row; /*atributos para a disposição da flexbox*/
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+
+.Img{  /* todas as imagens com esta class terão o seguinte tamanho*/
+  width: 120%; 
+  height: 100%;
+} 
+
+
+.Img2{ 
+  width: 90%;
+  height: 90%;
+}
+
+.Img3{ 
+  width: 90%;
+  height: 90%;
+}
+  
+
+#p1{
+  font-family: Maven Pro;
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 32px;
+display: flex;
+align-items: center;
+text-decoration-line: underline;
+color: #000000;
+}
+
+#p2{
+  font-family: Maven Pro;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 28px;
+display: flex;
+align-items: center;
+color: #000000;
+}
+
+.descobre{
+  width: 126px;
+  height: 47.25px;
+}
+
+.Imgbarra{ /*alinhar e redimensionar a barra q separa as noticias*/
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+}
+
