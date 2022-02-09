@@ -46,3 +46,21 @@ p.forms-num {
     padding-bottom: 10px;
     border-bottom: 1px solid black;
 }
+
+.info-content {
+    width: 80%;
+    margin: auto;
+}
+
+.info-content-img {
+    width: 20%;
+    margin-top: 10%;
+    padding-left: 70px;
+}
+
+.info-content-img img {
+    width: 100%;
+    border: 1px solid #C4C4C4;
+    border-radius: 50%;
+    padding: 5px;
+}
