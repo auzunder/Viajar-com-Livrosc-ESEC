@@ -2,7 +2,7 @@ function myFunction() {
   var nav_element = document.getElementById("myTopnav");
   var ghost_element = document.getElementById("ghost")
   if (nav_element.className === "topnav") {
-    nav_element.className += " responsive";
+    nav_element.className += " responsiveNavBar";
     //ghost_element.style.height = "0px";
   } 
   else {
