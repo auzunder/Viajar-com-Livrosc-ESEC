@@ -8,10 +8,8 @@
 }
 
 .forms-content-dados {
-    width: 33.3%;
     display: flex;
     align-items: center;
-    margin: 0 100px 0 100px;
 }
 
 p.forms-num {
@@ -29,4 +27,11 @@ p.forms-num {
 
 .p.forms-text {
     font-size: 20px;
+}
+
+.forms-content-wrap{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
