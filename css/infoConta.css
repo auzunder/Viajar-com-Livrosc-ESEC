@@ -8,3 +8,7 @@
     border: #467C79 dashed 0.3vw;
     border-radius: 100%;
 }
+
+.flexboxStyle{
+    display: flex;
+}
