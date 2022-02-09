@@ -21,10 +21,6 @@ html{
     scroll-behavior: smooth;
 }
 
-.unscrollable {
-    overflow: hidden;
-}
-
 .pointer{cursor: pointer;}
 
 body, *{
