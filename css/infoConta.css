@@ -1,9 +1,19 @@
+.marginTop{
+    margin-top: 1.5vw;
+}
+
 .separadorAreaLeitor{
     width: 100%;
-    margin-top: 2vw;
 }
 
 .separadorAreaLeitor img{
     width: 100%;
     margin: 0;
+}
+
+.navBarAreaLeitor{
+    display: flex;
+    background-color: #E5E5E5;
+    padding: 0 10%;
+    justify-content: space-evenly;
 }
