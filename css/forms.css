@@ -15,7 +15,7 @@
 p.forms-num {
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid #E5E5E5;
     border-radius: 50%;
     text-align: center;
     margin-right: 15px;
@@ -72,7 +72,7 @@ p.forms-num {
 }
 
 
-.form-input style {
+.form-input-style {
     padding: 7px 0 7px 5px;
     width: 100%;
     border-radius: 5px;
@@ -113,25 +113,39 @@ input:not(:focus):valid ~ .span-text{
     color: black;
 }
 
-.info-data {
+.info-data{
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
     align-items: center;
-}
-
-.info-data p {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .info-data p{
     width: 40%;
-}
-.info-data-wrap{
-    width: 70%;
-    padding-right: 150px;
+  }
+  
+  
+  .info-data-wrap{
+    width: 60%;
+    padding-right: 100px;
+  }
+  input.dt-nasc{
+    border: 0;
+    width: 100%;
+    height: 50px;
+  }
+  input.dt-nasc:focus-visible{
+    border: 0;
+    outline: 0;
+  }
+    ::-webkit-datetime-edit {
+    height: 100%;
+    width: 100%;
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
-    gap: 30px;
-}
-
-
+    align-items: center;
+    justify-content: center;
+    }
   ::-webkit-datetime-edit-text {
     display: none;
     
@@ -152,6 +166,7 @@ input:not(:focus):valid ~ .span-text{
     border-radius: 8px;
     position: absolute;
     }
+  
    ::-webkit-datetime-edit-month-field {
      color: black;
     border: 1px solid black;
@@ -189,7 +204,35 @@ input:not(:focus):valid ~ .span-text{
   ::-webkit-calendar-picker-indicator {
     display: none;
   }
-input#dtNasc{
-    border: 0;
-    width: 100%;
+
+  .info-localidade{
+      width: 40%;
+  }
+
+  .info-morada {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .input-placement.info-codigo {
+    display: flex;
+    width: 60%;
+    padding-right: 0;
+  }
+
+.input-placement.info-codigo p {
+    width: 50%;
+    text-align: center;
+}
+.codPostalwidth {
+    width: 25%;
+    
+}
+.codPostalwidth:last-child {
+    margin-left: 20px;
+}
+
+input#Telemovel {
+    width: 40%;
 }

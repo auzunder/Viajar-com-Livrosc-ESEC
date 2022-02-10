@@ -64,7 +64,8 @@
 <p class="info-pessoal">Informação Pessoal</p>
 
 <div class="info-content">
-    <div class="info-content-img"><img src="Imagens/Forms/perfil.png" alt= "Fotografia de Perfil">
+    <div class="info-content-img">
+        <img src="Imagens/Forms/perfil.png" alt= "Fotografia de Perfil">
     </div>
     <div class="info-content-campos">
         <form action="" class="form-insc">
@@ -75,12 +76,32 @@
             <div class="info-data">
                 <p>Data de Nascimento</p>
                 <div class="info-data-wrap">
-                    <input type="date" id="dtNasc">
+                  <input type="date" class="dt-nasc" id="dtNasc">
                 </div>
             </div>
             <div class="input-placement">
                 <input type="text" id="Morada" name="Morada" required class="form-input-style">
                 <span class="span-text">Morada</span>
+            </div>
+            <div class="info-morada">
+                <div class="input-placement info-localidade">
+                    <input type="text" id="Localidade" name="Localidade" required class="form-input-style">
+                    <span class="span-text">Localidade</span>
+                </div>
+                <div class="input-placement info-codigo">
+                    <p>Código Postal</p>
+                    <input type="number" id="codPostal4" name="codPostal4" required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth">
+
+                    <input type="number" id="codPostal3" name="codPostal4" required maxlength ='3' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth" >
+                </div>
+            </div>
+            <div class="input-placement">
+                <input type="email" id="E-mail" name="E-mail" required class="form-input-style">
+                <span class="span-text">E-mail</span>
+            </div>
+            <div class="input-placement">
+                <input type="number" id="Telemovel" name="Telemovel" required class="form-input-style">
+                <span class="span-text">Telemovel</span>
             </div>
         </form>
 
