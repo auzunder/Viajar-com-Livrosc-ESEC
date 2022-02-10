@@ -58,3 +58,14 @@
 .flexboxStyle{
     display: flex;
 }
+
+.flexflowColumn{
+    flex-flow: column;
+}
+
+
+@media only screen and (max-width: 1275px) {
+    .responsiveToColumn{
+        flex-flow: column;
+    }
+}
