@@ -9,6 +9,32 @@
     border-radius: 100%;
 }
 
+/**
+.alterarImgPerfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    top: -98%;
+    left: -0.25%;
+    width: 97%;
+    height: 95%;
+    border-radius: 100%;
+    background-position: bottom;
+    transition: 100ms;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+}
+
+.alterarImgPerfil:hover{
+    border: #467C79 dashed 0.3vw;
+    backdrop-filter: blur(20px);
+    background-image: url("/Imagens/AreaDoLeitor/AlterarFoto.png");
+
+}/**/
+
 #perfilImg_alterarInfo{
     width: 20vw;
 }
@@ -24,7 +50,7 @@
 }
 
 .contentResponsiveFont{
-    font-size: 1vw;
+    font-size: 1.5vw;
     line-height: 3vw;
 }
 
