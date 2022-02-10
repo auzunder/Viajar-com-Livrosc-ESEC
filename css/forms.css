@@ -234,5 +234,5 @@ input:not(:focus):valid ~ .span-text{
 }
 
 input#Telemovel {
-    width: 0%;
+    width: 40%;
 }
