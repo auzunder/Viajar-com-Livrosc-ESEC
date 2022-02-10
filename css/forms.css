@@ -72,7 +72,7 @@ p.forms-num {
 }
 
 
-.form-input-style {
+.form-input style {
     padding: 7px 0 7px 5px;
     width: 100%;
     border-radius: 5px;
@@ -131,40 +131,64 @@ input:not(:focus):valid ~ .span-text{
     gap: 30px;
 }
 
-::-webkit-datetime-edit {
-    padding: 1em;
-    gap:00px;
-    }
+
   ::-webkit-datetime-edit-text {
-    color: transparent;
-    padding: 0 0.3em;
+    display: none;
+    
     }
-  ::-webkit-datetime-edit-month-field {
-     color: black;
-    border:1px solid black;
-    padding:10px 33.3%;
-    border-radius: 8px;
-    }
+  
   ::-webkit-datetime-edit-day-field {
     color: black;
-    border:1px solid black;
-    padding:10px 33.3%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(30.3%);
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    left: 0;
     border-radius: 8px;
+    position: absolute;
+    }
+   ::-webkit-datetime-edit-month-field {
+     color: black;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(30.3%);
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    left: calc(30.3% + 10px);
+    border-radius: 8px;
+    position: absolute;
     }
   ::-webkit-datetime-edit-year-field {
      color: black;
-    border:1px solid black;
-    padding:10px 33.3%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(30.3%);
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    left: calc(60.6% + 20px);
     border-radius: 8px;
+    position: absolute;
     }
   ::-webkit-inner-spin-button {
     display: none;
+    margin-left: 0;
   }
   ::-webkit-calendar-picker-indicator {
-    
+    display: none;
   }
-
-
 input#dtNasc{
     border: 0;
     width: 100%;
