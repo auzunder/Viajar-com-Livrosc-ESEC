@@ -1,0 +1,94 @@
+h3{
+    font-size: 2vw;
+    line-height: 4vw;
+}
+
+.strong{
+    font-weight: 900;
+}
+
+.hitoricoBlock{
+    padding: 0 0 3vw 0;
+}
+
+.separador{
+    width: 100%;
+    padding: 1vw 0;
+}
+
+.separador img{
+    width: 100%;
+}
+
+.livroSection{
+    display: flex;
+    justify-content: center;
+    padding: 0.5vw 0;
+    margin: auto;
+}
+
+.livro{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    min-width: 50%;
+    padding: 0.5vw;
+    border: 1px dashed #467C79;
+    border-radius: 1vw;
+    box-shadow: 0 0vw 0vw #467C79;
+    transition: 250ms;
+    top:0;
+
+}
+
+.livro a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.livro:hover{
+    top:-0.5vw;
+    box-shadow: 0 0.5vw 0.2vw #467C79;
+}
+
+.bookHistoricoImg img{
+    height: 20vw;
+    max-height: 30vh;
+}
+
+.bookHistoricoContent{
+    display: flex;
+    flex-flow: column;
+}
+
+.bookHistoricoTitle{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bookHistoricoSessionInfo{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    padding: 2vw 1.5vw;
+    flex-grow: 1;
+}
+
+.infoLine{
+    padding: 0.25vw;
+    display: flex;
+}
+
+@media only screen and (max-width: 1275px) {
+    h3{
+        font-size: 3vw;
+        line-height: 4vw;
+    }
+    
+}

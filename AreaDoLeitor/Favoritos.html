@@ -7,6 +7,7 @@
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
         <link type="text/css" rel="stylesheet" href="/css/structure.css">
         <link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">
+        <link type="text/css" rel="stylesheet" href="/css/favoritos.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
@@ -43,6 +44,15 @@
             <div id=container>
                 <div id="ghost"></div>
 
+                <!-- ALERT UI ONLY -->
+                
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>ATENÇÃO!</strong> Esta secssão de website é apenas para demonstração, como nao existe base de dados. Mesmo assim optámos por fazer uma demonstração de UX/UI.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
                 <!--Conteudo-->
                 
                 <div class="separadorAreaLeitor marginTop">
@@ -59,6 +69,32 @@
                     <div class="areaLeitorContentContainer marginTopBottom">
                         <!-- Conteudo Area Leitor -->
 
+                        <div class="imgPerfil">
+                            <img src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                        </div>
+                        <div class="horizontalLine">
+                            <div class="bookSection">
+                                <div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_00001.jpg"></a></div>
+                                <div class="bookName">O Principezinho</div>
+                                <div class="buttonFav">
+                                    <button class="button boxInnerOutterShadow">Remover</button>
+                                </div>
+                            </div>
+                            <div class="bookSection">
+                                <div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_00003.jpg"></a></div>
+                                <div class="bookName">Posso cheirar-te o rabo?</div>
+                                <div class="buttonFav">
+                                    <button class="button boxInnerOutterShadow">Remover</button>
+                                </div>
+                            </div>
+                            <div class="bookSection">
+                                <div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_00005.jpg"></a></div>
+                                <div class="bookName">Baleira na banheira</div>
+                                <div class="buttonFav">
+                                    <button class="button boxInnerOutterShadow">Remover</button>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- FIM Conteudo Area Leitor -->
                     </div>

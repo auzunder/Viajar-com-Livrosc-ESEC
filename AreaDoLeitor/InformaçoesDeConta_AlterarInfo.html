@@ -7,7 +7,7 @@
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
         <link type="text/css" rel="stylesheet" href="/css/structure.css">
         <link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">
-        <link type="text/css" rel="stylesheet" href="/css/ajuda.css">
+        <link type="text/css" rel="stylesheet" href="/css/infoConta.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
@@ -59,47 +59,54 @@
                     <img src="/Imagens/AreaDoLeitor/SeparadorAreaLeitor.svg">
                 </div>
                 <div class="navBarAreaLeitor marginTop">
-                    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><text>Conta</text></a>
+                    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><text class="ativo">Conta</text></a>
                     <a href="/AreaDoLeitor/Favoritos.html"><text>Favoritos</text></a>
                     <a href="/AreaDoLeitor/Histórico.html"><text>Histórico</text></a>
-                    <a href="/AreaDoLeitor/Ajuda.html"><text class="ativo">Ajuda</text></a>
+                    <a href="/AreaDoLeitor/Ajuda.html"><text>Ajuda</text></a>
                 </div>
 
                 <div class="areaLeitorBackground marginTopBottom">
-                    <div class="areaLeitorContentContainer marginTopBottom">
-                        <!-- Conteudo Area Leitor -->
-
-                        <div class="imgPerfil">
-                            <img src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                    <div class="areaLeitorContentContainer marginTopBottom flexboxStyle responsiveToColumn">
+                        <div class="imgContainer">
+                            <img id="perfilImg_alterarInfo" class="fotoDePerfil" src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                            <!--  <div class="pointer alterarImgPerfil"></div>  -->
                         </div>
-
-                        <div class="mainTitle">
-                            <h2>Questões Frequentes</h2>
+                        <div class="userData flexboxStyle">
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Nome</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputName" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Apelido</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputLastName" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Idade</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputAge" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Gênero</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputGender" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Email Parental</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputEmail" class="inputInfoPerfil" placeholder="example@gmail.com">
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Contacto telefónico</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputPhone" class="inputInfoPerfil" placeholder="9XXXXXXXX"></input>
+                            </div>
+                            <div class="alterarUserData flexboxStyle">
+                                <a href="/AreaDoLeitor/InformaçoesDeConta.html"><button class="contentResponsiveFont boxInnerOutterShadow guardarInfo">Guardar</button></a>
+                                <a href="/AreaDoLeitor/InformaçoesDeConta.html"><button class="contentResponsiveFont boxInnerOutterShadow">Voltar</button></a>
+                            </div>
                         </div>
-                        <div class="questoesFrequentes">
-                            <div class="questao pointer" onclick="">
-                                <p>Como remarcar uma leitura?</p>
-                                <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                            </div>
-                            <div class="questao pointer" onclick="">
-                                <p>Quero ser volunário, como me candidatar?</p>
-                                <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                            </div>
-                            <div class="questao pointer" onclick="">
-                                <p>Não consigo aceder à área do leitor</p>
-                                <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                            </div>
-                            <div class="questao pointer" onclick="">
-                                <p>Com forneço malerial liteário para ajudar este projeto?</p>
-                                <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                            </div>
-                            <div class="questao pointer last" onclick="">
-                                <p>Tem algumas bibliotecas presenciais? Se sim, onde?</p>
-                                <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                            </div>
-                        </div>
-
-                        <!-- FIM Conteudo Area Leitor -->
                     </div>
                 </div>
 
@@ -150,17 +157,17 @@
                     </div>
                     <div id=calendarioLinks>
                         <ul> Calendário
-                            <a href="Calendario.html#sessoesPopulares"><li class=first>Sessões populares</li></a>
-                            <a href="Calendario.html#sessoesHoje"><li>Sessões de hoje</li></a>
-                            <a href="Calendario.html#sessoesAmanha"><li>Sessões de amanhã</li></a>
+                            <a href="/Calendario.html#sessoesPopulares"><li class=first>Sessões populares</li></a>
+                            <a href="/Calendario.html#sessoesHoje"><li>Sessões de hoje</li></a>
+                            <a href="/Calendario.html#sessoesAmanha"><li>Sessões de amanhã</li></a>
                         </ul>
                     </div>
                     <div id=areaDoLeitorLinks>
                         <ul> Area do Leitor
-                            <a href="AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
-                            <a href="AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
-                            <a href="AreaDoLeitor/Historico.html"><li>Histórico</li></a>
-                            <a href="AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
+                            <a href="/AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
+                            <a href="/AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
+                            <a href="/AreaDoLeitor/Historico.html"><li>Histórico</li></a>
+                            <a href="/AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
                         </ul>
                     </div>
                 </div>
