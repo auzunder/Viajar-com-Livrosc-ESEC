@@ -18,12 +18,29 @@ h2{
     border-top: 1px solid #c3c3c3;
 }
 
+.resposta{
+    transition: opacity 500ms ease-out;
+    transition: max-height 500ms ease-out;
+    transition: padding 500ms ease-out;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+}
+
+.show{
+    opacity: 1;
+    max-height: 100%;
+    padding: 1.5vw 1.5vw 4vw 1.5vw;
+}
+
 .last{
     border-bottom: 1px solid #c3c3c3;
 }
 
 .questao p{
     font-size: 1.25vw;
+    font-weight: 900;
     line-height: 2vw;
 }
 
