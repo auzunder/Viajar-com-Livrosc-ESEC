@@ -59,17 +59,40 @@
                 <div class="areaLeitorBackground marginTopBottom">
                     <div class="areaLeitorContentContainer marginTopBottom flexboxStyle responsiveToColumn">
                         <div class="imgContainer">
-                            <img class="fotoDePerfil" src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                            <img id="perfilImg_alterarInfo" class="fotoDePerfil" src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                            <!--  <div class="pointer alterarImgPerfil"></div>  -->
                         </div>
                         <div class="userData flexboxStyle">
-                            <div class="userName flexboxStyle">
-                                <p class="contentResponsiveFont">Nome:</p>
-                                <p class="contentResponsiveFont">Apelido:</p>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Nome</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputName" class="inputInfoPerfil"></input>
                             </div>
-                            <p class="contentResponsiveFont">Idade:</p>
-                            <p class="contentResponsiveFont">Gênero:</p>
-                            <p class="contentResponsiveFont">Email Parental:</p>
-                            <p class="contentResponsiveFont">Contacto telefónico Parental:</p>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Apelido</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputLastName" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Idade</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputAge" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Gênero</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputGender" class="inputInfoPerfil"></input>
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Email Parental</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputEmail" class="inputInfoPerfil" placeholder="example@gmail.com">
+                            </div>
+                            <div class="flexboxStyle spacebetween">
+                                <p class="contentResponsiveFont">Contacto telefónico</p>
+                                <div class="emptySpaceForm"></div>
+                                <input id="inputPhone" class="inputInfoPerfil" placeholder="9XXXXXXXX"></input>
+                            </div>
                             <div class="alterarUserData flexboxStyle">
                                 <a href="/AreaDoLeitor/InformaçoesDeConta.html"><button class="contentResponsiveFont boxInnerOutterShadow guardarInfo">Guardar</button></a>
                                 <a href="/AreaDoLeitor/InformaçoesDeConta.html"><button class="contentResponsiveFont boxInnerOutterShadow">Voltar</button></a>
@@ -125,17 +148,17 @@
                     </div>
                     <div id=calendarioLinks>
                         <ul> Calendário
-                            <a href="Calendario.html#sessoesPopulares"><li class=first>Sessões populares</li></a>
-                            <a href="Calendario.html#sessoesHoje"><li>Sessões de hoje</li></a>
-                            <a href="Calendario.html#sessoesAmanha"><li>Sessões de amanhã</li></a>
+                            <a href="/Calendario.html#sessoesPopulares"><li class=first>Sessões populares</li></a>
+                            <a href="/Calendario.html#sessoesHoje"><li>Sessões de hoje</li></a>
+                            <a href="/Calendario.html#sessoesAmanha"><li>Sessões de amanhã</li></a>
                         </ul>
                     </div>
                     <div id=areaDoLeitorLinks>
                         <ul> Area do Leitor
-                            <a href="AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
-                            <a href="AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
-                            <a href="AreaDoLeitor/Historico.html"><li>Histórico</li></a>
-                            <a href="AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
+                            <a href="/AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
+                            <a href="/AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
+                            <a href="/AreaDoLeitor/Historico.html"><li>Histórico</li></a>
+                            <a href="/AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
                         </ul>
                     </div>
                 </div>

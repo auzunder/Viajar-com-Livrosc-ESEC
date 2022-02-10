@@ -9,6 +9,36 @@
     border-radius: 100%;
 }
 
+/**
+.alterarImgPerfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    top: -98%;
+    left: -0.25%;
+    width: 97%;
+    height: 95%;
+    border-radius: 100%;
+    background-position: bottom;
+    transition: 100ms;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+}
+
+.alterarImgPerfil:hover{
+    border: #467C79 dashed 0.3vw;
+    backdrop-filter: blur(20px);
+    background-image: url("/Imagens/AreaDoLeitor/AlterarFoto.png");
+
+}/**/
+
+#perfilImg_alterarInfo{
+    width: 20vw;
+}
+
 .userData{
     flex: 1;
     flex-flow: column;
@@ -46,17 +76,35 @@
     background-color: #D66F5A !important;
 }
 
+.inputInfoPerfil{
+    border: 1px solid #000000;
+    border-radius: 1.5vw;
+    width: 12.6vw;
+    height: 75%;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.emptySpaceForm{
+    height: 0;
+    flex: 1;
+    border: #000000 1px dashed;
+}
+
 
 @media only screen and (max-width: 1275px) {
+    .imgContainer{
+        display: flex;
+        justify-content: center ;
+    }
+    .fotoDePerfil{
+        width: 25vw;
+    }
     .responsiveToColumn, .userName{
         flex-flow: column;
     }
     .areaLeitorContentContainer{
         justify-content: center;
-    }
-    .imgContainer{
-        display: flex;
-        justify-content: center ;
     }
     .contentResponsiveFont{
         margin: 0.75vw 0;
@@ -74,5 +122,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-
+    .fotoDePerfil{
+        width: 40vw;
+    }
 }

@@ -63,9 +63,25 @@
     flex-flow: column;
 }
 
+.spacebetween{
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 @media only screen and (max-width: 1275px) {
     .responsiveToColumn{
         flex-flow: column;
+    }
+    .navBarAreaLeitor a text{
+        font-size: 3vw;
+        line-height: 4vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .navBarAreaLeitor a text{
+        font-size: 4vw;
+        line-height: 5vw;
     }
 }
