@@ -1,16 +1,3 @@
-.imgPerfil{
-    display: flex;
-    justify-content: center;
-    padding: 1vw;
-}
-
-.imgPerfil img{
-    width: 5vw;
-    object-fit: fill;
-    border: #467C79 dashed 0.2vw;
-    border-radius: 100%;
-}
-
 .horizontalLine{
     display: flex;
     justify-content: space-around;

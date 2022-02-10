@@ -1,0 +1,22 @@
+h3{
+    font-size: 3vw;
+}
+
+.separador{
+    width: 100%;
+    padding: 1vw 0;
+}
+
+.separador img{
+    width: 100%;
+}
+
+.livro{
+    display: flex;
+    justify-content: center;
+}
+
+.bookHistoricoImg img{
+    height: 20vw;
+    max-height: 35vh;
+}
