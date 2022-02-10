@@ -50,17 +50,122 @@ p.forms-num {
 .info-content {
     width: 80%;
     margin: auto;
+    display: flex;
+    padding-top: 50px;
 }
 
 .info-content-img {
     width: 20%;
-    margin-top: 10%;
-    padding-left: 70px;
+    margin-left: 70px;
 }
 
 .info-content-img img {
-    width: 100%;
+    width: calc(100% - 10px);
     border: 1px solid #C4C4C4;
     border-radius: 50%;
     padding: 5px;
+}
+
+
+.info-content-campos {
+    width: 80%;
+    padding-left: 100px;
+}
+
+
+.form-input-style {
+    padding: 7px 0 7px 5px;
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid black;
+}
+.input-placement input{
+    outline: 0;
+}
+.input-placement input:focus-visible{
+    outline: 0;
+    border: 1px solid #0000D1;
+}
+
+.input-placement {
+    padding-right: 8px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+input:focus ~ .span-text,
+input:not(:focus):valid ~ .span-text{
+    top: -10px;
+    left: 6px;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    opacity: 100%;
+    padding: 0 6px;
+}
+
+.span-text {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: black;
+}
+
+.info-data {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.info-data p {
+    width: 30%;
+}
+.info-data-wrap{
+    width: 70%;
+    padding-right: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+::-webkit-datetime-edit {
+    padding: 1em;
+    gap:00px;
+    }
+  ::-webkit-datetime-edit-text {
+    color: transparent;
+    padding: 0 0.3em;
+    }
+  ::-webkit-datetime-edit-month-field {
+     color: black;
+    border:1px solid black;
+    padding:10px 33.3%;
+    border-radius: 8px;
+    }
+  ::-webkit-datetime-edit-day-field {
+    color: black;
+    border:1px solid black;
+    padding:10px 33.3%;
+    border-radius: 8px;
+    }
+  ::-webkit-datetime-edit-year-field {
+     color: black;
+    border:1px solid black;
+    padding:10px 33.3%;
+    border-radius: 8px;
+    }
+  ::-webkit-inner-spin-button {
+    display: none;
+  }
+  ::-webkit-calendar-picker-indicator {
+    
+  }
+
+
+input#dtNasc{
+    border: 0;
+    width: 100%;
 }
