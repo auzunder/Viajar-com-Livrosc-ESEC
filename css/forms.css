@@ -236,3 +236,7 @@ input:not(:focus):valid ~ .span-text{
 input#Telemovel {
     width: 40%;
 }
+
+p.genero{
+  padding-bottom: 20px;
+}
