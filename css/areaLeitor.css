@@ -54,3 +54,7 @@
     background-color: white;
     width: 65%;
 }
+
+.flexboxStyle{
+    display: flex;
+}

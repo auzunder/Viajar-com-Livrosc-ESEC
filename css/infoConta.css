@@ -9,6 +9,30 @@
     border-radius: 100%;
 }
 
-.flexboxStyle{
-    display: flex;
+.userData{
+    flex: 1;
+    flex-flow: column;
+}
+
+.userName{
+    gap: 25%;
+}
+
+.contentResponsiveFont{
+    font-size: 1.5vw;
+    line-height: 3vw;
+}
+
+.alterarUserData{
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.alterarUserData button{
+    height: fit-content;
+    border: 1px solid #000000;
+    padding: 0vw 4vw;
+    background-color: white;
+    border-radius: 1.5vw;
 }
