@@ -613,6 +613,7 @@ body, #wrapper{
         width: fit-content !important;
         flex-grow: 1;
     }
+    #setaCima{width: 8vw;height: 8vw;}
     
 }
 
@@ -627,6 +628,7 @@ body, #wrapper{
     #emailInput{
         height: 3.75vw;
     }
+    #setaCima{width: 11vw;height: 11vw;}
 }
 
 @media only screen and (max-width: 600px) {
