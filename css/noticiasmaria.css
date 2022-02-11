@@ -119,6 +119,7 @@ p{
 
 .descobreArea{
   width: 100%;
+  padding: 1.75vw 0 0 0;
 }
 
 .descobre{
@@ -128,6 +129,10 @@ p{
   font-size: 1vw;
   line-height: 1vw;
   background-color: #C6E4E2;
+}
+
+.last{
+  border-bottom: none;
 }
 
 @media only screen and (max-width: 1275px) { 
