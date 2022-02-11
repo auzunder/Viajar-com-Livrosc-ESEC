@@ -46,37 +46,47 @@
                 
                 <!--Conteudo-->
                 
-                <img class="Imgbarra" src="/Imagens/Notícias/Vector 13.png">
-                
-                <div id= "conteudo1"> <!--container c a 1ra noticia-->
-                    <div class="conceito">
-                        <p id="p1">"Viajar com Livros" liga Portugal a Cabo Verde através de histórias.</p>
-                    </div>
-                    <br>    
-                    
-                    <div class="noticiaimg">
-                        <img class="Img" src="/Imagens/Notícias/tumbnail2.png">
-                    </div>
-                    
-                    <div id= "conteudo1">
-                        <br>
-                        <p id="p2">
-                            O projeto literário "Viajar com Livros" junta mais de 60 contadores que, através de videochamadas, conseguem ler histórias a cerca de 200 crianças do ensino básico em Cabo Verde. O objetivo principal é pormover hábitos de leitura.
-                            Sem qualquer tipo de financiamento, este projeto tem conseguido mover "ilhas e oceanos" e alcançando objetivos, entre estes, despertar as crianças para o gosto e interesse da leitura e contribuir para a formação de cidadãos.
-                        </p>
-                        <br>
-                    </div>
-                    <br>
-                    <img class="Imgbarra" src="/Imagens/Notícias/Vector 13.png">
-                    <br>
-                <div id="comentarios">
-                    <div class="imagem_comentario">
-                        <img class="img4" src="/Imagens/Notícias/imagemcomentario.png">
-                    </div>
-                    <div class="imagem_comentario1">
-                        <img class="img5" src="/Imagens/Notícias/segurarlivro1.png">
-                        <br>
-                        <img class="img6" src="/Imagens/Notícias/comentario.png">
+                <div class="mainContainer flexbox centeredContent">
+                    <div class="childContainer flexbox centeredContent flexFlowColumn">
+                        <div class="title">
+                            <div class="banner">
+                                <p>Momentos para Recordar!</p>        
+                            </div>
+                            <div class="bannerimg">
+                                <img src="/Imagens/Galeria/bannerwave.svg" alt="Momentos para Recordar!"> 
+                            </div>
+                        </div>
+
+                        <div class= "noticia flexbox centeredContent flexFlowColumn borderTop"> <!--container c a 1ra noticia-->
+                            <div class="noticiaTitle">
+                                <h5>"Viajar com Livros" liga Portugal a Cabo Verde através de histórias.</h5>
+                            </div>
+                            <div class="noticiaImg flexbox centeredContent">
+                                <img src="/Imagens/Notícias/tumbnail2.png">
+                            </div>
+                            <div class= "conteudo borderBottom">
+                                <p class= "conteudoTexto">
+                                    O projeto literário "Viajar com Livros" junta mais de 60 contadores que, através de videochamadas, conseguem ler histórias a cerca de 200 crianças do ensino básico em Cabo Verde. O objetivo principal é pormover hábitos de leitura.
+                                </p>
+                                <p class= "conteudoTexto">
+                                    Sem qualquer tipo de financiamento, este projeto tem conseguido mover "ilhas e oceanos" e alcançando objetivos, entre estes, despertar as crianças para o gosto e interesse da leitura e contribuir para a formação de cidadãos.
+                                </p>
+                            </div>
+                            <div class="secçaoComentarios flexbox centeredContent">
+                                <div class="comentario">
+                                    <img class="comentIllustration" src="/Imagens/Notícias/comentário.png">
+                                    <div class="comentContent">
+                                        <p class="comentTitle">Acrescentam valor</p>
+                                        <p class="comentatorName">Luis Figueira</p>
+                                        <p class="comentarioText">O projeto Viajar com Livrosé gratificante na medida em que junta a edicaão e a diverão, de forma às crianças ficarem muito interessadas</p>
+                                    </div>
+                                </div>
+                                <div class="imagem_comentario">
+                                    <img src="/Imagens/Notícias/segurarlivro1.png">
+                                </div>
+                            </div>
+                            <button class="addComent boxInnerOutterShadow pointer">Adicionar comentário</button>
+                        </div>
                     </div>
                 </div>
                 
