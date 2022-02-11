@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Calendário Viajar com Livros</title>
+        <title>Formulário de Inscrição</title>
         <link type="text/css" rel="stylesheet" href='https://fonts.googleapis.com/css?family=Caveat'>
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
         <link type="text/css" rel="stylesheet" href="/css/structure.css">
@@ -10,7 +10,9 @@
         <link rel="stylesheet" href="css/infoConta.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
+        <script src="javascript/forms.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
@@ -47,17 +49,17 @@
                 <!--Conteudo-->
         <div class="forms-content">
                 <div class="forms-content-wrap">
-                    <div class="forms-content-dados">
-                            <p class="forms-num">1</p>
+                    <div class="forms-content-dados form-nao-selecionado">
+                            <p class="forms-num form-border-unselected">1</p>
                             <p class="forms-text">Dados Pessoais</p>
                     </div>
                     <div class="forms-content-dados">
                             <p class="forms-num">2</p>
                             <p class="forms-text">Documentos</p>
                     </div>
-                    <div class="forms-content-dados">
-                            <p class="forms-num">3</p>
-                            <p class="forms-text">Confirmação</p>
+                    <div class="forms-content-dados form-nao-selecionado">
+                        <p class="forms-num form-border-unselected">3</p>
+                        <p class="forms-text">Confirmação</p>
                     </div>
                 </div>
         </div>
@@ -67,7 +69,7 @@
     <div class="info-content">
         <div class="info-content-doc">
         <div class="input-placement">
-        <form action="" class="form-insc">
+        <form action="forms3.html" method="get" class="form-insc">
             <p>Documento de Identificação</p>
         </div>
 
@@ -81,25 +83,26 @@
             </select>
             </div>
             <div class="num-identificacao">
-                <span class="span-text"> Nº documento</span>
                 <input type="number" id="Num" name="Num" required class="form-input-style">
+                <span class="span-text"> Nº documento</span>
             </div>
         </div>
         <div class="profissao">
-            <span class="span-text"> Profissão </span>
             <input type="text" id="profissao" name="profissao" required class="form-input-style">
+            <span class="span-text"> Profissão </span>
         </div>
         <p class="doc-inscricao">Documentos de Inscrição</p>
         <div class="curriculo-input">
             <span class="curriculo-text">Inserir Currículo</span>
             <input type="file" id="myFile" name="filename" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            <ul id="ulList"></ul>
         </div>
 
         <p class="mensagem">Partilha connosco a tua motivação para fazeres parte deste projeto:</p>
         
         <div class="mensagem">
+        <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
         <span class="span-text"> Mensagem </span>
-        <input type="text" id="mensagem" name="mensagem" required class="form-input-style">
         </div>
 
         <div class="required-fields">
@@ -107,7 +110,7 @@
                 <p>*Campos de preenchimento obrigatório</p>
         
                 <div class="next ">
-                    <a href="/AreaDoLeitor/InformaçoesDeConta_AlterarInfo.html"><button class="next-button boxInnerOutterShadow">Seguinte</button></a>
+                    <input type="submit" class="next-button boxInnerOutterShadow" value="Seguinte">
                 </div>
             </div>
         </div>
@@ -191,5 +194,25 @@
                 </div>
             </div>
         </div>
+        <script>
+            $("#myFile").on('change', function () {
+                $("#ulList").empty();
+                var fp = $("#myFile");
+                var lg = fp[0].files.length;
+                var items = fp[0].files;
+                var fragment = "";
+                
+                if (lg > 0) {
+                    for (var i = 0; i < lg; i++) {
+                        var fileName = items[i].name; // get file name
+            
+                        // append li to UL tag to display File info
+                        fragment += "<li>" + fileName + "</li>";
+                    }
+            
+                    $("#ulList").append(fragment);
+                }
+            });
+            </script>
     </body>
 </html>

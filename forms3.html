@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Calendário Viajar com Livros</title>
+        <title>Formulário de Inscrição</title>
         <link type="text/css" rel="stylesheet" href='https://fonts.googleapis.com/css?family=Caveat'>
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
         <link type="text/css" rel="stylesheet" href="/css/structure.css">
@@ -45,14 +45,16 @@
                 <div id="ghost"></div>
 
                 <!--Conteudo-->
+
+                
         <div class="forms-content">
                 <div class="forms-content-wrap">
-                    <div class="forms-content-dados">
-                            <p class="forms-num">1</p>
+                    <div class="forms-content-dados form-nao-selecionado">
+                            <p class="forms-num form-border-unselected">1</p>
                             <p class="forms-text">Dados Pessoais</p>
                     </div>
-                    <div class="forms-content-dados">
-                            <p class="forms-num">2</p>
+                    <div class="forms-content-dados form-nao-selecionado">
+                            <p class="forms-num form-border-unselected">2</p>
                             <p class="forms-text">Documentos</p>
                     </div>
                     <div class="forms-content-dados">
@@ -65,28 +67,32 @@
         <p class="info-pessoal">Informação Pessoal</p>
 
         <div class="info-content">
+            <form action="/Home.html" method="get">
                 <div class="info-confir-dados">
-                <input type="radio" id="confir-dados" name="confir-dados" value="">
-                <label for="confir-dados">Confirmo que todos os dados pessoais anteriormente inseridos são os meus dados pessoais e se encontram corretos.</label>
-                </div>
-    
-                <div class="info-confir-dados">
-                <input type="radio" id="aceitar-dados" name="aceitar-dados" value="" >
-                <label for="aceitar-dados">Li e aceito os Termos e Condições e a Política de Privacidade do Grupo Viajar com Livros.
-                    Consinto, de forma livre, consciente e informada, o Grupo Viajar com Livros, recolha e trate os dados pessoais por mim fornecidos para ações de marketing e publicidade, pressupondo esse tratamento a comunicação dos meus dados ao Grupo Viajar com Livros, bem como a criação de um perfil, de forma a enviar comunicações ajustadas aos meus interesses, nomeadamente, sendo possível customizar o meu consentimento através da criação de uma conta Leitor, nos termos melhor descritos na Política de Privacidade do Grupo Viajar com Livros.</label>
-                </div>
-            <div class="required-fields">
-                <div class="required-fields-right">
-                    <p>*Campos de preenchimento obrigatório</p>
+
+                    <label class="aceitar-dados">Confirmo que todos os dados pessoais anteriormente inseridos são os meus dados pessoais e se encontram corretos.
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                        </label>
                 
-                    <div class="next ">
-                            <a href="/AreaDoLeitor/InformaçoesDeConta_AlterarInfo.html"><button class="next-button boxInnerOutterShadow">Seguinte</button></a>
+                    <label class="aceitar-dados">Li e aceito os Termos e Condições e a Política de Privacidade do Grupo Viajar com Livros.
+                    Consinto, de forma livre, consciente e informada, o Grupo Viajar com Livros, recolha e trate os dados pessoais por mim fornecidos para ações de marketing e publicidade, pressupondo esse tratamento a comunicação dos meus dados ao Grupo Viajar com Livros, bem como a criação de um perfil, de forma a enviar comunicações ajustadas aos meus interesses, nomeadamente, sendo possível customizar o meu consentimento através da criação de uma conta Leitor, nos termos melhor descritos na Política de Privacidade do Grupo Viajar com Livros.
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="required-fields">
+                    <div class="required-fields-right">
+                        <p>*Campos de preenchimento obrigatório</p>
+                    
+                        <div class="next ">
+                            <input type="submit" class="next-button boxInnerOutterShadow" value="Concluir">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <img src="/Imagens/voluntariado.png" alt="Voluntariado" class="voluntario-img" >
         </div>
-    </form>
     
     </div>
     </div>
@@ -94,7 +100,6 @@
 
                 <!--FIM de Conteudo-->
 
-            </div>
 
             <div id="setaCima"><a href="#wrapper" onclick="setaParaCimaFun()"><img src="Imagens/setaParaCima.svg" alt="Back to top"></a></div>
 

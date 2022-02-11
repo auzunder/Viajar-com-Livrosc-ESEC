@@ -39,6 +39,14 @@ p.forms-num {
 
 }
 
+.form-nao-selecionado{
+    color: #808080;
+  }
+  
+  .form-border-unselected{
+    border:1px solid #808080 !important;
+  }
+
 .info-pessoal{
 
     width: 80%;
@@ -71,6 +79,23 @@ p.forms-num {
     pointer-events: none;
     transition: 0.2s ease all;
     color: black;
+}
+
+.input-placement input:focus-visible{
+    outline: 0;
+    border: 1px solid #0000D1;
+}
+
+
+input:focus ~ .span-text,
+input:not(:focus):valid ~ .span-text{
+    top: -10px;
+    left: 6px;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    opacity: 100%;
+    padding: 0 6px;
 }
 
 .form-input-style {
@@ -150,9 +175,6 @@ p.mensagem {
     margin-bottom: 50px;
 }
 
-input#mensagem {
-    height: 300px;
-}
 
 .next {
     width: 100%;
@@ -172,7 +194,7 @@ input#mensagem {
   
   .voluntario-img{
     width: 35%;
-    bottom: 0px;
+    bottom: 0;
     position: absolute;
 }
   
@@ -185,3 +207,15 @@ input#mensagem {
   .required-fields-right p{
     font-size: 13px;
   }
+
+  ul#ulList {
+    margin-top: 30px;
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+textarea#mensagem {
+    width: 100%;
+}
