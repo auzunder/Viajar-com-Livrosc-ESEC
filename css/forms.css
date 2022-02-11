@@ -52,6 +52,7 @@ p.forms-num {
     margin: auto;
     display: flex;
     padding-top: 50px;
+    position: relative;
 }
 
 .info-content-img {
@@ -239,4 +240,45 @@ input#Telemovel {
 
 p.genero{
   padding-bottom: 20px;
+}
+
+.info-genero {
+  display: flex;
+  width: 100%;
+}
+
+.info-genero-feminino {
+  width: 50%;
+}
+
+.next {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next-button{
+  margin-top: 30px;
+    margin-bottom: 80px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius:12px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.voluntario-img{
+  width: 35%;
+  position: absolute;
+  bottom: 0;
+}
+
+.required-fields {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.required-fields-right p{
+  font-size: 13px;
 }

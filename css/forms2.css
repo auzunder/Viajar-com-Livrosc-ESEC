@@ -1,0 +1,187 @@
+
+.forms-content{
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 150px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.forms-content-dados {
+    display: flex;
+    align-items: center;
+}
+
+p.forms-num {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 15px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}  
+
+.p.forms-text {
+    font-size: 20px;
+}
+
+.forms-content-wrap{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.info-pessoal{
+
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.info-content{
+    width: 80%;
+    margin: auto;
+    padding-top: 50px;
+    position: relative;
+}
+
+.input-placement {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-placement input {
+    outline: 0;
+}
+
+.span-text {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: black;
+}
+
+.form-input-style {
+    padding: 7px 0 7px 5px;
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid black;
+}
+
+.identificacao-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-content-doc {
+    margin-left: 30%;
+}
+
+select#identificacao {
+    padding: 7px 0 7px 5px;
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid black;
+}
+
+.identificacao-content-tipo {
+    width: 50%;
+}
+
+.num-identificacao {
+    width: 50%;
+    position: relative;
+}
+
+.profissao {
+    position: relative;
+    margin-top: 40px;
+}
+
+p.doc-inscricao {
+    margin-top: 70px;
+}
+.curriculo-input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-bottom: 70px;
+}
+input#myFile {
+    width: 30%;
+    margin-top: 30px;
+    opacity: 0;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.curriculo-text {
+    position: absolute;
+    top: 30px;
+    width: 30%;
+    text-align: center;
+    padding: 7px 0;
+    border-radius: 5px;
+    background-color: #E9E9E9;
+}
+
+p.mensagem {
+    margin-bottom: 30px;
+}
+
+.mensagem {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+input#mensagem {
+    height: 300px;
+}
+
+.next {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 80px;
+  }
+  
+  .next-button{
+    margin-top: 30px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius:12px;
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+  
+  .voluntario-img{
+    width: 35%;
+    bottom: 0px;
+    position: absolute;
+}
+  
+  .required-fields {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .required-fields-right p{
+    font-size: 13px;
+  }
