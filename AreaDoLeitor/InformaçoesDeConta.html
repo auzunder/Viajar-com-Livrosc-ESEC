@@ -15,6 +15,7 @@
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
         <script src="/javascript/IniciarSessao.js"></script>
+        <script src="/javascript/lottie.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
@@ -50,8 +51,16 @@
             <div id="registoPopUp" class="registerUser">
                 <div class="registo">
                     <div class="registoContent">
-                        <div class="animacaoSessao">
-                            <img src="/Imagens/AreaDoLeitor/Animação.svg">
+                        <div id="animacaoSessao" class="animacaoSessao">
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animacaoSessao"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_III.json"
+                                })
+                            </script>
                         </div>
                         <form class="form">
                             <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">

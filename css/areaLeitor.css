@@ -193,8 +193,9 @@ button.close {
 }
 
 .animacaoSessao img{
+    height: 100%;
     width: 20vw;
-    padding: 1vw 3vw;
+    padding: 0vw 3vw 1vw 3vw;
 }
 
 .form{
