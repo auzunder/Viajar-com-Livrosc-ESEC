@@ -596,8 +596,8 @@ body, #wrapper{
         margin: 0;
     }
     .responsiveHeight text, #leitorText{
-        font-size: calc(100vh/20) !important;
-        line-height: calc(100vh/10) !important;
+        font-size: calc(100vh/40) !important;
+        line-height: calc(100vh/15) !important;
     }
     .boxInnerOutterShadow{
         box-shadow: 0px 0px 0px #365856, inset 0 0 0 0 #365856, inset 0 0 0 0 #365856;

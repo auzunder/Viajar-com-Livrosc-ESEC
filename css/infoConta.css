@@ -93,10 +93,18 @@
         font-size: 3vw;
         line-height: 6vw;
     }
+    .inputInfoPerfil{
+        height: 2.25vw;
+        width: 20vw;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
     .fotoDePerfil{
         width: 40vw;
+    }
+    .inputInfoPerfil{
+        height: 3.75vw;
+        width: 25vw;
     }
 }
