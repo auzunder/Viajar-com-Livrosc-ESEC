@@ -1,0 +1,93 @@
+
+.forms-content{
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 150px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.forms-content-dados {
+    display: flex;
+    align-items: center;
+}
+
+p.forms-num {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 15px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}  
+
+.p.forms-text {
+    font-size: 20px;
+}
+
+.forms-content-wrap{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.info-pessoal{
+
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+  .info-content {
+    width: 80%;
+    margin: auto;
+    padding-top: 50px;
+    position: relative;
+  }
+
+  .info-confir-dados {
+    margin-bottom: 50px;
+    margin-left: 10%;
+  }
+
+  .next {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 80px;
+  }
+  
+  .next-button{
+    margin-top: 30px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius:12px;
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+  
+  .voluntario-img{
+    width: 35%;
+    bottom: 0px;
+    position: absolute;
+}
+  
+  .required-fields {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .required-fields-right p{
+    font-size: 13px;
+  }
