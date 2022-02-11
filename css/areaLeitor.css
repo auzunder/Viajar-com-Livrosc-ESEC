@@ -250,6 +250,42 @@ button.close {
     }
     
     .close span{font-size: 5vw;}
+
+    .animacaoSessao{width: 40vw;}
+
+    .registo{
+        border-radius: 5vw;
+        padding: 3.5vw;
+    }
+
+    .registoContent{border-radius: 2.5vw;}
+    
+    .form{
+        padding: 3.5vw;
+    }
+    
+    .inputInfo, .botaoForm{
+        margin: 0.5vw;
+        padding: 0.5vw;
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+    
+    .alternativa, .alternativa a{
+        font-size: 2vw;
+    }
+    
+    .inputInfo{
+        border-radius: 1vw;
+    }
+    
+    .botaoForm{
+        line-height: 100%;
+        border-radius: 1vw;
+        font-size: 2vw;
+        line-height: 2vw;
+        width: 75%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -259,4 +295,41 @@ button.close {
     }
     
     .close span{font-size: 10vw;}
+
+    .animacaoSessao{width: 60vw;}
+
+    .registo{
+        border-radius: 5vw;
+        padding: 5.25vw;
+    }
+
+    .registoContent{border-radius: 4vw;}
+    
+    .form{
+        padding: 5.25vw;
+        width: 80%;
+    }
+    
+    .inputInfo, .botaoForm{
+        margin: 2vw;
+        padding: 1vw;
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    
+    .alternativa, .alternativa a{
+        font-size: 3vw;
+    }
+    
+    .inputInfo{
+        border-radius: 1.5vw;
+    }
+    
+    .botaoForm{
+        line-height: 100%;
+        border-radius: 1.5vw;
+        font-size: 4vw;
+        line-height: 4vw;
+        width: 75%;
+    }
 }
