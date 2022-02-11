@@ -11,6 +11,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
+        <script src="/javascript/IniciarSessao.js"></script>
+        <script src="/javascript/lottie.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
@@ -33,13 +35,55 @@
                         </div>
                     </div>
                     <a href="/Noticias/Noticias.html" class="HOVER responsiveHeight"><span></span><text>Noticias</text></a>
-                    <a href="/AreaDoLeitor/InformaçoesDeConta.html" id="areaLeitorAnchor"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">
+                    <a href="#" id="areaLeitorAnchor" onclick="abrir('registoPopUp')"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">
                         <div id="leitorText">Area do Leitor</div>
                         <img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">
                     </div></a>
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
                 </div>
             </header>
+
+            <!-- Registo de utilizador -->
+
+            <div id="registoPopUp" class="registerUser">
+                <div class="registo">
+                    <div class="registoContent">
+                        <div class="animacaoSessao">
+                            <img src="/Imagens/Animações/Animaçao_II.gif">
+                        </div>
+                        <form class="form">
+                            <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">
+                            <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required size="32" maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
+                            <input id="password1" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')">
+                            <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required oninput="this.setCustomValidity('')">
+                            <button class="botaoForm" type="submit" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
+                            <p class="alternativa">Tens conta? <a href="#" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIM de Registo de utilizador -->
+
+            <!-- Iniciar Sessão -->
+
+            <div id="iniciarSessaoPopUp" class="registerUser">
+                <div class="registo">
+                    <div class="registoContent">
+                        <div class="animacaoSessao">
+                            <img src="/Imagens/Animações/Animaçao_II.gif">
+                        </div>
+                        <form class="form">
+                            <input id="name" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('É necessário que prencher o nome');">
+                            <input id="password" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('A password não pode estar vazia');">
+                            <button class="botaoForm" type="submit" onclick="fechar('iniciarSessaoPopUp', true)">Iniciar Sessão</button>
+                            <p class="alternativa">Não tens conta? <a href="#" onclick="abrirFechar('registoPopUp' ,'iniciarSessaoPopUp', false)"> Registar</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIM de Iniciar Sessão -->
 
             <div id=container>
                 <div id="ghost"></div>
