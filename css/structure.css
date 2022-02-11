@@ -419,12 +419,12 @@ body, #wrapper{
 }
 
 #emailInput, #newsLetterButton{
-    height: 2.5vw;
     box-sizing: border-box;
     border-radius: 15px;
 }
 
 #emailInput{
+    height: 2.5vw;
     border: 1px solid #000000;
     background-color: transparent;
     width: 75%;
@@ -433,6 +433,7 @@ body, #wrapper{
 }
 
 #newsLetterButton{
+    height: 44px;
     border: 0;
     margin: 10px 0px;
     padding-right: 40px;
@@ -622,6 +623,9 @@ body, #wrapper{
     .dropdown-content a{
         width: 100% !important;
         padding: calc(100vh/80) 0 !important;
+    }
+    #emailInput{
+        height: 3.75vw;
     }
 }
 
