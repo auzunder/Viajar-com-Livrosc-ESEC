@@ -192,10 +192,10 @@ button.close {
     flex: 1;
 }
 
-.animacaoSessao img{
+.animacaoSessao{
     height: 100%;
     width: 20vw;
-    padding: 0vw 3vw 1vw 3vw;
+    padding-bottom: 1vw;
 }
 
 .form{

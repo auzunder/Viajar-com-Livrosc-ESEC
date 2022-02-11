@@ -49,7 +49,15 @@
                 <div class="registo">
                     <div class="registoContent">
                         <div class="animacaoSessao">
-                            <img src="/Imagens/Animações/Animaçao_II.gif">
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animacaoSessao"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_II.json"
+                                })
+                            </script>
                         </div>
                         <form class="form">
                             <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">
@@ -71,7 +79,15 @@
                 <div class="registo">
                     <div class="registoContent">
                         <div class="animacaoSessao">
-                            <img src="/Imagens/Animações/Animaçao_II.gif">
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animacaoSessao"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_II.json"
+                                })
+                            </script>
                         </div>
                         <form class="form">
                             <input id="name" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('É necessário que prencher o nome');">
