@@ -419,7 +419,7 @@ body, #wrapper{
 }
 
 #emailInput, #newsLetterButton{
-    height: 44px;
+    height: 2.5vw;
     box-sizing: border-box;
     border-radius: 15px;
 }
