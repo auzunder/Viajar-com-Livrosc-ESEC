@@ -66,9 +66,8 @@
 }
 
 #pesquisa{
-    width: 50%;
-    max-width: 700px;
-    min-width: 600px;
+    padding: 1vw;
+    width: 40%;
 }
 
 #barraDePesquisa{
@@ -163,21 +162,20 @@
 
 .saberMais > p{
     font-weight: 900;
-    font-size: 25px;
-    line-height: 31px;
-    margin-bottom: 35px;
+    font-size: 1.5vw;
+    line-height: 2vw;
+    margin-bottom: 1vw;
 }
 
 .saberMais > .saberMaisButton{
     width: max-content;
-    padding: 5px 15px;
+    padding: 0.5vw 1vw;
     background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 15px;
-
-    font-size: 25px;
-    line-height: 31px;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    line-height: 2vw;
 }
 
 #categorias >* >*{
@@ -254,6 +252,14 @@
     }
     #animaçãoHome{
         width: 65%;
+    }
+    h2{
+        font-size: 6vw !important; 
+        line-height: 7vw !important;
+    }
+    #pesquisa{
+        padding: 1vw;
+        width: 70%;
     }
 }
 

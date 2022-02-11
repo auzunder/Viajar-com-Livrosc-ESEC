@@ -28,32 +28,32 @@ body, *{
     font-family: Maven Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1vw;
+    line-height: 1.25vw;
 }
 
 h1{
     font-family: Caveat;
     font-style: normal;
     font-weight: bold;
-    font-size: 125px;
-    line-height: 130px;
+    font-size: 6vw;
+    line-height: 6.5vw;
 }
 
 h2{
     font-family: Caveat;
     font-style: normal;
     font-weight: bold;
-    font-size: 75px;
-    line-height: 80px;
+    font-size: 3vw;
+    line-height: 3.35vw;
 }
 
 h3{
     font-family: Caveat;
     font-style: normal;
     font-weight: normal;
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 2vw;
+    line-height: 2.25vw;
 }
 
 body, #wrapper{
