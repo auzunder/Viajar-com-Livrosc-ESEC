@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <a href="/Noticias/Noticias.html" class="HOVER responsiveHeight"><span></span><text>Noticias</text></a>
-                    <a href="/AreaDoLeitor/InformaçoesDeConta.html" id="areaLeitorAnchor"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">
+                    <a href="#" id="areaLeitorAnchor" onclick="abrir('registoPopUp')"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">
                         <div id="leitorText">Area do Leitor</div>
                         <img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">
                     </div></a>
@@ -45,26 +45,38 @@
                 </div>
             </header>
 
-            <div class="registerUser">
+            <div id="registoPopUp" class="registerUser">
                 <div class="registo">
                     <div class="registoContent">
                         <div class="animacaoSessao">
                             <img src="/Imagens/AreaDoLeitor/Animação.svg">
                         </div>
-                        <div class="form">
-                            <input class="inputInfo" type="text" placeholder="Nome">
-                            <input class="inputInfo" type="text" placeholder="Email">
-                            <input class="inputInfo" type="text" placeholder="Password">
-                            <input class="inputInfo" type="text" placeholder="Repita a Passord">
-                            <button class="botaoForm">Registar Conta</button>
-                            <p class="alternativa">Tens conta? <a href="#">Iniciar sessão</a>.</p>
-                        </div>
+                        <form class="form">
+                            <input id="nome" class="inputInfo" type="text" placeholder="Nome" required title="É necessário que prencher o nome">
+                            <input id="emailReg" class="inputInfo" type="email" size="32" maxLength="64" required placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Escreva um endereço de email válido">
+                            <input id="password1" class="inputInfo" type="password" placeholder="Password" required>
+                            <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required>
+                            <button class="botaoForm" type="submit" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
+                            <p class="alternativa">Tens conta? <a href="#" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <div class="iniciarSessao">
-
+            <div id="iniciarSessaoPopUp" class="registerUser">
+                <div class="registo">
+                    <div class="registoContent">
+                        <div class="animacaoSessao">
+                            <img src="/Imagens/AreaDoLeitor/Animação.svg">
+                        </div>
+                        <form class="form">
+                            <input id="name" class="inputInfo" type="text" placeholder="Nome">
+                            <input id="password" class="inputInfo" type="password" placeholder="Password">
+                            <button class="botaoForm" onclick="fechar('iniciarSessaoPopUp')">Registar Conta</button>
+                            <p class="alternativa">Não tens conta? <a href="#" onclick="fechar('iniciarSessaoPopUp') ,abrir('registoPopUp')"> Registar</a>.</p>
+                        </form>
+                    </div>
+                </div>
             </div>
 
             <div id=container>

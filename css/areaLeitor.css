@@ -147,7 +147,7 @@ button.close {
 
 .registerUser{
     z-index: 999;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -157,13 +157,26 @@ button.close {
     background-color: rgba(0, 0, 0, 0.75);
 }
 
+@keyframes sessaoIn {
+    from{
+        top: 50vh;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
 .registo{
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     background-color: #C6E4E2;
     padding: 1.5vw;
     border-radius: 1.25vw;
+    animation: sessaoIn 300ms ease-out;
 }
 
 .registoContent{
