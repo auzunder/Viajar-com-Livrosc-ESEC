@@ -68,6 +68,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   background-color: #C6E4E2;
 }
 
@@ -75,6 +76,7 @@ p{
   z-index: 1;
   font-family: 'Caveat';
   font-size: 65px;
+  line-height: 65px;
   font-weight: 500;
 }
 
