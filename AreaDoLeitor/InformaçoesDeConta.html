@@ -64,7 +64,7 @@
                         </div>
                         <form class="form">
                             <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">
-                            <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required size="32" maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
+                            <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
                             <input id="password1" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')">
                             <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required oninput="this.setCustomValidity('')">
                             <button class="botaoForm" type="submit" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
@@ -81,10 +81,10 @@
             <div id="iniciarSessaoPopUp" class="registerUser">
                 <div class="registo">
                     <div class="registoContent">
-                        <div class="animacaoSessao">
+                        <div id="animacaoSessao2"  class="animacaoSessao">
                             <script>
                                 var animation = bodymovin.loadAnimation({
-                                    container: document.getElementById("animacaoSessao"),
+                                    container: document.getElementById("animacaoSessao2"),
                                     renderer:"svg",
                                     loop: true,
                                     autoplay: true,

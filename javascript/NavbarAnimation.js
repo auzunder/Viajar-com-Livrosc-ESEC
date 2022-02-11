@@ -14,28 +14,22 @@ window.onload = function () {
             });
             addAnimation = true;
         }
-    
+
         // If The span element for this element does not exist in the array, add it.
         if (!ELEMENTS_SPAN[index])
             ELEMENTS_SPAN[index] = element.querySelector("span");
     
         element.addEventListener("mouseover", e => {
-            ELEMENTS_SPAN[index].style.left = e.pageX - e.offsetLeft + "px";
-            ELEMENTS_SPAN[index].style.top = 100 - e.pageY - element.offsetTop + "px";
-            console.log(ELEMENTS_SPAN[index])
-            console.log("e: ", e)
-            console.log("e.pageX: ", e.pageX, "e.pageY: ", e.pageY)
-            console.log("element: ", element)
-            console.log("element.offsetTop: ", element.offsetTop, "element.offsetLeft: ", element.offsetLeft)
-            console.log(element.offsetHeight - e.pageY - element.offsetTop + "px")
+            ELEMENTS_SPAN[index].style.top = e.pageY - element.offsetTop - scrollY + "px";
+            ELEMENTS_SPAN[index].style.left = e.pageX - element.offsetLeft + "px";
     
             // Adicionar class de animação
             if (addAnimation) element.classList.add(ANIMATEDCLASSNAME);
         });
     
         element.addEventListener("mouseout", e => {
+            ELEMENTS_SPAN[index].style.top = e.pageY - element.offsetTop - scrollY + "px";
             ELEMENTS_SPAN[index].style.left = e.pageX - element.offsetLeft + "px";
-            ELEMENTS_SPAN[index].style.top = e.pageY - element.offsetTop + "px";
         });
     });
 }
