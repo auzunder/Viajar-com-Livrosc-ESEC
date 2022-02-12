@@ -243,7 +243,7 @@
     calendar_books.sort(function (a, b) { if (a.livro > b.livro) {return 1;} if (a.livro < b.livro) {return -1;} return 0;});
     defaultFilters();
 
-    // Verificar hash url para filtragem
+    // Verificar hash url para filtragem e organização via hyperlink
     $(document).ready(function() {
       if (window.location.hash.indexOf("sessoesHoje") > -1) {
         document.getElementById("listaData").value = "hoje"
