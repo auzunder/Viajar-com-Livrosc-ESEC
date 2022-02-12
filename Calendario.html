@@ -45,6 +45,23 @@
       </div>
   </header>
 
+  <!-- Registo do utilizador na sessão -->
+
+  <div id="registoPopUp" class="registerUser">
+    <div class="registo">
+        <div class="registoContent">
+            <form class="form">
+                <input id="nome" class="inputInfo" type="text" placeholder="Nome Completo" required oninput="this.setCustomValidity('')">
+                <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required size="64" maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
+                <button class="botaoForm" type="submit" onclick="fechar()">Agendar</button>
+                <p class="alternativa">Tens conta? <a href="/AreaDoLeitor/InformaçoesDeConta.html#iniciarSessão">Iniciar sessão</a>.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- FIM de Registo do utilizador na sessão -->
+
     <div id=container>
       <div id="ghost"></div>
       <!--Conteudo-->

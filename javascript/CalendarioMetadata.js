@@ -271,6 +271,39 @@ function filtrarPlataforma() {
     }
 }
 
+function clearInputs() {
+    document.getElementById("nome").value = '';
+    document.getElementById("emailReg").value = '';
+}
+
+function abrir() {
+    document.getElementById('registoPopUp').style.display = "flex"
+    clearInputs()
+}
+
+function fechar() {
+    var name = document.getElementById("nome");
+    var email = document.getElementById("emailReg");
+    if (name.value != '') {
+        if(email.value.includes('@') && email.value.includes('.')){
+            document.getElementById('registoPopUp').style.display = "none";
+            alert("Sessão Agendada com sucesso!");
+        }
+        else{
+            console.log("Prencha os dados");
+        };
+    }else{
+        console.log("Prencha os dados");
+    };
+}
+
+window.onclick = function (event){
+    if (event.target == document.getElementById('registoPopUp')){
+        document.getElementById('registoPopUp').style.display = "none"
+    }
+}
+
+
 // Manipulação HTML
 function printSessions(clear) {
     // Identidicação das colunas
@@ -289,10 +322,10 @@ function printSessions(clear) {
         // Alterar entre adicionar na coluna da esquerda e direita
         if ((count % 2) == 1){
             // Adicionar sessão na coluna direita
-            colunaDireita.innerHTML += '<div class="container right"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
+            colunaDireita.innerHTML += '<div class="container right"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="abrir()">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
         }else if ((count % 2) == 0){
             // Adicionar sessão na coluna esquerda
-            colunaEsquerda.innerHTML += '<div class="container left"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
+            colunaEsquerda.innerHTML += '<div class="container left"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="abrir()">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
         }
     }
 }
