@@ -14,7 +14,6 @@
     <script src="/javascript/NavbarAnimation.js"></script>
     <script src="/javascript/CalendarioMetadata.js"></script>
     <script src="/javascript/lottie.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
 </head>
 
@@ -71,7 +70,7 @@
                   <select id="listaData">
                     <option selected value="Data">Data</option>
                     <option value="hoje">Hoje</option>
-                    <option value="estaSemana">Prócimos 7 dias</option>
+                    <option value="estaSemana">Próximos 7 dias</option>
                   </select>
                 </div>
               </div>
@@ -201,14 +200,20 @@
         </div>
         <div id=calendarioLinks>
           <ul> Calendário
-            <a href="Calendario.html#sessoesPopulares">
-              <li class=first>Sessões populares</li>
-            </a>
             <a href="Calendario.html#sessoesHoje">
-              <li>Sessões de hoje</li>
+              <li class=first>Sessões hoje</li>
             </a>
-            <a href="Calendario.html#sessoesAmanha">
-              <li>Sessões de amanhã</li>
+            <a href="Calendario.html#sessoesSemana">
+              <li>Sessões próximos 7 dias</li>
+            </a>
+            <a href="Calendario.html#sessoesViaZoom">
+              <li>Sessões via Zoom</li>
+            </a>
+            <a href="Calendario.html#sessoesViaTeams">
+              <li>Sessões via Teams</li>
+            </a>
+            <a href="Calendario.html#sessoesPresenciais">
+              <li>Sessões presenciais</li>
             </a>
           </ul>
         </div>
@@ -265,6 +270,23 @@
     //Organizar por data
     calendar_books.sort(function (a, b) { if (a.livro > b.livro) {return 1;} if (a.livro < b.livro) {return -1;} return 0;});
     defaultFilters();
+
+    // Verificar hash url para filtragem
+    $(document).ready(function() {
+      if (window.location.hash.indexOf("sessoesHoje") > -1) {
+        document.getElementById("listaData").value = "hoje"
+      }else if (window.location.hash.indexOf("sessoesSemana") > -1) {
+        document.getElementById("listaData").value = "estaSemana"
+      }else if (window.location.hash.indexOf("sessoesViaZoom") > -1) {
+        document.getElementById("listaPlataforma").value = "Zoom"
+      }else if (window.location.hash.indexOf("sessoesViaTeams") > -1) {
+        document.getElementById("listaPlataforma").value = "MicrosoftTeams"
+      }else if (window.location.hash.indexOf("sessoesPresenciais") > -1) {
+        document.getElementById("listaPlataforma").value = "Presencial"
+      }
+      reporDataOriginal(), filtrarOrador(), filtrarData(), filtrarPlataforma(), filtrarOrganizar()
+    });
+
     printSessions(true);
   </script>
 </body>
