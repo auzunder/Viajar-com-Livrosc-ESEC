@@ -201,7 +201,7 @@ function filtrarOrganizar() {
         });
     }else if (organizarPor == "tempoCrescente") {
         calendar_books.sort(function (a, b) {
-            if (a.data > b.duração) {
+            if (a.duração > b.duração) {
                 return 1;
             }
             if (a.duração < b.duração) {
