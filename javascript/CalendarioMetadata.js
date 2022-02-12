@@ -1,3 +1,29 @@
+//Dicionário com todas as sessões Planeadas
+
+//key:livro -> Nome do livro
+//key:ref -> Referência interna do livro
+//key:data -> Data Integer no formato AAAAMMDD
+//key:hora -> Hora a que a sessão vai decorrer
+//key:minuto -> Minuto a que a sessão vai decorrer
+//key:duração -> Duração em minutos da sessão
+//key:orador -> Nome do Orador
+//key:genero_orador -> Gênero do Orador
+var calendar_books = [
+    {livro: "As Aventuras de sininho", ref:"00001", data: 20220620, hora:11, minuto:20, duração:120, orador: "Carolina Batista", genero_orador: "f"},
+    {livro: "Todos Devemos ser Feministas", ref:"00002", data: 20220320, hora:14, minuto:00, duração:90, orador: "Josefa Alexandra Pereira Carriço", genero_orador: "f"},
+    {livro: "Posso Cheirar-te o Rabo?", ref:"00003", data: 20220721, hora:09, minuto:30, duração:70, orador: "Duarte Pacheco", genero_orador: "m"},
+    {livro: "O Leao que temos cá dentro", ref:"00004", data: 20220324, hora:12, minuto:50, duração:120, orador: "Yasmin Assunção", genero_orador: "f"},
+    {livro: "Baleia na banheira", ref:"00005", data: 20220205, hora:16, minuto:00, duração:40, orador: "Josefina Ferreira Rodrigues", genero_orador: "f"},
+    {livro: "A máquina de retrato", ref:"00006", data: 20220206, hora:07, minuto:30, duração:120, orador: "Duarte Pacheco", genero_orador: "m"},
+    {livro: "As Aventuras de sininho", ref:"00001", data: 20220120, hora:11, minuto:20, duração:120, orador: "Rita Moura", genero_orador: "f"},
+    {livro: "Todos Devemos ser Feministas", ref:"00002", data: 20220420, hora:14, minuto:00, duração:90, orador: "Josefa Alexandra Pereira Carriço", genero_orador: "f"},
+    {livro: "Posso Cheirar-te o Rabo?", ref:"00003", data: 20220421, hora:09, minuto:30, duração:70, orador: "Josefina Ferreira Rodrigues", genero_orador: "f"},
+    {livro: "O Leao que temos cá dentro", ref:"00004", data: 20220324, hora:12, minuto:50, duração:120, orador: "Nádia Maia", genero_orador: "f"},
+    {livro: "Baleia na banheira", ref:"00005", data: 20220505, hora:16, minuto:00, duração:40, orador: "Jéssica Azevedo", genero_orador: "f"},
+    {livro: "A máquina de retrato", ref:"00006", data: 20220206, hora:07, minuto:30, duração:120, orador: "José Pereira Fernades Daniel", genero_orador: "m"}
+]
+
+
 //Função para tranformar a data em formato AAAAMMDD em DD/MM/AAAA e adicionar ao dicionário
 function reverse(string){
     var dataToString = String(string).split("").reverse().join("");
@@ -20,48 +46,195 @@ function reverse(string){
     return valor
 }
 
-// Escolher em lista um random
-function randomNumber(choices) { 
-    return choices[Math.floor(Math.random() * choices.length)];
-} 
-
-var calendar_books = [
-    {livro: "As Aventuras de sininho", ref:"00001", data: 20220120, hora:11, minuto:20, duração:120, orador: "Josefa Alexandra Pereira Carriço", genero_orador: "f"},
-    {livro: "Todos Devemos ser Feministas", ref:"00002", data: 20220120, hora:14, minuto:00, duração:90, orador: "Josefa Alexandra Pereira Carriço", genero_orador: "f"},
-    {livro: "Posso Cheirar-te o Rabo?", ref:"00003", data: 20220121, hora:09, minuto:30, duração:70, orador: "Josefina Ferreira Rodrigues", genero_orador: "f"},
-    {livro: "O Leao que temos cá dentro", ref:"00004", data: 20220124, hora:12, minuto:50, duração:120, orador: "Josefa Alexandra Pereira Carriço", genero_orador: "f"},
-    {livro: "Baleia na banheira", ref:"00005", data: 20220205, hora:16, minuto:00, duração:40, orador: "Josefina Ferreira Rodrigues", genero_orador: "f"},
-    {livro: "A máquina de retrato", ref:"00006", data: 20220206, hora:07, minuto:30, duração:120, orador: "José Pereira Fernades Daniel", genero_orador: "m"}
-]
-
-for (livro in calendar_books){
-    calendar_books[livro].dataString = "Data: " + reverse(calendar_books[livro].data)
-    calendar_books[livro].horario = "Hora: " + String(hora) + "h" + String(minuto)
-    calendar_books[livro].duraçãoString = "Duração: " + String(duração) + "Minutos" + String(minuto)
-    console.log(calendar_books[livro])
+//Função para alterar entre Orador e Oradora em HTML de acordo com o gênero
+function mascFem(valor) {
+    if (valor == "m"){
+        return "Orador"
+    }else if (valor == "f"){
+        return "Oradora"
+    }
 }
 
+// Obter Dia e Hora
+var currentdate = new Date(); 
+//Obter Ano de Hoje
+var currentYear = String(currentdate.getFullYear())
+//Obter Mês de Hoje
+var currentMonth = "0"
+if (String(currentdate.getMonth()+1).length == 1){
+    currentMonth += String(currentdate.getMonth()+1);
+}else{
+    currentMonth = String(currentdate.getMonth()+1);
+}
+//Obter Dia de Hoje
+var currentDate = "0"
+if (String(currentdate.getDate()).length == 1){
+    currentDate += String(currentdate.getDate());
+}else{
+    currentDate = String(currentdate.getDate());
+}
+//Obter Horas
+var currentHour = "0"
+if (String(currentdate.getHours()).length == 1){
+    currentHour += String(currentdate.getHours());
+}else{
+    currentHour = String(currentdate.getHours());
+}
+//Obter Minutos
+var currentMinute = "0"
+if (String(currentdate.getMinutes()).length == 1){
+    currentMinute += String(currentdate.getMinutes());
+}else{
+    currentMinute = String(currentdate.getMinutes());
+}
+//Compilação do dia de Hoje no formato pretendido
+var datetime = currentYear + currentMonth + currentDate + "-" + currentHour + ":" + currentMinute 
+console.log("Access date: " + datetime)
+// Criação de data juntamente com horario para organização em timeline
+for (livro of calendar_books){
+    var hora = "0"
+    if (String(livro.hora).length == 1){
+        hora += String(livro.hora);
+    }else{
+        hora = String(livro.hora);
+    }
+    var data = String(livro.data)
+    var minuto = String(livro.minuto)
+    livro.dataCompleta = data + "-" + hora + ":" + minuto
+}
+
+// Remoção das sessões que já passaram
+calendar_books = calendar_books.filter(function(value, index, arr){ 
+    return value.dataCompleta > datetime;
+});
+
+// Obraginzar sessões por data Crescente
+calendar_books.sort(function (a, b) {
+    if (a.dataCompleta > b.dataCompleta) {
+        // passar livro a frente um index
+        return 1;
+    }
+    if (a.dataCompleta < b.dataCompleta) {
+        // recuar livro um valor no index
+        return -1;
+    }
+    // continuar na mesma posição
+    return 0;
+});
+
+// Organizar sessões (Escolha do Utilizador)
 function filtrarCoise() {
-    var calendar_books_length = Array.from(Array(calendar_books.length).keys());
-    for (calendar_books_index of Array.from(Array(calendar_books.length).keys())){
-        index = randomNumber(calendar_books_length);
-        calendar_books_length.splice(index, 1)
-        console.log(index)
-        console.log(calendar_books_length)
-        console.log(document.getElementsByClassName("title")[index].innerHTML);
-        console.log(calendar_books[calendar_books_index].livro);
-        document.getElementsByClassName("title")[index].innerHTML = calendar_books[calendar_books_index].livro;
-        document.getElementsByClassName("data")[index].innerHTML = calendar_books[calendar_books_index].dataString;
-        document.getElementsByClassName("hora")[index].innerHTML = calendar_books[calendar_books_index].horario;
-        document.getElementsByClassName("duração")[index].innerHTML = calendar_books[calendar_books_index].duraçãoString;
-        if (calendar_books[calendar_books_index].genero_orador == "m"){
-            document.getElementsByClassName("generoOrador")[index].innerHTML = "Orador";
-        }
-        else if (calendar_books[calendar_books_index].genero_orador == "f"){
-            document.getElementsByClassName("generoOrador")[index].innerHTML = "Oradora";
-        };
-        document.getElementsByClassName("orador")[index].innerHTML = calendar_books[calendar_books_index].orador;
-        document.getElementsByClassName("inscrição")[index].id = "inscrição_ref_" + calendar_books[calendar_books_index].ref;
-        document.getElementsByClassName("imgSrcCapaLivro")[index].src ="/Imagens/Calendário/Livro_"+calendar_books[calendar_books_index].ref+".jpg";
-    };
+    var organizarPor = document.getElementById("listaOrganizar").value
+    if (organizarPor == "title_a_z"){
+        calendar_books.sort(function (a, b) {
+            if (a.livro > b.livro) {
+                // passar livro a frente um index
+                return 1;
+            }
+            if (a.livro < b.livro) {
+                // recuar livro um valor no index
+                return -1;
+            }
+            // continuar na mesma posição
+            return 0;
+        });
+    }else if (organizarPor == "title_z_a") {
+        calendar_books.sort(function (a, b) {
+            if (a.livro < b.livro) {
+                return 1;
+            }
+            if (a.livro > b.livro) {
+                return -1;
+            }
+            return 0;
+        });
+    }else if (organizarPor == "orador_a_z") {
+        calendar_books.sort(function (a, b) {
+            if (a.orador > b.orador) {
+                return 1;
+            }
+            if (a.orador < b.orador) {
+                return -1;
+            }
+            return 0;
+        });
+    }else if (organizarPor == "orador_z_a") {
+        calendar_books.sort(function (a, b) {
+            if (a.orador < b.orador) {
+                return 1;
+            }
+            if (a.orador > b.orador) {
+                return -1;
+            }
+            return 0;
+        });
+    }else if (organizarPor == "tempoCrescente") {
+        calendar_books.sort(function (a, b) {
+            if (a.data > b.duração) {
+                return 1;
+            }
+            if (a.duração < b.duração) {
+                return -1;
+            }
+            return 0;
+        });
+    }else if (organizarPor == "tempoDecrescente") {
+        calendar_books.sort(function (a, b) {
+            if (a.duração < b.duração) {
+                return 1;
+            }
+            if (a.duração > b.duração) {
+                return -1;
+            }
+            return 0;
+        });
+    }else if (organizarPor == "dataCrescrente") {
+        calendar_books.sort(function (a, b) {
+            if (a.dataCompleta > b.dataCompleta) {
+                return 1;
+            }
+            if (a.dataCompleta < b.dataCompleta) {
+                return -1;
+            }
+            return 0;
+        });
+    }
+    console.log(calendar_books)
+    printSessions(true)
 };
+
+// Correção dos Integers de 1 dígito para String com 2 dígitos
+function correçãoIntStr(sessao) {
+    if(String(sessao.minuto).length == 1){
+        var value = '0'+sessao.minuto
+        return String(value)
+    }else{
+        return String(sessao.minuto)
+    }
+}
+
+// Manipulação HTML
+function printSessions(clear) {
+    // Identidicação das colunas
+    var colunaEsquerda = document.getElementById("containterLeftContent")
+    var colunaDireita = document.getElementById("containterRightContent")
+    // Limpar todas as colunas de sessões antes de adicionar as novas
+    if (clear == true){
+        colunaDireita.innerHTML = "";
+        colunaEsquerda.innerHTML = "";
+    }
+    // Controlo de coluna de sessões
+    var count = 0 
+    // Adicionar todos as sessões ao HTML
+    for (livro of calendar_books){
+        count += 1;
+        // Alterar entre adicionar na coluna da esquerda e direita
+        if ((count % 2) == 1){
+            // Adicionar sessão na coluna direita
+            colunaDireita.innerHTML += '<div class="container right"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
+        }else if ((count % 2) == 0){
+            // Adicionar sessão na coluna esquerda
+            colunaEsquerda.innerHTML += '<div class="container left"> <div class="content"> <div class="infoLivro"> <div class="infoSessao"> <h2 class="title">'+ livro.livro +'</h2> <p class="data" class>Data: '+ reverse(livro.data) +'</p> <p class="hora"> Hora: '+ livro.hora +'h'+ correçãoIntStr(livro) +'</p> <p class="duração">Duração: '+ livro.duração +' Minutos</p> </div> <div class="infoOrador"> <h2 class="generoOrador">'+ mascFem(livro.genero_orador) +'</h2> <p class="orador">'+ livro.orador +'</p> </div> <button class="boxInnerOutterShadow inscrição" id="inscrição_ref_'+ livro.ref +'" type="button" onclick="">Inscrever na sessão</button> </div> <div class="imgLivro"> <img class="imgSrcCapaLivro" src="/Imagens/Calendário/Livro_'+ livro.ref +'.jpg"> </div> </div> </div>'
+        }
+    }
+}
