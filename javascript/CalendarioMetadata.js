@@ -38,6 +38,7 @@ function reporDataOriginal() {
         {livro: "Baleia na banheira", ref:"00005", data: 20220505, hora:16, minuto:00, duração:40, orador: "Jéssica Azevedo", genero_orador: "f", identificaçao_orador: "0008", plataforma:"Skype"},
         {livro: "A máquina de retrato", ref:"00006", data: 20220206, hora:07, minuto:30, duração:120, orador: "José Pereira Fernades Daniel", genero_orador: "m", identificaçao_orador: "0009", plataforma:"Presencial"}
     ]
+    window.location.hash = ''
     defaultFilters()
 }
 
@@ -155,7 +156,8 @@ function defaultFilters() {
 
 // Organizar sessões (Escolha do Utilizador)
 function filtrarOrganizar() {
-    var organizarPor = document.getElementById("listaOrganizar").value
+    var organizarPor = document.getElementById("listaOrganizar").value;
+    window.location.hash += '__OrgenizarPor=' + organizarPor;
     if (organizarPor == "title_a_z"){
         calendar_books.sort(function (a, b) {
             if (a.livro > b.livro) {
@@ -234,6 +236,7 @@ function filtrarOrganizar() {
 
 function filtrarOrador() {
     var filtroOrador = document.getElementById("listaOradores").value;
+    window.location.hash += 'FiltroOrador=' + filtroOrador;
     if (filtroOrador != 'Orador') {
         calendar_books = calendar_books.filter(function(value, index, arr){ 
             return value.identificaçao_orador == filtroOrador;
@@ -243,6 +246,7 @@ function filtrarOrador() {
 
 function filtrarData() {
     var filtroData = document.getElementById("listaData").value;
+    window.location.hash += '__FiltroData=' + filtroData;
     if (filtroData == 'Data') {
         
     }else if(filtroData == 'hoje'){
@@ -259,6 +263,7 @@ function filtrarData() {
 
 function filtrarPlataforma() {
     var filtroPlataforma = document.getElementById("listaPlataforma").value;
+    window.location.hash += '__FiltroPlataforma=' + filtroPlataforma;
     if (filtroPlataforma != 'Plataforma') {
         calendar_books = calendar_books.filter(function(value, index, arr){ 
             return value.plataforma == filtroPlataforma;

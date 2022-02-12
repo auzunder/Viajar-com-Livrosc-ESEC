@@ -256,7 +256,8 @@
       }else if (window.location.hash.indexOf("sessoesPresenciais") > -1) {
         document.getElementById("listaPlataforma").value = "Presencial"
       }
-      reporDataOriginal(), filtrarOrador(), filtrarData(), filtrarPlataforma(), filtrarOrganizar()
+      window.location.hash = ''
+      reporDataOriginal(), filtrarOrador(), filtrarData(), filtrarPlataforma(), filtrarOrganizar(), printSessions(true);
     });
 
     printSessions(true);
