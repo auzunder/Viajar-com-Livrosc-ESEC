@@ -1,0 +1,282 @@
+* { /* Pedir ao Edgar para me explicar isto*/
+    list-style:none; 
+      margin: 0;
+      padding: 0;
+    }
+  
+   /*div{border: solid 1px black} **/
+  
+    .body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    html{ /*explicar isto*/
+      text-align:left;
+      background: white;
+      margin:0;
+      padding:0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    #titulo{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin-left: 10%;
+      margin-right: 10%;
+      align-items: center;
+    }
+  
+    .teuslivros{
+      font-family: Caveat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 132px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  }
+  
+  .subtitulo{
+    font-family: Maven Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  
+  color: #000000;
+  }
+  
+  .Imgbarra{ /*alinhar e redimensionar a barra q separa as noticias*/
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 80%;
+  }
+
+  #barra-topo{
+    display: flex;
+      gap: 2vw; /* espaçamento entre as div das flexbox*/
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-left: 10%;
+      margin-right: 10%;
+      font-family: Maven Pro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 36px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      
+      color: #000000;
+  }
+    #container1 {
+      display: flex;
+      gap: 1vw; /* espaçamento entre as div das flexbox*/
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  
+  #container2 {
+    display: flex;
+    gap: 1vw; /* espaçamento entre as div das flexbox*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  
+  .Img1{ /*imagens com esta class mantêm essas proporções*/
+        width:100%;
+        height:77%;
+    }
+  
+  .img2{ /*imagens com esta class mantêm essas proporções*/
+        width:100%;
+      height: 77%;
+  }
+  
+  .img3{ /*imagens com esta class mantêm essas proporções*/
+      width:100%;
+      height:77%;
+  }
+  
+  .img4{ /*imagens com esta class mantêm essas proporções*/
+    width:100%;
+    height:77%; /*tentar alinhar as imagens*/
+  }
+  
+  .imagem1{ /*tamanho da div da 2da coluna*/
+    width:30%;
+    height: 60%;
+  }
+  
+  .imagem2{ /*tamanho da div da 1ra coluna*/
+    width: 50%;
+    height: 60%;
+  }
+  .imagem3{ /*tamanho da div da 2da coluna*/
+  width:30%;
+  height: 60%;
+  }
+  
+  .imagem4{ /*tamanho da div da 2da coluna*/
+    width:30%;
+    height: 60%;
+  }
+  
+  #nomelivro{
+    font-family: Maven Pro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  color: #000000;
+  }
+  
+  #nome-do-orador{
+    font-family: Maven Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    color: #000000;
+  }
+  
+  .barrinha{
+    width: 100%;
+  }
+  
+  .inscrever{
+    border-radius: 25px;
+    border: 2px solid #000000;
+    padding: 10px;
+    width: 75%;
+    text-align: center;
+}
+
+.adicionarcomentario{
+  border-radius: 25px;
+  border: 2px solid #000000;
+  padding: 10px;
+  width: 35%;
+  text-align: center;
+}
+  
+  .divinscrever{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    height: 65%;
+    font-family: Maven Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    color: #000000;
+    flex-direction: column;
+    align-content: flex-start;
+  }
+  
+.Estrelas{
+  width: 50%;
+}
+
+.botao{
+  font-family: Maven Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  color: #000000;
+}
+
+  .round-button {
+    box-sizing: border-box;
+    background-image: url("imagens/triangulo.svg");
+    display:block;
+    width:40px;
+    height:40px;
+    padding-top: 14px;
+    padding-left: 8px;
+    line-height: 20px;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    align-items: right;
+    text-decoration:none;
+    background-color: none;
+    font-size:20px;
+    font-weight:bold;
+    transition: all 0.3s ease;
+  }
+  .round-button:hover {
+    background-color: rgba(0,0,0,0.8);
+    background-image: url(imagens/triangulohover.svg);
+  }
+
+  #comentarios{
+    display: flex; /* cria flexbox*/
+    flex-wrap: nowrap; /*atributos para a disposição da flexbox*/
+    gap: 1vw; /*é o espaçamento entre as divs*/
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+  .imagem_comentario1{
+    display: flex; /* cria flexbox*/
+    flex-direction: row; /*atributos para a disposição da flexbox*/
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+  
+  .imagem_comentario{
+    display: flex; /* cria flexbox*/
+    flex-direction: row; /*atributos para a disposição da flexbox*/
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 40%;
+  }
+
+.img4{
+  width: 100%;
+}
+
+.img5{
+  width: 75%;
+}
+
+.img6{
+  width: 60%;
+}
