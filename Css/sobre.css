@@ -350,4 +350,14 @@ button.inscrever-btn {
 .about-info-text {
   width: 100%;
 }
+
+.about-info-text p{
+  font-size: 13px;
+    line-height: 16px;
+}
+
+.about-info-img {
+  height: auto;
+  width: 80%;
+}
 }
