@@ -19,6 +19,11 @@
       width: 100%;
       height: 100%;
     }
+
+    .espacobranco{
+      background-color: #ffffff;
+      padding: 2%;
+    }
   
     #titulo{
       display: flex;
@@ -264,7 +269,7 @@
   .imagem_comentario{
     display: flex; /* cria flexbox*/
     flex-direction: row; /*atributos para a disposição da flexbox*/
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
     width: 40%;
   }

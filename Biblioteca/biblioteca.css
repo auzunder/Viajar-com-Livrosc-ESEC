@@ -13,23 +13,18 @@
 
   html{ /*explicar isto*/
     text-align:center;
-    background: white;
+    background: #E5E5E5;
     margin:0;
     padding:0;
     width: 100%;
     height: 100%;
   }
 
-  .pagina{
-    background-image: url("imagens/bg2biblioteca.png");
-  }
-
   #titulo{
-    display: flex;
-    flex-direction: column;
+    display: flex; /*cria flexbox*/
+    flex-direction: column; /*atributos que permitem ajustar a disposição dos elementos*/
     flex-wrap: nowrap;
-    margin-left: 10%;
-    margin-right: 10%;
+    background-color: #ffffff;
     align-items: center;
   }
 
@@ -59,34 +54,51 @@ color: #000000;
 }
 
 #barra-topo{
-  display: flex;
+    display: flex;
     gap: 2vw; /* espaçamento entre as div das flexbox*/
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: row;  /*as divs ficam dispostas em linha*/
+    flex-wrap: nowrap; /* à medida q o container vai ficando + pequeno devido a proporção da tela, os elementos diminuem o seu tamanho*/
+    padding: 2%;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: #E5E5E5;
+    background-size: 50%;
     font-family: Maven Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 24px;
+    line-height: 30px;
     display: flex;
     align-items: center;
     text-align: center;
-    
     color: #000000;
+    justify-content: center;
+}
+.espacobranco{
+  background-color: #ffffff;
+  padding: 2%;
+}
+
+.espaco{
+  background-color: #E5E5E5;
+  padding: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
   #container1 {
+    margin-top: 5%;
+    background: #E5E5E5;
     display: flex;
-    gap: 1vw; /* espaçamento entre as div das flexbox*/
+    gap: 1vw; /* gap - espaçamento entre as div das flexbox; 1vw - é um tipo de medida */
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: space-evenly; /*é uma forma de justificar os elementos (direitos e alinhados)*/
     margin-left: 10%;
     margin-right: 10%;
 }
 
 #container2 {
+  background: #E5E5E5;
   display: flex;
   gap: 1vw; /* espaçamento entre as div das flexbox*/
   flex-direction: row;
@@ -98,6 +110,7 @@ color: #000000;
 }
 
 #container3 {
+  background: #E5E5E5;
   display: flex;
   gap: 1vw; /* espaçamento entre as div das flexbox*/
   flex-direction: row;
@@ -109,6 +122,7 @@ color: #000000;
 }
 
 #container4 {
+  background: #E5E5E5;
 display: flex;
 gap: 1vw; /* espaçamento entre as div das flexbox*/
 flex-direction: row;
@@ -116,7 +130,6 @@ flex-wrap: nowrap;
 justify-content: space-evenly;
 margin-left: 10%;
 margin-right: 10%;
-/*margin-top: 2%;*/
 }
 
 .Img1{ /*imagens com esta class mantêm essas proporções*/
