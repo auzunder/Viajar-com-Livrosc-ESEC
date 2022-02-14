@@ -147,6 +147,15 @@
         .responsive {
           width: 100%;
         }
+
+        div.gallery {
+          border: 1px solid #ccc;
+          height: calc(80vw);
+          position: absolute;
+          top: 0;
+          width: 100%;
+          overflow: hidden;
+      }
       }
       
       .clearfix:after {
