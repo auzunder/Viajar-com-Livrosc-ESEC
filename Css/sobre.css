@@ -144,6 +144,8 @@ p.about-info-text-title{
 
 .about-history-text li {
   padding-bottom: 17px;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .about-contacts{
@@ -174,6 +176,10 @@ p.about-info-text-title{
 .about-contacts_localization {
   width: 50%;
   height: 100%;
+}
+.about-contacts_localization p{
+  font-size: 12px;
+  line-height: 14px;
 }
 .about-contacts-map {
   width: 50%;
