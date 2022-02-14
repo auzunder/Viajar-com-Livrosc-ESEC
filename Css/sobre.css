@@ -47,7 +47,7 @@
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr; 
   grid-template-rows: 1fr; 
-  gap: 0px 20px; 
+  gap: 0px 40px; 
   grid-template-areas: 
     "founder1 founder2 founder3"; 
   width: 80%;
