@@ -1,9 +1,9 @@
+
+// Função para colapsar a navbar (adicionar a class "responsiveNavBar")
 function myFunction() {
   var nav_element = document.getElementById("myTopnav");
-  var ghost_element = document.getElementById("ghost")
   if (nav_element.className === "topnav") {
     nav_element.className += " responsiveNavBar";
-    //ghost_element.style.height = "0px";
   } 
   else {
     nav_element.className = "topnav";
@@ -11,6 +11,8 @@ function myFunction() {
   }
 }
 
+
+// jQuery para aparecer e desapareçer a seta de voltar ao topo aos 300px de scroll
 $(document).scroll(function () {
   var y = $(this).scrollTop();
   if (y > 300) {
