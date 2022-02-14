@@ -399,4 +399,13 @@ p.about-info-text-title{
   height: 80vw;
   margin-bottom: 30px;
 }
+
+div.gallery {
+  border: 1px solid #ccc;
+  height: calc(80vw * 0.35);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
 }
