@@ -70,7 +70,9 @@
       font-family: 'Caveat', cursive;
       font-size: 65px;
       font-weight: 500;
-    }  
+      line-height: 65px;
+      text-align: center;
+  } 
     
     .bannerimg {
         height: 100%;
@@ -118,7 +120,7 @@
       
       @media only screen and (max-width: 980px){
         .container-gallery {
-          width: calc(85% + 20px);
+          width: calc(80vw);
           margin-bottom: 80px;
         }
       }
