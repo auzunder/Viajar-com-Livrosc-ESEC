@@ -217,5 +217,8 @@ p.mensagem {
 }
 
 textarea#mensagem {
-    width: 100%;
+    width: calc(100% - 10px);
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 12px;
 }
