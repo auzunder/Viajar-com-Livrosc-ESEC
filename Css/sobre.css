@@ -390,13 +390,13 @@ p.about-info-text-title{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 20px 20px;
+  gap: 30px 30px;
   grid-template-areas:
       "contadores1 contadores2"
       "contadores3 contadores4";
   width: 80%;
   margin: auto;
   height: 80vw;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 }
