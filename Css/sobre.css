@@ -340,3 +340,16 @@ button.inscrever-btn {
   padding: 7px 30px;
   cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+  .about-info {
+    width: 80%;
+    margin: auto;
+    display: block;
+    height: 400px;
+    margin-bottom: 100px;
+    margin-top: 40px;
+}
+}
