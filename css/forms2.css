@@ -224,7 +224,7 @@ textarea#mensagem {
     font-size: 12px;
 }
 
-textarea#mensagem .span-text {
+.span-text-msg {
     position: absolute;
     left: 10px;
     top: -6px;
