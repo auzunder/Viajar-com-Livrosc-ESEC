@@ -10,10 +10,15 @@
         <link rel="stylesheet" href="css/infoConta.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
+        <script src="js/forms.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
+        
+        
     </head>
     <body>
+        
+       
         <div id="wrapper">
             <header>
                 <div class="topnav" id="myTopnav">
@@ -67,17 +72,16 @@
         <p class="info-pessoal">Informação Pessoal</p>
 
         <div class="info-content">
-            <form action="/Home.html" method="get">
                 <div class="info-confir-dados">
 
                     <label class="aceitar-dados">Confirmo que todos os dados pessoais anteriormente inseridos são os meus dados pessoais e se encontram corretos.
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" id="confirmo">
                         <span class="checkmark"></span>
                         </label>
                 
                     <label class="aceitar-dados">Li e aceito os Termos e Condições e a Política de Privacidade do Grupo Viajar com Livros.
                     Consinto, de forma livre, consciente e informada, o Grupo Viajar com Livros, recolha e trate os dados pessoais por mim fornecidos para ações de marketing e publicidade, pressupondo esse tratamento a comunicação dos meus dados ao Grupo Viajar com Livros, bem como a criação de um perfil, de forma a enviar comunicações ajustadas aos meus interesses, nomeadamente, sendo possível customizar o meu consentimento através da criação de uma conta Leitor, nos termos melhor descritos na Política de Privacidade do Grupo Viajar com Livros.
-                    <input type="checkbox" checked="checked">
+                    <input type="checkbox" id="aceito">
                     <span class="checkmark"></span>
                     </label>
                 </div>
@@ -86,7 +90,8 @@
                         <p>*Campos de preenchimento obrigatório</p>
                     
                         <div class="next ">
-                            <input type="submit" class="next-button boxInnerOutterShadow" value="Concluir">
+                            <button class="next-button boxInnerOutterShadow" onclick="formTxt()">Concluir</button>
+                            <input type="text" id="inputFileNameToSaveAs" value="Dados Pessoa" style="display: none;">
                         </div>
                     </div>
                 </div>

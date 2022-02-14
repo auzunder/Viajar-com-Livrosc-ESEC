@@ -5,12 +5,13 @@
         <title>Formulário de Inscrição</title>
         <link type="text/css" rel="stylesheet" href='https://fonts.googleapis.com/css?family=Caveat'>
         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
-        <link type="text/css" rel="stylesheet" href="/css/structure.css">
+        <link type="text/css" rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/forms.css">
         <link rel="stylesheet" href="css/infoConta.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
+        <script src="js/forms.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
@@ -66,10 +67,14 @@
 
 <div class="info-content">
     <div class="info-content-img">
-        <img src="Imagens/Forms/perfil.png" alt= "Fotografia de Perfil">
+        <div class="form-img">
+            <img src="addimg.svg" alt="Fotografia de Perfil" id="output">
+            <input name="photo" class="imgPerfil" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+        </div>
+
     </div>
     <div class="info-content-campos">
-        <form action="forms2.html" method="get" class="form-insc">
+        <form action="forms2.html"  method="get" class="form-insc">
             <div class="input-placement">
                 <input type="text" id="Nome" name="Nome" required class="form-input-style">
                 <span class="span-text">Nome</span>
@@ -77,7 +82,7 @@
             <div class="info-data">
                 <p>Data de Nascimento</p>
                 <div class="info-data-wrap">
-                  <input type="date" class="dt-nasc" id="dtNasc">
+                  <input type="date" name="dtNasc" class="dt-nasc" id="dtNasc">
                 </div>
             </div>
             <div class="input-placement">
@@ -93,28 +98,28 @@
                     <p>Código Postal</p>
                     <input type="number" id="codPostal4" name="codPostal4" required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth">
 
-                    <input type="number" id="codPostal3" name="codPostal4" required maxlength ='3' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth" >
+                    <input type="number" id="codPostal3" name="codPostal3" required maxlength ='3' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth" >
                 </div>
             </div>
             <div class="input-placement">
-                <input type="email" id="E-mail" name="E-mail" required class="form-input-style">
+                <input type="email" id="Email" name="Email" required class="form-input-style">
                 <span class="span-text">E-mail</span>
             </div>
             <div class="input-placement">
-                <input type="number" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
-                <span class="span-text">Telemovel</span>
+                <input type="tel" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
+                <span class="span-text">Telemóvel</span>
             </div>
             <p class="genero">Género</p class>
 
         <div class="info-genero">
             <div class="info-genero-feminino">
-            <input type="radio" id="feminino" name="genero" value="feminino">
-            <label for="html">Feminino</label>
+            <input type="radio" name="genero" value="feminino">
+            <label for="feminino">Feminino</label>
             </div>
 
             <div class="info-genero-masculino">
-            <input type="radio" id="masculino" name="genero" value="masculino" >
-            <label for="css">Masculino</label>
+            <input type="radio" name="genero" value="masculino"  >
+            <label for="masculino">Masculino</label>
             </div>
         </div>
         
@@ -123,7 +128,7 @@
                 <p>*Campos de preenchimento obrigatório</p>
         
                 <div class="next">
-                        <input type="submit" class="next-button boxInnerOutterShadow" value="Seguinte">
+                        <input type="submit" onclick="saveData()" class="next-button boxInnerOutterShadow" value="Seguinte">
                 </div>
             </div>
         </div>

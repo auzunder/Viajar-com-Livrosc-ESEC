@@ -1,165 +1,165 @@
 
 .forms-content{
-    background-color: #E5E5E5;
-    width: 100%;
-    height: 150px;
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
+  background-color: #E5E5E5;
+  width: 100%;
+  height: 150px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .forms-content-dados {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 p.forms-num {
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 50%;
-    text-align: center;
-    margin-right: 15px;
-    display: flex;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 15px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }  
 
 .p.forms-text {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .forms-content-wrap{
-    width: 80%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
 }
 
 .info-pessoal{
 
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #E5E5E5;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E5E5E5;
 }
 
-  .info-content {
-    width: 80%;
-    margin: auto;
-    padding-top: 50px;
-    position: relative;
-  }
+.info-content {
+  width: 80%;
+  margin: auto;
+  padding-top: 50px;
+  position: relative;
+}
 
-  .info-confir-dados {
-    margin-bottom: 50px;
-    margin-left: 10%;
-  }
+.info-confir-dados {
+  margin-bottom: 50px;
+  margin-left: 10%;
+}
 /* The aceitar-dados */
 .aceitar-dados {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+display: block;
+position: relative;
+padding-left: 35px;
+margin-bottom: 12px;
+cursor: pointer;
+font-size: 14px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 /* Hide the browser's default checkbox */
 .aceitar-dados input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
 }
 
 /* Create a custom checkbox */
 .checkmark {
-	border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 0;
-  height: 15px;
-  width: 15px;
-  background-color: #eee;
+border-radius: 50%;
+position: absolute;
+top: 3px;
+left: 0;
+height: 15px;
+width: 15px;
+background-color: #eee;
 }
 
 /* On mouse-over, add a grey background color */
 .aceitar-dados:hover input ~ .checkmark {
-  background-color: #ccc;
+background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
 .aceitar-dados input:checked ~ .checkmark {
-  background-color: #2196F3;
+background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+content: "";
+position: absolute;
+display: none;
 }
 
 /* Show the checkmark when checked */
 .aceitar-dados input:checked ~ .checkmark:after {
-  display: block;
+display: block;
 }
 
 /* Style the checkmark/indicator */
 .aceitar-dados .checkmark:after {
-  left: 4px;
-  top: 4px;
-  width: 7px;
-  height: 7px;
-  background-color: white;
-  border-radius: 50%;}
+left: 4px;
+top: 4px;
+width: 7px;
+height: 7px;
+background-color: white;
+border-radius: 50%;}
 
-  .next {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 80px;
-  }
-  
-  .next-button{
-    margin-top: 30px;
-    background-color: transparent;
-    border: 1px solid black;
-    border-radius:12px;
-    padding: 5px 20px;
-    cursor: pointer;
-  }
-  
-  .voluntario-img{
-    height: 50%;
-    bottom: 0px;
-    position: absolute;
+.next {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 80px;
 }
-  
-  .required-fields {
-    margin-top: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .required-fields-right p{
-    font-size: 13px;
-  }
 
-  .form-nao-selecionado{
-    color: #808080;
-  }
-  
-  .form-border-unselected{
-    border:1px solid #808080 !important;
-  }
+.next-button{
+  margin-top: 30px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius:12px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.voluntario-img{
+  height: 50%;
+  bottom: 0px;
+  position: absolute;
+}
+
+.required-fields {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.required-fields-right p{
+  font-size: 13px;
+}
+
+.form-nao-selecionado{
+  color: #808080;
+}
+
+.form-border-unselected{
+  border:1px solid #808080 !important;
+}

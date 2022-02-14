@@ -11,6 +11,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="/javascript/Structure.js"></script>
         <script src="javascript/forms.js"></script>
+        <script src="js/forms.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
@@ -76,10 +77,10 @@
         <div class="identificacao-content">
             <div class="identificacao-content-tipo">
             <select name="identificacao" id="identificacao" required>
-            <option value="">Tipo de Documento</option>
-            <option value="CD">Cartão de Cidadão</option>
-            <option value="PP">Passaporte</option>
-            <option value="BI">Bilhete de Identidade</option>
+                <option value="">Tipo de Documento</option>
+                <option value="CD">Cartão de Cidadão</option>
+                <option value="PP">Passaporte</option>
+                <option value="BI">Bilhete de Identidade</option>
             </select>
             </div>
             <div class="num-identificacao">
@@ -110,7 +111,7 @@
                 <p>*Campos de preenchimento obrigatório</p>
         
                 <div class="next ">
-                    <input type="submit" class="next-button boxInnerOutterShadow" value="Seguinte">
+                    <input type="submit" onclick="saveData2()" class="next-button boxInnerOutterShadow" value="Seguinte">
                 </div>
             </div>
         </div>
