@@ -68,7 +68,11 @@
 
    @media only screen and (max-width: 700px) {
     .responsive-videos {
-      width: 80%;
+      width: 100%;
       margin-bottom: 40px;
     }
+
+    .container-gallery-videos{
+       display: block;
+      }
   }
