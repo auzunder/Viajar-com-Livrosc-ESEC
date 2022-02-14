@@ -6,15 +6,14 @@ function saveData() {
     var nome = document.getElementById("Nome").value;
     localStorage.setItem('Nome' , nome);
     
-    var dtNasc = new Date(document.getElementById("dtNasc").value);
-        dia = dtNasc.getDate();
-        mes = dtNasc.getMonth() + 1;
-        ano = dtNasc.getFullYear();
+    var diaNasc = document.getElementById("diaNasc").value;
+    var mesNasc = document.getElementById("mesNasc").value;
+    var anoNasc = document.getElementById("anoNasc").value;
 
     
-    localStorage.setItem('Dia' , dia);
-    localStorage.setItem('Mes' , mes);
-    localStorage.setItem('Ano' , ano);
+    localStorage.setItem('Dia' , diaNasc);
+    localStorage.setItem('Mes' , mesNasc);
+    localStorage.setItem('Ano' , anoNasc);
 
     var Morada = document.getElementById("Morada").value;
     localStorage.setItem('Morada' , Morada);

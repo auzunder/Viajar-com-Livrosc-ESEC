@@ -402,3 +402,13 @@ p.about-info-text-title{
 
 
 }
+
+.next-button{
+  margin-top: 30px;
+    margin-bottom: 80px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius:12px;
+    padding: 5px 20px;
+    cursor: pointer;
+  }
