@@ -81,6 +81,7 @@ p.forms-num {
     color: black;
 }
 
+
 .input-placement input:focus-visible{
     outline: 0;
     border: 1px solid #0000D1;
@@ -221,4 +222,15 @@ textarea#mensagem {
     padding-left: 10px;
     padding-top: 10px;
     font-size: 12px;
+}
+
+textarea#mensagem .span-text {
+    position: absolute;
+    left: 10px;
+    top: -6px;
+    padding: 0 5px;
+    background-color: white;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: black;
 }
