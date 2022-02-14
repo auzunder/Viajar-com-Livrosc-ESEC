@@ -314,6 +314,7 @@ body, #wrapper{
 }
 
 #patrocinadores{
+    background-color: white;
     border-top: black 2px solid;
     flex-direction: column;
     padding: 20px;
