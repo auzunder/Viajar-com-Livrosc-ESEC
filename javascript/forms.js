@@ -1,18 +1,18 @@
 //localStorage.clear()
 
 function saveData() {
-    localStorage.clear();
+    localStorage.clear();  /*limpar dados da localStorage*/
 
-    var nome = document.getElementById("Nome").value;
+    var nome = document.getElementById("Nome").value;    /*receber os dados e guardar localStorage*/
     localStorage.setItem('Nome' , nome);
     
     var diaNasc = document.getElementById("diaNasc").value;
-    var mesNasc = document.getElementById("mesNasc").value;
+    var mesNasc = document.getElementById("mesNasc").value;      /*receber os dados do dia, mes e ano */
     var anoNasc = document.getElementById("anoNasc").value;
 
     
     localStorage.setItem('Dia' , diaNasc);
-    localStorage.setItem('Mes' , mesNasc);
+    localStorage.setItem('Mes' , mesNasc);    /*guardar os dados anteriormente recebidos numa localStorage*/
     localStorage.setItem('Ano' , anoNasc);
 
     var Morada = document.getElementById("Morada").value;
@@ -33,17 +33,17 @@ function saveData() {
     var tlm = document.getElementById("Telemovel").value;
     localStorage.setItem('Telemovel' , tlm);
 
-    let genEscolhido = document.getElementsByName("genero");
-    for (var i = 0, length = genEscolhido.length; i < length; i++) {
+    let genEscolhido = document.getElementsByName("genero");                 
+    for (var i = 0, length = genEscolhido.length; i < length; i++) {     /*mede o cumprimento dos elementos*/
         if (genEscolhido[i].checked) {
 
-            genPessoa = genEscolhido[i].value;
+            genPessoa = genEscolhido[i].value; 
     
-            break;
+            break;     /*para assim que encontrar qual dos itens está selecionado*/
         }
     }
 
-    localStorage.setItem('Genero',genPessoa);
+    localStorage.setItem('Genero',genPessoa);    /*guarda o dado retirado*/
 
     
 }
@@ -70,9 +70,7 @@ function formTxt() {
 
     var confirmo = document.getElementById("confirmo");
     var aceito = document.getElementById("aceito");
-    console.log(confirmo.checked);
-    console.log(aceito.checked);
-    if (confirmo.checked == true && aceito.checked == true) {
+    if (confirmo.checked == true && aceito.checked == true) {     /*caso as duas checkbox estejam confirmadas*/
         var textToWrite = 
         'Nome: ' + localStorage.getItem('Nome') + '\n' +
         'Data de nascimento: ' + localStorage.getItem('Dia') + '/'  + localStorage.getItem('Mes') + '/'  + localStorage.getItem('Ano') +  '\n' +
@@ -86,7 +84,7 @@ function formTxt() {
         'Profissão: ' + localStorage.getItem('Profissao') + '\n' +
         'Mensagem: ' + localStorage.getItem('Mensagem');
 
-        var textFileAsBlob = new Blob([textToWrite], {
+        var textFileAsBlob = new Blob([textToWrite], {         
             type: 'text/plain'
         });
         var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
