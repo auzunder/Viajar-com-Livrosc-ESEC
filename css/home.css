@@ -89,7 +89,7 @@
 }
 
 #recomendados{
-    padding: 75px 0;
+    padding: 15px 0;
     flex-direction: column;
     height: calc(100vw*0.68);
     width: 100%;
