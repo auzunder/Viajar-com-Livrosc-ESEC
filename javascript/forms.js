@@ -96,6 +96,8 @@ function formTxt() {
             downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
         }
         downloadLink.click();
+
+        window.location.href = "../Home.html";
     }   
     console.log(textToWrite);
     }   
