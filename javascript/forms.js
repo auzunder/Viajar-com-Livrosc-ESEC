@@ -97,6 +97,9 @@ function formTxt() {
         }
         downloadLink.click();
 
+        if (localStorage.getItem('Mensagem').length == 0){
+            localStorage.Mensagem = 'Nao deixou Mensagem'
+        }
 
         var textToWriteMail = 
         '%0D%0ANome: ' + localStorage.getItem('Nome') + '\n' +
@@ -107,7 +110,7 @@ function formTxt() {
         '%0D%0AE-mail: ' + localStorage.getItem('Email') + '\n' +
         '%0D%0ATelemóvel: ' + localStorage.getItem('Telemovel') + '\n' +
         '%0D%0AGénero: ' + localStorage.getItem('Genero') + '\n' +
-        localStorage.getItem('Identificacao') + ': ' + localStorage.getItem('NumeroID') + '\n' +
+        '%0D%0A' + localStorage.getItem('Identificacao') + ': ' + localStorage.getItem('NumeroID') + '\n' +
         '%0D%0AProfissão: ' + localStorage.getItem('Profissao') + '\n' +
         '%0D%0AMensagem: ' + localStorage.getItem('Mensagem');
 
