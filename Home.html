@@ -11,6 +11,7 @@
         <script src="/javascript/Structure.js"></script>
         <script src="/javascript/NavbarAnimation.js"></script>
         <script src="/javascript/lottie.js"></script>
+        <script src="/javascript/CalendarioMetadata.js"></script>
         <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
     </head>
     <body>
@@ -82,14 +83,25 @@
                     </a>
                 </div>
 
-                <div id=PesquisaOTeuLivro>
-                    <h2>Pesquisa o teu livro de sonho</h2>
-                    <form id=pesquisa> 
-                        <input id=barraDePesquisa type="text"></input>
-                        <button id=submitPesquisa type="submit">
-                            Pesquisar
-                        </button>
-                    </form>
+                <div class="proxSessoesDIV">
+                    <h2>Próximas Sessões</h2>
+                    <table class="proxSessoes">
+                        <thead>
+                        <tr>
+                            <td class="headTD">Orador/a</td>
+                            <td class="headTD">Livro</td>
+                            <td class="headTD">Data</td>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr><td class="sessionInfoElement"><a href="Calendario.html">Carolina Batista</a></td><td class="sessionInfoElement"><a href="Calendario.html">As Aventuras de sininho</a></td><td class="sessionInfoElement"><a href="Calendario.html">15/02/2022</a></td></tr></a>
+                            <tr><td class="sessionInfoElement"><a href="Calendario.html">Carolina Batista</a></td><td class="sessionInfoElement"><a href="Calendario.html">As Aventuras de sininho</a></td><td class="sessionInfoElement"><a href="Calendario.html">15/02/2022</a></td></tr></a>
+                            <tr><td class="sessionInfoElement"><a href="Calendario.html">Carolina Batista</a></td><td class="sessionInfoElement"><a href="Calendario.html">As Aventuras de sininho</a></td><td class="sessionInfoElement"><a href="Calendario.html">15/02/2022</a></td></tr></a>
+                            <tr><td class="sessionInfoElement"><a href="Calendario.html">Carolina Batista</a></td><td class="sessionInfoElement"><a href="Calendario.html">As Aventuras de sininho</a></td><td class="sessionInfoElement"><a href="Calendario.html">15/02/2022</a></td></tr></a>
+                            <tr><td class="sessionInfoElement"><a href="Calendario.html">Carolina Batista</a></td><td class="sessionInfoElement"><a href="Calendario.html">As Aventuras de sininho</a></td><td class="sessionInfoElement"><a href="Calendario.html">15/02/2022</a></td></tr></a>
+                        </tbody>
+                    </table>
+                    <script>tableSessions(5)</script>
                 </div>
 
                 <div id=recomendados>

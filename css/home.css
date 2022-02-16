@@ -48,44 +48,33 @@
     z-index: 0;
 }
 
-
-
-#PesquisaOTeuLivro{
+.proxSessoesDIV{
     padding: 75px 0;
+    text-align: center;
 }
 
-#PesquisaOTeuLivro, 
-#PesquisaOTeuLivro >* {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.proxSessoesDIV h2{
+    padding: 30px;
 }
 
-#PesquisaOTeuLivro >* {
-    gap: 1rem;
+.proxSessoes{
+    margin: auto;
 }
 
-#pesquisa{
-    padding: 1vw;
-    width: 40%;
+.headTD{
+    font-weight: 700;
+    padding: 15px 50px;
 }
 
-#barraDePesquisa{
-    border: 1px solid #000000;
-    width: 80%;
+.sessionInfoElement{
+    padding: 15px 50px;
+    border-top: 1px solid #dee2e6;
 }
 
-#barraDePesquisa, 
-#submitPesquisa{
-    height: 45px;
-    box-sizing: border-box;
-    border-radius: 15px;
-}
-
-#submitPesquisa{
-    width: 20%;
-    background-color: #C6E4E2;
-    border: none;
+.sessionInfoElement a{
+    color: #000000;
+    text-decoration: none;
+    padding: 15px 50px;
 }
 
 #recomendados{
@@ -133,7 +122,6 @@
     justify-content: center;
 }
 
-#PesquisaOTeuLivro, 
 #recomendados >* >* > *{
     flex-direction: column;
 }
