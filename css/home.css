@@ -250,6 +250,10 @@
         padding: 1vw;
         width: 70%;
     }
+    #voluntariado > p{
+        font-size: 25px;
+        line-height: 30px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
