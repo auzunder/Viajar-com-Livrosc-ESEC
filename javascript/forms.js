@@ -96,10 +96,8 @@ function formTxt() {
             downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
         }
         downloadLink.click();
-
+        textToWrite = action="mailto:aaa@aa.com.br"
         window.location.href = "../Home.html";
     }   
     console.log(textToWrite);
     }   
-
-    
