@@ -96,8 +96,25 @@ function formTxt() {
             downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
         }
         downloadLink.click();
-        textToWrite = action="mailto:aaa@aa.com.br"
-        window.location.href = "../Home.html";
+
+
+        var textToWriteMail = 
+        '%0D%0ANome: ' + localStorage.getItem('Nome') + '\n' +
+        '%0D%0AData de nascimento: ' + localStorage.getItem('Dia') + '/'  + localStorage.getItem('Mes') + '/'  + localStorage.getItem('Ano') +  '\n' +
+        '%0D%0AMorada: ' + localStorage.getItem('Morada') + '\n' +
+        '%0D%0ALocalidade: ' + localStorage.getItem('Localidade') + '\n' +
+        '%0D%0ACódigo Postal: ' + localStorage.getItem('CodPost4') + '-'  + localStorage.getItem('CodPost3') + '\n' +
+        '%0D%0AE-mail: ' + localStorage.getItem('Email') + '\n' +
+        '%0D%0ATelemóvel: ' + localStorage.getItem('Telemovel') + '\n' +
+        '%0D%0AGénero: ' + localStorage.getItem('Genero') + '\n' +
+        localStorage.getItem('Identificacao') + ': ' + localStorage.getItem('NumeroID') + '\n' +
+        '%0D%0AProfissão: ' + localStorage.getItem('Profissao') + '\n' +
+        '%0D%0AMensagem: ' + localStorage.getItem('Mensagem');
+
+
+        var hrefMailTo = document.createElement("a");
+        hrefMailTo.href = "mailto:user@example.com?subject=Subject&body=" + textToWriteMail;
+        hrefMailTo.click()
     }   
     console.log(textToWrite);
     }   
