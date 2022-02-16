@@ -155,7 +155,12 @@
     margin-bottom: 1vw;
 }
 
-.saberMais > .saberMaisButton{
+.saberMais > a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.saberMais > a > .saberMaisButton{
     width: max-content;
     padding: 0.5vw 1vw;
     background: #FFFFFF;
