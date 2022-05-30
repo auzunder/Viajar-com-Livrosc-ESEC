@@ -24,6 +24,9 @@ var home_content = fs.readFileSync('Home.html', 'utf-8');
 var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
 var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
 var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
+var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
+var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
+var noticias_content = fs.readFileSync('Noticias/Noticias.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
     var html = "";
@@ -57,18 +60,26 @@ servidor.get("/biblioteca", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/sobre_nos", function(req, res) {
+servidor.get("/fotografias", function(req, res) {
     var html = "";
     html += topo;
-    html += sobre_nos_content;
+    html += galeria_foto_content;
     html += fundo;
     res.send(html);
 })
 
-servidor.get("/sobre_nos", function(req, res) {
+servidor.get("/videos", function(req, res) {
     var html = "";
     html += topo;
-    html += sobre_nos_content;
+    html += galeria_video_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/noticias", function(req, res) {
+    var html = "";
+    html += topo;
+    html += noticias_content;
     html += fundo;
     res.send(html);
 })
