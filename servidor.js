@@ -19,23 +19,59 @@ servidor.listen(porto, function () {
 // nota: não esquecer de instalar o módulo express na pasta onde estiver o servidor: npm install express
 
 var topo = fs.readFileSync('NavBar.html', 'utf-8');
-var fundo = fs.readFileSync('Foter.html', 'utf-8');
+var fundo = fs.readFileSync('Footer.html', 'utf-8');
+var home_content = fs.readFileSync('Home.html', 'utf-8');
+var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
+var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
+var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
     var html = "";
     html += topo;
-    html += "<h1>bem-vindo</h1>\n";
+    html += home_content;
     html += fundo;
     res.send(html);
 });
 
-servidor.get("/en", function (req, res) {
+servidor.get("/sobre_nos", function(req, res) {
     var html = "";
     html += topo;
-    html += "<h1>welcome</h1>\n";
+    html += sobre_nos_content;
     html += fundo;
     res.send(html);
-});
+})
+
+servidor.get("/calendario", function(req, res) {
+    var html = "";
+    html += topo;
+    html += calendario_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/biblioteca", function(req, res) {
+    var html = "";
+    html += topo;
+    html += biblioteca_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/sobre_nos", function(req, res) {
+    var html = "";
+    html += topo;
+    html += sobre_nos_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/sobre_nos", function(req, res) {
+    var html = "";
+    html += topo;
+    html += sobre_nos_content;
+    html += fundo;
+    res.send(html);
+})
 
 // quando é usado o método GET no formulário
 servidor.get('/processaformulario', function (req, res) {
