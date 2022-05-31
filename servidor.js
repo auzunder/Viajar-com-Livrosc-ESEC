@@ -27,6 +27,9 @@ var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
 var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
 var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
 var noticias_content = fs.readFileSync('Noticias/Noticias.html', 'utf-8');
+var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
+var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
+var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
     var html = "";
@@ -83,6 +86,66 @@ servidor.get("/noticias", function(req, res) {
     html += fundo;
     res.send(html);
 })
+
+servidor.get("/voluntariado-1", function(req, res) {
+    var html = "";
+    html += topo;
+    html += voluntariado_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/voluntariado-2", function(req, res) {
+    var html = "";
+    html += topo;
+    html += voluntariado2_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/voluntariado-3", function(req, res) {
+    var html = "";
+    html += topo;
+    html += voluntariado3_content;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/conta", function(req, res) {
+    var html = "";
+    html += topo;
+    html += 0;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/favoritos", function(req, res) {
+    var html = "";
+    html += topo;
+    html += 0;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/historico", function(req, res) {
+    var html = "";
+    html += topo;
+    html += 0;
+    html += fundo;
+    res.send(html);
+})
+
+servidor.get("/help", function(req, res) {
+    var html = "";
+    html += topo;
+    html += 0;
+    html += fundo;
+    res.send(html);
+})
+
+
+
+/*
 
 // quando é usado o método GET no formulário
 servidor.get('/processaformulario', function (req, res) {
@@ -184,4 +247,6 @@ servidor.get('/mostradados', function (req, res) {
         }
     });
 });
+
+*/
 
