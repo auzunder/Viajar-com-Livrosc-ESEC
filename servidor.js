@@ -1,4 +1,6 @@
+const session = require('express-session');
 const express = require('express');
+const sha1 = require('sha1');
 const fs = require('fs');
 
 const servidor = express();
@@ -10,17 +12,26 @@ servidor.use(express.urlencoded({
 
 servidor.use(express.static("public"));
 
+servidor.use(session({
+    secret: "supercalifragilisticexpialidocious",
+    resave: false,
+    saveUninitialized: true
+}));
+
 servidor.listen(porto, function () {
     console.log("servidor a ser executado em http://localhost://" + porto);
 });
 
-// tpc: carregar os ficheiros topo.html e fundo.html e guardá-los nas variáveis topo e fundo, respectivamente,
-// investigando os métodos fs.readFileSync e fs.appendFileSync
-// nota: não esquecer de instalar o módulo express na pasta onde estiver o servidor: npm install express
+// Leitura de HTML repetido
+try{
+    var topo = fs.readFileSync('NavBar.html', 'utf-8');
+    var fundo = fs.readFileSync('Footer.html', 'utf-8');
+}
+catch (error){
+    console.error("Erro ao ler ficheiros de NarBar ou Footer.")
+    console.error(error)
+}
 
-var topo = fs.readFileSync('NavBar.html', 'utf-8');
-var fundo = fs.readFileSync('Footer.html', 'utf-8');
-var home_content = fs.readFileSync('Home.html', 'utf-8');
 var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
 var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
 var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -32,6 +43,13 @@ var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
 var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
+    try {
+        var home_content = fs.readFileSync('Home.html', 'utf-8');
+    }
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
     var html = "";
     html += topo;
     html += home_content;
