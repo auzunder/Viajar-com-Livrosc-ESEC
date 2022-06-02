@@ -50,24 +50,32 @@ var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
 var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
+    //Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
     }
+    //Caso nao consiga da log do erro
     catch (error){
         console.error("Erro ao ler ficheiros de conteudo.")
         console.error(error)
     }
+
+    //Apresentação do Site
     var html = "";
     html += iniciarHtml;
     html += head;
-    html += '<link type="text/css" rel="stylesheet" href="/css/home.css"> <!-- COLOCAR AQUI CSS FILE -->';
+    //Css da pagina
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    //JavaScript para animações
     html += '<script src="/javascript/lottie.js"></script>';
+    //JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     html += acabarHead;
     html += '<div id="wrapper">';
     html += topo;
-    
+    //Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
+        //HTML do botão
         html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
@@ -81,8 +89,11 @@ servidor.get("/", function (req, res) {
         html += '</div>';
     }
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    //Conteudo da pagina
     html += home_content;
+    //Footer
     html += fundo;
+    //Enviar HTML final para o cliente
     res.send(html);
 });
 
