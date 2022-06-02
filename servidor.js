@@ -12,6 +12,7 @@ servidor.use(express.urlencoded({
 
 servidor.use(express.static("public"));
 
+//Sessão
 servidor.use(session({
     secret: "supercalifragilisticexpialidocious",
     resave: false,
@@ -32,6 +33,10 @@ catch (error){
     console.error(error)
 }
 
+const iniciarHtml = '<!DOCTYPE html><html><head>';
+const acabarHead = '</head><body>'
+const acabarHtml = '</body></html>'
+var head = fs.readFileSync('head.html', 'utf-8');
 var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
 var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
 var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -50,8 +55,11 @@ servidor.get("/", function (req, res) {
         console.error("Erro ao ler ficheiros de conteudo.")
         console.error(error)
     }
-    var html = "";
+    html += iniciarHtml;
+    html += head
+    topo += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div></div></body></html>';
     html += topo;
+    
     html += home_content;
     html += fundo;
     res.send(html);
