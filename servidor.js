@@ -37,6 +37,7 @@ const iniciarHtml = '<!DOCTYPE html><html><head>';
 const acabarHead = '</head><body>'
 const acabarHtml = '</body></html>'
 var head = fs.readFileSync('head.html', 'utf-8');
+
 var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
 var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
 var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -46,6 +47,7 @@ var noticias_content = fs.readFileSync('Noticias/Noticias.html', 'utf-8');
 var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
 var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
 var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
+var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
     try {
@@ -55,11 +57,30 @@ servidor.get("/", function (req, res) {
         console.error("Erro ao ler ficheiros de conteudo.")
         console.error(error)
     }
+    var html = "";
     html += iniciarHtml;
-    html += head
-    topo += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div></div></body></html>';
+    html += head;
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css"> <!-- COLOCAR AQUI CSS FILE -->';
+    html += '<script src="/javascript/lottie.js"></script>';
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    html += acabarHead;
+    html += '<div id="wrapper">';
     html += topo;
     
+    if (req.session.username) {
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     html += home_content;
     html += fundo;
     res.send(html);
@@ -164,7 +185,7 @@ servidor.get("/historico", function(req, res) {
 servidor.get("/help", function(req, res) {
     var html = "";
     html += topo;
-    html += 0;
+    html += ajuda_content;
     html += fundo;
     res.send(html);
 })
