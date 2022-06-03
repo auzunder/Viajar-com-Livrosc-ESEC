@@ -50,30 +50,29 @@ var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
 var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
-    //Tentar abrir ficheiro
+    // Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
     }
-    //Caso nao consiga da log do erro
+    // Caso nao consiga da log do erro
     catch (error){
         console.error("Erro ao ler ficheiros de conteudo.")
         console.error(error)
     }
-
-    //Apresentação do Site
+    // Apresentação do Site
     var html = "";
     html += iniciarHtml;
     html += head;
-    //Css da pagina
+    // Css da pagina
     html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
-    //JavaScript para animações
+    // JavaScript para animações
     html += '<script src="/javascript/lottie.js"></script>';
-    //JavaScript para dados de Sessões de Livros
+    // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     html += acabarHead;
     html += '<div id="wrapper">';
     html += topo;
-    //Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         //HTML do botão
         html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
@@ -88,13 +87,20 @@ servidor.get("/", function (req, res) {
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     }
+    // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     //Conteudo da pagina
     html += home_content;
-    //Footer
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
-    //Enviar HTML final para o cliente
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
+
+    log(req.session.username, req.path);
 });
 
 servidor.get("/sobre_nos", function(req, res) {
@@ -200,6 +206,31 @@ servidor.get("/help", function(req, res) {
     html += fundo;
     res.send(html);
 })
+
+servidor.get('/newsletter_form', function (req, res) {
+    var email = req.query.email;
+    res.type('html');
+    var html = "";
+    html += topo;
+    if (email) {
+        html += 'email: ' + email + '<br>\n';
+        var dados = email + ";";
+        //experimentar com fs.writeFile() em vez de fs.appendFile()
+        fs.appendFile('dados.txt', dados, function (err) {
+            if (err) {
+                console.error("erro ao guardar os dados no servidor");
+            }
+            else {
+                console.log("dados guardados com sucesso no servidor");
+            }
+        });
+    }
+    else {
+        html += '<p>por favor, preencha os dados todos</p>\n';
+    }
+    html += fundo;
+    res.send(html);
+});
 
 
 
