@@ -48,6 +48,7 @@ var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
 var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
 var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
 var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
+var conta_content = fs.readFileSync('AreaDoLeitor/InformaçoesDeConta.html', 'utf-8');
 
 servidor.get("/", function (req, res) {
     //Tentar abrir ficheiro
@@ -172,7 +173,7 @@ servidor.get("/voluntariado-3", function(req, res) {
 servidor.get("/conta", function(req, res) {
     var html = "";
     html += topo;
-    html += 0;
+    html += conta_content;
     html += fundo;
     res.send(html);
 })
@@ -200,6 +201,7 @@ servidor.get("/help", function(req, res) {
     html += fundo;
     res.send(html);
 })
+
 
 
 
