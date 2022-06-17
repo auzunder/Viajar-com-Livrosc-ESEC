@@ -1,272 +1,82 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta= charset="UTF-8">
-        <title>Viajar com Livros | Ajuda</title>
-        <link type="text/css" rel="stylesheet" href='https://fonts.googleapis.com/css?family=Caveat'>
-        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
-        <link type="text/css" rel="stylesheet" href="/css/structure.css">
-        <link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">
-        <link type="text/css" rel="stylesheet" href="/css/ajuda.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="/javascript/Structure.js"></script>
-        <script src="/javascript/NavbarAnimation.js"></script>
-        <script src="/javascript/Ajuda.js"></script>
-        <script src="/javascript/IniciarSessao.js"></script>
-        <script src="/javascript/lottie.js"></script>
-        <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
-    </head>
-    <body>
-        <div id="wrapper">
-            <header>
-                <div class="topnav" id="myTopnav">
-                    <a href="/Home.html" id="logo"><img width="100%" height="100%" style="object-fit: contain;" src="/Imagens/Logo.png"></a>
-                    <a href="/SobreOProjeto.html" class="HOVER responsiveHeight"><span></span><text>Sobre Nós</text></a>
-                    <a href="/Calendario.html" class="HOVER responsiveHeight"><span></span><text>Calendário</text></a>
-                    <a href="/Biblioteca/Biblioteca.html" class="HOVER responsiveHeight"><span></span><text>Biblioteca</text></a>
-                    <div class="dropdown responsiveHeight" >
-                        <button class="dropbtn HOVER">
-                            <span></span>
-                            <text>Galeria</text>
-                        </button>
-                        <div class="dropdown-content" id="GaleriaDropdown-content">
-                            <a href="/Fotografias.html" class="galeriaMenu">Fotografias</a>
-                            <a href="/videos.html" class="galeriaMenu">Videos</a>
-                            <a href="https://www.facebook.com/aprendizagemEcooperacao/photos/?ref=page_internal" target="_blank" class="galeriaMenu">Galeria Facebook</a>
-                        </div>
-                    </div>
-                    <a href="/Noticias/Noticias.html" class="HOVER responsiveHeight"><span></span><text>Noticias</text></a>
-                    <a href="#" id="areaLeitorAnchor" onclick="abrir('registoPopUp')"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight active">
-                        <div id="leitorText">Area do Leitor</div>
-                        <img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">
-                    </div></a>
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
+<!--Conteudo-->
+
+<div class="separadorAreaLeitor marginTop">
+    <img src="/Imagens/AreaDoLeitor/SeparadorAreaLeitor.svg">
+</div>
+<div class="navBarAreaLeitor marginTop">
+    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><text>Conta</text></a>
+    <a href="/AreaDoLeitor/Favoritos.html"><text>Favoritos</text></a>
+    <a href="/AreaDoLeitor/Histórico.html"><text>Histórico</text></a>
+    <a href="/AreaDoLeitor/Ajuda.html"><text class="ativo">Ajuda</text></a>
+</div>
+
+<div class="areaLeitorBackground marginTopBottom">
+    <div class="areaLeitorContentContainer marginTopBottom">
+        <!-- Conteudo Area Leitor -->
+
+        <div class="imgPerfil">
+            <img src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+        </div>
+
+        <div class="mainTitle">
+            <h2>Questões Frequentes</h2>
+        </div>
+        <div class="questoesFrequentes">
+            <div class="questao_resposta">
+                <div class="questao pointer" onclick="open_answer(1)">
+                    <p>Como remarcar uma leitura?</p>
+                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
                 </div>
-            </header>
-
-            <!-- Registo de utilizador -->
-
-            <div id="registoPopUp" class="registerUser">
-                <div class="registo">
-                    <div class="registoContent">
-                        <div id="animacaoSessao" class="animacaoSessao">
-                            <script>
-                                var animation = bodymovin.loadAnimation({
-                                    container: document.getElementById("animacaoSessao"),
-                                    renderer:"svg",
-                                    loop: true,
-                                    autoplay: true,
-                                    path: "/Imagens/Animações/Animação_II.json"
-                                })
-                            </script>
-                        </div>
-                        <form class="form">
-                            <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">
-                            <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
-                            <input id="password1" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')">
-                            <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required oninput="this.setCustomValidity('')">
-                            <button class="botaoForm" type="submit" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
-                            <p class="alternativa">Tens conta? <a href="#" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
-                        </form>
-                    </div>
+                <div class="resposta">
+                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
+                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
                 </div>
             </div>
-
-            <!-- FIM de Registo de utilizador -->
-
-            <!-- Iniciar Sessão -->
-
-            <div id="iniciarSessaoPopUp" class="registerUser">
-                <div class="registo">
-                    <div class="registoContent">
-                        <div id="animacaoSessao2" class="animacaoSessao">
-                            <script>
-                                var animation = bodymovin.loadAnimation({
-                                    container: document.getElementById("animacaoSessao2"),
-                                    renderer:"svg",
-                                    loop: true,
-                                    autoplay: true,
-                                    path: "/Imagens/Animações/Animação_II.json"
-                                })
-                            </script>
-                        </div>
-                        <form class="form">
-                            <input id="name" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('É necessário que prencher o nome');">
-                            <input id="password" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('A password não pode estar vazia');">
-                            <button class="botaoForm" type="submit" onclick="fechar('iniciarSessaoPopUp', true)">Iniciar Sessão</button>
-                            <p class="alternativa">Não tens conta? <a href="#" onclick="abrirFechar('registoPopUp' ,'iniciarSessaoPopUp', false)"> Registar</a>.</p>
-                        </form>
-                    </div>
+            <div class="questao_resposta">
+                <div class="questao pointer" onclick="open_answer(2)">
+                    <p>Quero ser volunário, como me candidatar?</p>
+                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
+                </div>
+                <div class="resposta">
+                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
+                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
                 </div>
             </div>
-
-            <!-- FIM de Iniciar Sessão -->
-
-            <div id=container>
-                <div id="ghost"></div>
-
-                <!-- ALERT UI ONLY -->
-                
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>ATENÇÃO!</strong> Esta secção de website é apenas para demonstração por não existir base de dados. Mesmo assim optámos por fazer uma demonstração de UX/UI.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <div class="questao_resposta">
+                <div class="questao pointer" onclick="open_answer(3)">
+                    <p>Não consigo aceder à área do leitor</p>
+                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
                 </div>
-
-                <!--Conteudo-->
-                
-                <div class="separadorAreaLeitor marginTop">
-                    <img src="/Imagens/AreaDoLeitor/SeparadorAreaLeitor.svg">
-                </div>
-                <div class="navBarAreaLeitor marginTop">
-                    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><text>Conta</text></a>
-                    <a href="/AreaDoLeitor/Favoritos.html"><text>Favoritos</text></a>
-                    <a href="/AreaDoLeitor/Histórico.html"><text>Histórico</text></a>
-                    <a href="/AreaDoLeitor/Ajuda.html"><text class="ativo">Ajuda</text></a>
-                </div>
-
-                <div class="areaLeitorBackground marginTopBottom">
-                    <div class="areaLeitorContentContainer marginTopBottom">
-                        <!-- Conteudo Area Leitor -->
-
-                        <div class="imgPerfil">
-                            <img src="/Imagens/AreaDoLeitor/fotoPerfil.png">
-                        </div>
-
-                        <div class="mainTitle">
-                            <h2>Questões Frequentes</h2>
-                        </div>
-                        <div class="questoesFrequentes">
-                            <div class="questao_resposta">
-                                <div class="questao pointer" onclick="open_answer(1)">
-                                    <p>Como remarcar uma leitura?</p>
-                                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                                </div>
-                                <div class="resposta">
-                                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
-                                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
-                                </div>
-                            </div>
-                            <div class="questao_resposta">
-                                <div class="questao pointer" onclick="open_answer(2)">
-                                    <p>Quero ser volunário, como me candidatar?</p>
-                                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                                </div>
-                                <div class="resposta">
-                                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
-                                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
-                                </div>
-                            </div>
-                            <div class="questao_resposta">
-                                <div class="questao pointer" onclick="open_answer(3)">
-                                    <p>Não consigo aceder à área do leitor</p>
-                                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                                </div>
-                                <div class="resposta">
-                                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
-                                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
-                                </div>
-                            </div>
-                            <div class="questao_resposta">
-                                <div class="questao pointer" onclick="open_answer(4)">
-                                    <p>Com forneço malerial liteário para ajudar este projeto?</p>
-                                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                                </div>
-                                <div class="resposta">
-                                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
-                                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
-                                </div>
-                            </div>
-                            <div class="questao_resposta">
-                                <div class="questao pointer last" onclick="open_answer(5)">
-                                    <p>Tem algumas bibliotecas presenciais? Se sim, onde?</p>
-                                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
-                                </div>
-                                <div class="resposta">
-                                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
-                                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FIM Conteudo Area Leitor -->
-                    </div>
-                </div>
-
-                <!--FIM de Conteudo-->
-
-            </div>
-
-            <div id="setaCima"><a href="#wrapper" onclick="setaParaCimaFun()"><img src="/Imagens/setaParaCima.svg" alt="Back to top"></a></div>
-
-            <div id=patrocinadores>
-                <div id=patrocinadoresCln1>
-                    <a href="https://www.ces.uc.pt/pt" target="_blank"><img src="/Imagens/Patrocinadores/CES.png"></a>
-                    <a href="https://www.cvunesco.org/" target="_blank"><img src="/Imagens/Patrocinadores/CNCV.png"></a>
-                    <a href="https://colegiobomjesus.pt/" target="_blank"><img src="/Imagens/Patrocinadores/Colégio bom jesus.png"></a>
-                    <a href="https://www.cm-condeixa.pt/" target="_blank"><img src="/Imagens/Patrocinadores/Condeixa.png"></a>
-                    <a href="https://www.esec.pt/" target="_blank"><img src="/Imagens/Patrocinadores/ESEC.png"></a>
-                    <a href="https://www.fmam.pt/" target="_blank"><img src="/Imagens/Patrocinadores/FMAM_preto_lg.svg"></a>
-                    <a href="https://www.instituto-camoes.pt/" target="_blank"><img src="/Imagens/Patrocinadores/icamoes.png"></a>
-                </div>
-                <div id=patrocinadoresCln2>
-                    <a href="https://kinder.ces.uc.pt/" target="_blank"><img src="/Imagens/Patrocinadores/logo_kinder.svg"></a>
-                    <a href="#" target="_blank"><img src="/Imagens/Patrocinadores/Leitura cabo verde.png"></a>
-                    <a href="https://www.pnl2027.gov.pt/np4/home" target="_blank"><img src="/Imagens/Patrocinadores/PlanoNacionalDeLeitura.svg"></a>
-                    <a href="https://minedu.gov.cv/" target="_blank"><img src="/Imagens/Patrocinadores/ministerio-da-educacao.png"></a>
-                    <a href="https://www.mota-engil.com/" target="_blank"><img src="/Imagens/Patrocinadores/Mota-Engil.png"></a>
-                    <a href="https://www.ipc.pt/ipc/" target="_blank"><img src="/Imagens/Patrocinadores/Pol-Coimbra.png"></a>
-                    <a href="https://www.cm-condeixa.pt/rbcondeixa/" target="_blank"><img src="/Imagens/Patrocinadores/Rede de Bibliotecas de Condeixa.png"></a>
+                <div class="resposta">
+                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
+                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
                 </div>
             </div>
-            <div id=rodape>
-                <div id=social>
-                    <div id=icons>
-                        <a href="https://www.facebook.com/aprendizagemEcooperacao" target="_blank"><img src="/Imagens/Icons/Face.svg"></a>
-                        <a href="https://www.instagram.com/" target="_blank"><img src="/Imagens/Icons/Insta.svg"></a>
-                        <a href="https://www.youtube.com/" target="_blank"><img src="/Imagens/Icons/Youtube.svg"></a>
-                    </div>
-                    <p>Viajar com livros @ 2021</p>
+            <div class="questao_resposta">
+                <div class="questao pointer" onclick="open_answer(4)">
+                    <p>Com forneço malerial liteário para ajudar este projeto?</p>
+                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
                 </div>
-                <div id=hyperlinks>
-                    <div id=sobreOProjetoLinks>
-                        <ul> Sobre o Projeto 
-                            <a href="/SobreOProjeto.html#fundadores"><li class=first>Fundadores</li></a>
-                            <a href="/SobreOProjeto.html#objetivos"><li>Objetivos</li></a>
-                            <a href="/SobreOProjeto.html#contactos"><li>Localização e Contactos</li></a>
-                            <a href="/SobreOProjeto.html#contadores"><li>Contadores de Histórias</li></a>
-                            <a href="/forms.html"><li>Voluntariado</li></a>
-                        </ul>
-                    </div>
-                    <div id=calendarioLinks>
-                        <ul> Calendário
-                            <a href="/Calendario.html#sessoesHoje"><li class=first>Sessões hoje</li></a>
-                            <a href="/Calendario.html#sessoesSemana"><li>Sessões próximos 7 dias</li></a>
-                            <a href="/Calendario.html#sessoesViaZoom"><li>Sessões via Zoom</li></a>
-                            <a href="/Calendario.html#sessoesViaTeams"><li>Sessões via Teams</li></a>
-                            <a href="/Calendario.html#sessoesPresenciais"><li>Sessões presenciais</li></a>
-                        </ul>
-                    </div>
-                    <div id=areaDoLeitorLinks>
-                        <ul> Area do Leitor
-                            <a href="/AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
-                            <a href="/AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
-                            <a href="/AreaDoLeitor/Histórico.html"><li>Histórico</li></a>
-                            <a href="/AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
-                        </ul>
-                    </div>
+                <div class="resposta">
+                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
+                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
                 </div>
-                <div id=newsletter>
-                    <p>Subscreva a nossa newsletter</p>
-                    <form id=email>
-                        <div class="emailBox">
-                            <input id="emailInput" type="email" size="64" maxLength="64" required placeholder="example@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Escreva um endereço de email válido">
-                        </div>
-                        <button class="pointer" id=newsLetterButton value="Send Request" onclick="alert('Obrigado por subrever a nossa newsletter')">Subscrever</button>
-                    </form>
+            </div>
+            <div class="questao_resposta">
+                <div class="questao pointer last" onclick="open_answer(5)">
+                    <p>Tem algumas bibliotecas presenciais? Se sim, onde?</p>
+                    <img class="setaLink" src="/Imagens/AreaDoLeitor/Seta.svg">
+                </div>
+                <div class="resposta">
+                    <p>Para ajudares este projeto como volunário,é simples e fácil, basta acederes ao nosso formulário de voluntariado e preencheres com os teus dados.</p>
+                    <p>Assim, nós recebemos a tua intensão e contactamos-te.</p>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+
+        <!-- FIM Conteudo Area Leitor -->
+    </div>
+</div>
+
+<!--FIM de Conteudo-->
