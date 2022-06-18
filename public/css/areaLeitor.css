@@ -49,10 +49,12 @@
     background-color: #C6E4E2;
 }
 
-.areaLeitorContentContainer{
+.areaLeitorContentContainer {
     border-radius: 1vw;
     background-color: white;
     width: 65%;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
 }
 
 .flexboxStyle{
@@ -68,15 +70,34 @@
     align-items: center;
 }
 
+.favPerfil{
+    width: 100%;
+}
+
+.imgBackgroundPerfil {
+    width: 100%;
+    position: relative;
+}
+
+.imgBackgroundPerfil img{
+    width: 100%;
+}
 
 .imgPerfil{
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: 50%;
+    bottom: -40%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    padding: 1vw;
 }
 
 .imgPerfil img{
-    width: 5vw;
+    width: 100%;
     object-fit: fill;
     border: #467C79 dashed 0.2vw;
     border-radius: 100%;

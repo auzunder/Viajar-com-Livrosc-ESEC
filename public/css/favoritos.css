@@ -1,7 +1,7 @@
 .horizontalLine{
     display: flex;
     justify-content: space-around;
-    margin: 1vw 5vw;
+    /*margin: 1vw 5vw;*/
     border-top: 2px black solid;
     padding: 2vw 0;
 }
