@@ -1,0 +1,12 @@
+.amigoContentContainer{
+    width: 65%;
+    background-color: white;
+}
+
+p.AmigosTitle {
+    margin-top: 60px;
+    font-family: caveat;
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+}

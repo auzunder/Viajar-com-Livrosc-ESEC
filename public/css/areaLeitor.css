@@ -54,7 +54,7 @@
     background-color: white;
     width: 65%;
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 35% 65%;
 }
 
 .flexboxStyle{
@@ -72,6 +72,7 @@
 
 .favPerfil{
     width: 100%;
+    border-right: 2px solid black;
 }
 
 .imgBackgroundPerfil {
@@ -103,6 +104,44 @@
     border-radius: 100%;
 }
 
+
+p.nomePerfil {
+    width: 100%;
+    text-align: center;
+    margin-top: min(120px, 150px);
+}
+
+p.agendaPerfil {
+    width: 100%;
+    text-align: center;
+    font-family: Caveat;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.agendaLivros {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    overflow: auto;
+}
+
+.dataLivros{
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+    border-top: 1px solid black;}
+p.dataAgendado{
+    font-family: caveat;
+    font-size: 20px;
+}
+
+p.livroAgendado{
+    margin-top: 3px;
+    font-size: 11px;
+}
 
 /* ALERT */
 

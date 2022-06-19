@@ -1,26 +1,40 @@
-.horizontalLine{
-    display: flex;
-    justify-content: space-around;
-    /*margin: 1vw 5vw;*/
-    border-top: 2px black solid;
-    padding: 2vw 0;
+
+
+p.livrosFavoritos {
+    margin-top: 60px;
+    font-family: caveat;
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.favoritos {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.favoritosGrid{
+    width: calc(100% - 50px);
+    margin: auto;
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+	flex-wrap: wrap;
 }
 
 .bookSection{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+    margin-top: 25px;
+    min-height: 400px;
+    position: relative;
+    border-bottom: 1px solid #333;
 }
 
 .bookImageSection{
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
+    padding: 10px;
 }
 
 .bookImg{
     position: relative;
-    width: 16.5vw;
+    width: 100%;
     transition: 250ms;
     top: 0;
 }
@@ -30,10 +44,15 @@
     box-shadow: 0vw 0.5vw 1vw #467C79;
 }
 
-.bookName{
-    padding: 1.5vw;
-    font-size: 1.25vw;
-    border-bottom: solid 1px black;
+.bookName {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .buttonFav{
