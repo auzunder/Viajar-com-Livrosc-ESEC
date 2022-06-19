@@ -1,0 +1,62 @@
+
+.imgPerfilComentarios {
+    width: 100px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 30px;
+    border: #467C79 dashed 2px;
+}
+
+.imgPerfilComentarios img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.AmigosTitle{
+    margin-top: 30px !important;
+}
+
+.comentario {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #777;
+}
+
+p.nomeLivro {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+p.dataComentario {
+    font-size: 10px;
+    margin-top: 7px;
+    color: #777;
+}
+
+.comentarioInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.opcoesComentario {
+    display: flex;
+    line-height: 100%;
+    height: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.ComentSize {
+    height: 20px;
+    line-height: 20px;
+}
+
+.ComentSize img{
+    height: 100%;
+}

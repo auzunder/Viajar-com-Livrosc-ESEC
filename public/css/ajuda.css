@@ -57,3 +57,32 @@ h2{
 
 @media only screen and (max-width: 1000px) {
 }
+
+.ajudaContentContainer.marginTopBottom {
+    background-color: white;
+    border-radius: 1vw;
+    width: 65%;
+    padding: 20px 0;
+}
+
+.imgPerfilAjuda {
+    width: 100px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    border: #467C79 dashed 2px;
+}
+
+.imgPerfilAjuda img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.ajudaBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+}
