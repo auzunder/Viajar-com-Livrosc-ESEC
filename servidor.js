@@ -279,6 +279,7 @@ servidor.get("/amigos", function (req, res) {
     html += '<link type="text/css" rel="stylesheet" href="/css/amigo.css">';
     // JavaScript único para animações
     html += '<script src="/javascript/lottie.js"></script>';
+    html += '<script src="/javascript/amigos.js" defer></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag

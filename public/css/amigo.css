@@ -1,6 +1,9 @@
 .amigoContentContainer{
     width: 65%;
     background-color: white;
+    border-radius: 1vw;
+    min-height: 60vh;
+    padding-bottom: 50px;
 }
 
 p.AmigosTitle {
@@ -9,4 +12,54 @@ p.AmigosTitle {
     font-size: 40px;
     text-align: center;
     width: 100%;
+    line-height: 40px;
+}
+
+input#search-input {
+    display: flex;
+    margin: auto;
+    width: 60%;
+    margin-top: 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+input#search-input:focus-visible {
+    border: 2px solid black;
+}
+
+div#myTable {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    width: 70%;
+    margin: auto;
+    margin-top:30px ;
+}
+
+ .amigosContent {
+    padding-left: 0;
+    background-color: #C6E4E2;
+    padding: 10px;
+    list-style-type: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.imgAmigo {
+    width: 40%;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px dashed #467C79;
+}
+
+.amigosInfo {
+    margin-left: 15px;
+}
+
+.nomeAmigo{
+    font-size: 13px;
+    font-weight: 700;
 }
