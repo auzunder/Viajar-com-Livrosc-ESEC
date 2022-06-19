@@ -330,7 +330,7 @@ servidor.get("/historico", function(req, res) {
 })
 
 
-servidor.get("/help", function (req, res) {
+servidor.get("/ajuda", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
