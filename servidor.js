@@ -1047,7 +1047,7 @@ servidor.get("/forminscricao", function(req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
-})
+});
 
 // Processar o form Newsletter para JSON
 servidor.post('/processa_newsletter', function (req, res) {
