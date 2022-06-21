@@ -62,11 +62,11 @@
     </div>
     <div id=newsletter>
         <p>Subscreva a nossa newsletter</p>
-        <form id=email>
+        <form  method="POST" action="/processa_newsletter" id=email>
             <div class="emailBox">
-                <input id="emailInput" type="email" size="64" maxLength="64" required placeholder="example@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Escreva um endereço de email válido">
+                <input name="email" id="emailInput" type="email" size="64" maxLength="64" required placeholder="example@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Escreva um endereço de email válido">
             </div>
-            <button class="pointer" id=newsLetterButton value="Send Request" onclick="alert('Obrigado por subrever a nossa newsletter')">Subscrever</button>
+            <button type="submit" class="pointer" id=newsLetterButton>Subscrever</button>
         </form>
     </div>
 </div>

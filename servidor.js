@@ -2,6 +2,7 @@ const session = require('express-session');
 const express = require('express');
 const sha1 = require('sha1');
 const fs = require('fs');
+const readline = require('readline');
 
 const servidor = express();
 var porta = 8080;
@@ -38,17 +39,6 @@ const acabarHead = '</head><body>'
 const acabarHtml = '</body></html>'
 var head = fs.readFileSync('head.html', 'utf-8');
 
-var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
-var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
-var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
-var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
-var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
-var noticias_content = fs.readFileSync('Noticias/Noticias.html', 'utf-8');
-var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
-var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
-var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
-var conta_content = fs.readFileSync('InformacoesDeConta.html', 'utf-8');
-
 servidor.get("/", function (req, res) {
     // Tentar abrir ficheiro
     try {
@@ -68,8 +58,6 @@ servidor.get("/", function (req, res) {
     html += '<title> Home | Viajar com Livros </title>';
     // Css único da página
     html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
-    // JavaScript único para animações
-    html += '<script src="/javascript/lottie.js"></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag
@@ -113,74 +101,522 @@ servidor.get("/", function (req, res) {
 
 
 servidor.get("/sobre_nos", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title>Viajar com livros | Sobre</title>';
+    // Css único da página
+    html += '<link rel="stylesheet" href="css/sobre.css">';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += sobre_nos_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/calendario", function(req, res) {
+     // Tentar abrir ficheiro
+    try {
+        var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title>Viajar com livros | Calendário</title>';
+    // Css único da página
+    html += '<link rel="stylesheet" href="css/calendario.css">';
+    // JavaScript unico da página
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += calendario_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/biblioteca", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Biblioteca | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/biblioteca.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += biblioteca_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
+
 })
 
 servidor.get("/fotografias", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Home | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link rel="stylesheet" type="text/css" href="css/galeria.css">';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += galeria_foto_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/videos", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Galeria Videos | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/videos.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += galeria_video_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/noticias", function(req, res) {
+   
+    // Tentar abrir ficheiro
+    try {
+        var noticias_content = fs.readFileSync('Noticias/Noticias.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Home | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += noticias_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/voluntariado-1", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Home | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += voluntariado_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/voluntariado-2", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Home | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += voluntariado2_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
 servidor.get("/voluntariado-3", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Home | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
     html += voluntariado3_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
 })
 
@@ -205,8 +641,6 @@ servidor.get("/conta", function (req, res) {
     // Css único da página
     html += '<link type="text/css" rel="stylesheet" href="/css/infoConta.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
-    // JavaScript único para animações
-    html += '<script src="/javascript/lottie.js"></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag
@@ -268,8 +702,6 @@ servidor.get("/favoritos", function (req, res) {
     // Css único da página
     html += '<link type="text/css" rel="stylesheet" href="/css/favoritos.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
-    // JavaScript único para animações
-    html += '<script src="/javascript/lottie.js"></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag
@@ -333,7 +765,6 @@ servidor.get("/amigos", function (req, res) {
     html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/amigo.css">';
     // JavaScript único para animações
-    html += '<script src="/javascript/lottie.js"></script>';
     html += '<script src="/javascript/amigos.js" defer></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
@@ -398,8 +829,6 @@ servidor.get("/comentarios", function (req, res) {
     html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/amigo.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/comentarios.css">';
-    // JavaScript único para animações
-    html += '<script src="/javascript/lottie.js"></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag
@@ -512,29 +941,41 @@ servidor.get("/ajuda", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get('/newsletter_form', function (req, res) {
-    var email = req.query.email;
-    res.type('html');
-    var html = "";
-    html += topo;
-    if (email) {
-        html += 'email: ' + email + '<br>\n';
-        var dados = email + ";";
-        //experimentar com fs.writeFile() em vez de fs.appendFile()
-        fs.appendFile('dados.txt', dados, function (err) {
-            if (err) {
-                console.error("erro ao guardar os dados no servidor");
+// Processar o form Newsletter para JSON
+servidor.post('/processa_newsletter', function (req, res) {
+    const {email} = req.body;
+    var emails = [];
+    // Ler ficheiro atual JSON
+    fs.readFile('Newsletter_Emails.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            emails_JSON = JSON.parse(data);
+            for(var i in emails_JSON){
+                emails.push(emails_JSON[i]);
             }
-            else {
-                console.log("dados guardados com sucesso no servidor");
+            if (emails.includes(email)){
+                console.log("O email inserido já foi enviado anteriormente")
+                res.send("O email inserido já foi enviado anteriormente");
+            }else{
+                emails.push(email);
+                // Escrever tudo de novo no JSON
+                json = JSON.stringify(Object.assign({}, emails));
+                console.log(json);
+                fs.writeFile('Newsletter_Emails.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.error("erro ao guardar os dados no servidor");
+                        res.send("erro ao guardar os dados no servidor");
+                    }
+                    else {
+                        console.log("Dados guardados com sucesso no servidor");
+                        res.send("Dados guardados com sucesso no servidor");
+                    };
+                });
             }
-        });
-    }
-    else {
-        html += '<p>por favor, preencha os dados todos</p>\n';
-    }
-    html += fundo;
-    res.send(html);
+            console.log(emails.includes(email));
+        }
+    });
 });
 
 
