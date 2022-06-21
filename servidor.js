@@ -404,11 +404,9 @@ servidor.get("/noticias", function(req, res) {
     // Abrir <head> tag
     html += head;
     // Titulo da página
-    html += '<title> Home | Viajar com Livros </title>';
+    html += '<title> Noticias | Viajar com Livros </title>';
     // Css único da página
-    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
-    // JavaScript para dados de Sessões de Livros
-    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    html += '<link type="text/css" rel="stylesheet" href="/css/noticias.css">';
     // Finalizar <head> tag
     html += acabarHead;
     // div wrapper 
