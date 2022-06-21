@@ -1010,8 +1010,8 @@ servidor.get("/forminscricao", function(req, res) {
     html += '<title> Formulário de inscrição | Viajar com Livros </title>';
     // Css único da página
     html += '<link rel="stylesheet" type="text/css" href="css/inscricao.css">';
-    html += '<link rel="stylesheet" type="text/css" href="css/structure">';
-    html += '<link rel="stylesheet" type="text/css" href="css/areaLeitor">';
+    html += '<link rel="stylesheet" type="text/css" href="css/structure.css">';
+    html += '<link rel="stylesheet" type="text/css" href="css/areaLeitor.css">';
     // Finalizar <head> tag
     html += acabarHead;
     // div wrapper 
