@@ -444,7 +444,7 @@ servidor.get("/noticias", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado-1", function(req, res) {
+servidor.get("/voluntariado_Page1", function(req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
@@ -460,11 +460,11 @@ servidor.get("/voluntariado-1", function(req, res) {
     // Abrir <head> tag
     html += head;
     // Titulo da página
-    html += '<title> Home | Viajar com Livros </title>';
+    html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
-    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
+    html += '<link rel="stylesheet" href="css/forms.css"><link rel="stylesheet" href="css/infoConta.css">';
     // JavaScript para dados de Sessões de Livros
-    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    html += '<script src="/javascript/forms.js"></script>';
     // Finalizar <head> tag
     html += acabarHead;
     // div wrapper 
@@ -502,7 +502,7 @@ servidor.get("/voluntariado-1", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado-2", function(req, res) {
+servidor.get("/voluntariado_Page2", function(req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
@@ -518,7 +518,7 @@ servidor.get("/voluntariado-2", function(req, res) {
     // Abrir <head> tag
     html += head;
     // Titulo da página
-    html += '<title> Home | Viajar com Livros </title>';
+    html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
     html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
     // JavaScript para dados de Sessões de Livros
@@ -560,7 +560,7 @@ servidor.get("/voluntariado-2", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado-3", function(req, res) {
+servidor.get("/voluntariado_Page3", function(req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
@@ -576,7 +576,7 @@ servidor.get("/voluntariado-3", function(req, res) {
     // Abrir <head> tag
     html += head;
     // Titulo da página
-    html += '<title> Home | Viajar com Livros </title>';
+    html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
     html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
     // JavaScript para dados de Sessões de Livros

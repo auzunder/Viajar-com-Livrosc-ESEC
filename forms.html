@@ -1,221 +1,94 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta  charset="UTF-8">
-        <title>Viajar com Livros | Voluntariado</title>
-        <link type="text/css" rel="stylesheet" href='https://fonts.googleapis.com/css?family=Caveat'>
-        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro" />
-        <link type="text/css" rel="stylesheet" href="css/structure.css">
-        <link rel="stylesheet" href="css/forms.css">
-        <link rel="stylesheet" href="css/infoConta.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="/javascript/Structure.js"></script>
-        <script src="/javascript/NavbarAnimation.js"></script>
-        <script src="javascript/forms.js"></script>
-        <meta name="keywords" content="viajar, livros, ESEC, Coimbra, Cabo, Verde, Projeto, CDM">
-    </head>
-    <body>
-        <div id="wrapper">
-            <header>
-                <div class="topnav" id="myTopnav">
-                    <a href="Home.html" id="logo"><img width="100%" height="100%" style="object-fit: contain;" src="/Imagens/Logo.png"></a>
-                    <a href="SobreOProjeto.html" class="HOVER responsiveHeight active"><span></span><text>Sobre Nós</text></a>
-                    <a href="Calendario.html" class="HOVER responsiveHeight"><span></span><text>Calendário</text></a>
-                    <a href="Biblioteca/Biblioteca.html" class="HOVER responsiveHeight"><span></span><text>Biblioteca</text></a>
-                    <div class="dropdown responsiveHeight" >
-                        <button class="dropbtn HOVER">
-                            <span></span>
-                            <text>Galeria</text>
-                        </button>
-                        <div class="dropdown-content" id="GaleriaDropdown-content">
-                            <a href="Fotografias.html" class="galeriaMenu">Fotografias</a>
-                            <a href="videos.html" class="galeriaMenu">Videos</a>
-                            <a href="https://www.facebook.com/aprendizagemEcooperacao/photos/?ref=page_internal" target="_blank" class="galeriaMenu">Galeria Facebook</a>
-                        </div>
+<div id=container>
+    <div id="ghost"></div>
+    <!--Conteudo-->
+    <div class="forms-content">
+        <div class="forms-content-wrap">
+            <div class="forms-content-dados">
+                <p class="forms-num">1</p>
+                <p class="forms-text">Dados Pessoais</p>
+            </div>
+            <div class="forms-content-dados form-nao-selecionado">
+                <p class="forms-num form-border-unselected">2</p>
+                <p class="forms-text">Documentos</p>
+            </div>
+            <div class="forms-content-dados form-nao-selecionado">
+                <p class="forms-num form-border-unselected">3</p>
+                <p class="forms-text">Confirmação</p>
+            </div>
+        </div>
+    </div>
+    <p class="info-pessoal">Informação Pessoal</p>
+    <div class="info-content">
+        <div class="info-content-img">
+            <div class="form-img">
+                <img src="Imagens/Forms/addimg.svg" alt="Fotografia de Perfil" id="output">
+                <input name="photo" class="imgPerfil" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+            </div>
+        </div>
+        <div class="info-content-campos">
+            <form action="forms2.html"  method="get" class="form-insc">
+                <div class="input-placement">
+                    <input type="text" id="Nome" name="Nome" required class="form-input-style">
+                    <span class="span-text">Nome</span>
+                </div>
+                <div class="info-data">
+                    <p>Data de Nascimento</p>
+                    <div class="info-data-wrap">
+                    <input type="number" name="diaNasc" class="dt-nasc" id="diaNasc" min="01" max="31" required maxlength ='2' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' >
+                    <input type="number" name="mesNasc" class="dt-nasc" id="mesNasc" min="01" max="12" required maxlength ='2' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' >
+                    <input type="number" name="anoNasc" class="dt-nasc" id="anoNasc" min="1930" max="2023"required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' > 
                     </div>
-                    <a href="Noticias/Noticias.html" class="HOVER responsiveHeight"><span></span><text>Noticias</text></a>
-                    <a href="AreaDoLeitor/InformaçoesDeConta.html" id="areaLeitorAnchor"><div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">
-                        <div id="leitorText">Area do Leitor</div>
-                        <img id="leitorIcon" src="Imagens/Icons/AreaLeitor.svg">
-                    </div></a>
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
                 </div>
-            </header>
+                <div class="input-placement">
+                    <input type="text" id="Morada" name="Morada" required class="form-input-style">
+                    <span class="span-text">Morada</span>
+                </div>
+                <div class="info-morada">
+                    <div class="input-placement info-localidade">
+                        <input type="text" id="Localidade" name="Localidade" required class="form-input-style">
+                        <span class="span-text">Localidade</span>
+                    </div>
+                    <div class="input-placement info-codigo">
+                        <p>Código Postal</p>
+                        <input type="number" id="codPostal4" name="codPostal4" required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth">
 
-            <div id=container>
-                <div id="ghost"></div>
+                        <input type="number" id="codPostal3" name="codPostal3" required maxlength ='3' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth" >
+                    </div>
+                </div>
+                <div class="input-placement">
+                    <input type="email" id="Email" name="Email" required class="form-input-style">
+                    <span class="span-text">E-mail</span>
+                </div>
+                <div class="input-placement">
+                    <input type="tel" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
+                    <span class="span-text">Telemóvel</span>
+                </div>
+                <p class="genero">Género</p class>
 
-                <!--Conteudo-->
-<div class="forms-content">
-    <div class="forms-content-wrap">
-        <div class="forms-content-dados">
-            <p class="forms-num">1</p>
-            <p class="forms-text">Dados Pessoais</p>
-        </div>
-        <div class="forms-content-dados form-nao-selecionado">
-            <p class="forms-num form-border-unselected">2</p>
-            <p class="forms-text">Documentos</p>
-        </div>
-        <div class="forms-content-dados form-nao-selecionado">
-            <p class="forms-num form-border-unselected">3</p>
-            <p class="forms-text">Confirmação</p>
-        </div>
-    </div>
-</div>
+            <div class="info-genero">
+                <div class="info-genero-feminino">
+                <input type="radio" name="genero" value="feminino">
+                <label for="feminino">Feminino</label>
+                </div>
 
-<p class="info-pessoal">Informação Pessoal</p>
-
-<div class="info-content">
-    <div class="info-content-img">
-        <div class="form-img">
-            <img src="Imagens/Forms/addimg.svg" alt="Fotografia de Perfil" id="output">
-            <input name="photo" class="imgPerfil" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
-        </div>
-
-    </div>
-    <div class="info-content-campos">
-        <form action="forms2.html"  method="get" class="form-insc">
-            <div class="input-placement">
-                <input type="text" id="Nome" name="Nome" required class="form-input-style">
-                <span class="span-text">Nome</span>
-            </div>
-            <div class="info-data">
-                <p>Data de Nascimento</p>
-                <div class="info-data-wrap">
-                  <input type="number" name="diaNasc" class="dt-nasc" id="diaNasc" min="01" max="31" required maxlength ='2' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' >
-                  <input type="number" name="mesNasc" class="dt-nasc" id="mesNasc" min="01" max="12" required maxlength ='2' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' >
-                  <input type="number" name="anoNasc" class="dt-nasc" id="anoNasc" min="1930" max="2023"required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' > 
+                <div class="info-genero-masculino">
+                <input type="radio" name="genero" value="masculino"  >
+                <label for="masculino">Masculino</label>
                 </div>
             </div>
-            <div class="input-placement">
-                <input type="text" id="Morada" name="Morada" required class="form-input-style">
-                <span class="span-text">Morada</span>
-            </div>
-            <div class="info-morada">
-                <div class="input-placement info-localidade">
-                    <input type="text" id="Localidade" name="Localidade" required class="form-input-style">
-                    <span class="span-text">Localidade</span>
-                </div>
-                <div class="input-placement info-codigo">
-                    <p>Código Postal</p>
-                    <input type="number" id="codPostal4" name="codPostal4" required maxlength ='4' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth">
-
-                    <input type="number" id="codPostal3" name="codPostal3" required maxlength ='3' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style codPostalwidth" >
+            
+            <div class="required-fields">
+                <div class="required-fields-right">
+                    <p>*Campos de preenchimento obrigatório</p>
+            
+                    <div class="next">
+                            <input type="submit" onclick="saveData()" class="next-button boxInnerOutterShadow" value="Seguinte">
+                    </div>
                 </div>
             </div>
-            <div class="input-placement">
-                <input type="email" id="Email" name="Email" required class="form-input-style">
-                <span class="span-text">E-mail</span>
-            </div>
-            <div class="input-placement">
-                <input type="tel" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
-                <span class="span-text">Telemóvel</span>
-            </div>
-            <p class="genero">Género</p class>
-
-        <div class="info-genero">
-            <div class="info-genero-feminino">
-            <input type="radio" name="genero" value="feminino">
-            <label for="feminino">Feminino</label>
-            </div>
-
-            <div class="info-genero-masculino">
-            <input type="radio" name="genero" value="masculino"  >
-            <label for="masculino">Masculino</label>
-            </div>
-        </div>
-        
-        <div class="required-fields">
-            <div class="required-fields-right">
-                <p>*Campos de preenchimento obrigatório</p>
-        
-                <div class="next">
-                        <input type="submit" onclick="saveData()" class="next-button boxInnerOutterShadow" value="Seguinte">
-                </div>
-            </div>
-        </div>
-    </form>
-
+        </form>
     </div>
     <img src="/Imagens/voluntariado.png" alt="Voluntariado" class="voluntario-img" >
 </div>
-
-
-                <!--FIM de Conteudo-->
-
-            </div>
-
-            
-            
-      <div id="setaCima"><a href="#wrapper" onclick="setaParaCimaFun()"><img src="/Imagens/setaParaCima.svg" alt="Back to top"></a></div>
-
-      <div id=patrocinadores>
-          <div id=patrocinadoresCln1>
-              <a href="https://www.ces.uc.pt/pt" target="_blank"><img src="/Imagens/Patrocinadores/CES.png"></a>
-              <a href="https://www.cvunesco.org/" target="_blank"><img src="/Imagens/Patrocinadores/CNCV.png"></a>
-              <a href="https://colegiobomjesus.pt/" target="_blank"><img src="/Imagens/Patrocinadores/Colégio bom jesus.png"></a>
-              <a href="https://www.cm-condeixa.pt/" target="_blank"><img src="/Imagens/Patrocinadores/Condeixa.png"></a>
-              <a href="https://www.esec.pt/" target="_blank"><img src="/Imagens/Patrocinadores/ESEC.png"></a>
-              <a href="https://www.fmam.pt/" target="_blank"><img src="/Imagens/Patrocinadores/FMAM_preto_lg.svg"></a>
-              <a href="https://www.instituto-camoes.pt/" target="_blank"><img src="/Imagens/Patrocinadores/icamoes.png"></a>
-          </div>
-          <div id=patrocinadoresCln2>
-              <a href="https://kinder.ces.uc.pt/" target="_blank"><img src="/Imagens/Patrocinadores/logo_kinder.svg"></a>
-              <a href="#" target="_blank"><img src="/Imagens/Patrocinadores/Leitura cabo verde.png"></a>
-              <a href="https://www.pnl2027.gov.pt/np4/home" target="_blank"><img src="/Imagens/Patrocinadores/PlanoNacionalDeLeitura.svg"></a>
-              <a href="https://minedu.gov.cv/" target="_blank"><img src="/Imagens/Patrocinadores/ministerio-da-educacao.png"></a>
-              <a href="https://www.mota-engil.com/" target="_blank"><img src="/Imagens/Patrocinadores/Mota-Engil.png"></a>
-              <a href="https://www.ipc.pt/ipc/" target="_blank"><img src="/Imagens/Patrocinadores/Pol-Coimbra.png"></a>
-              <a href="https://www.cm-condeixa.pt/rbcondeixa/" target="_blank"><img src="/Imagens/Patrocinadores/Rede de Bibliotecas de Condeixa.png"></a>
-          </div>
-      </div>
-      <div id=rodape>
-        <div id=social>
-            <div id=icons>
-                <a href="https://www.facebook.com/aprendizagemEcooperacao" target="_blank"><img src="/Imagens/Icons/Face.svg"></a>
-                <a href="https://www.instagram.com/" target="_blank"><img src="/Imagens/Icons/Insta.svg"></a>
-                <a href="https://www.youtube.com/" target="_blank"><img src="/Imagens/Icons/Youtube.svg"></a>
-            </div>
-            <p>Viajar com livros @ 2021</p>
-        </div>
-        <div id=hyperlinks>
-            <div id=sobreOProjetoLinks>
-                <ul> Sobre o Projeto 
-                    <a href="/SobreOProjeto.html#fundadores"><li class=first>Fundadores</li></a>
-                    <a href="/SobreOProjeto.html#objetivos"><li>Objetivos</li></a>
-                    <a href="/SobreOProjeto.html#contactos"><li>Localização e Contactos</li></a>
-                    <a href="/SobreOProjeto.html#contadores"><li>Contadores de Histórias</li></a>
-                    <a href="/forms.html"><li>Voluntariado</li></a>
-                </ul>
-            </div>
-            <div id=calendarioLinks>
-                <ul> Calendário
-                    <a href="/Calendario.html#sessoesHoje"><li class=first>Sessões hoje</li></a>
-                    <a href="/Calendario.html#sessoesSemana"><li>Sessões próximos 7 dias</li></a>
-                    <a href="/Calendario.html#sessoesViaZoom"><li>Sessões via Zoom</li></a>
-                    <a href="/Calendario.html#sessoesViaTeams"><li>Sessões via Teams</li></a>
-                    <a href="/Calendario.html#sessoesPresenciais"><li>Sessões presenciais</li></a>
-                </ul>
-            </div>
-            <div id=areaDoLeitorLinks>
-                <ul> Area do Leitor
-                    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><li class=first>Informações de conta</li></a>
-                    <a href="/AreaDoLeitor/Favoritos.html"><li>Favoritos</li></a>
-                    <a href="/AreaDoLeitor/Histórico.html"><li>Histórico</li></a>
-                    <a href="/AreaDoLeitor/Ajuda.html"><li>Ajuda</li></a>
-                </ul>
-            </div>
-        </div>
-        <div id=newsletter>
-            <p>Subscreva a nossa newsletter</p>
-            <form id=email>
-                <div class="emailBox">
-                    <input id="emailInput" type="email" size="64" maxLength="64" required placeholder="example@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Escreva um endereço de email válido">
-                </div>
-                <button class="pointer" id=newsLetterButton value="Send Request" onclick="alert('Obrigado por subrever a nossa newsletter')">Subscrever</button>
-            </form>
-        </div>
-    </div>
-  </div>
-</body>
-</html>
+<!--FIM de Conteudo-->
+</div>
