@@ -937,6 +937,64 @@ servidor.get("/ajuda", function (req, res) {
     //log(req.session.username, req.path);
 });
 
+servidor.get("/forminscricao", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var form_inscricao_content = fs.readFileSync('forminscricao.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
+    var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Formulário de inscrição | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link rel="stylesheet" type="text/css" href="css/inscricao.css">';
+    html += '<link rel="stylesheet" type="text/css" href="css/structure">';
+    html += '<link rel="stylesheet" type="text/css" href="css/areaLeitor">';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
+    html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
+    html += form_inscricao_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
+    html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
+    res.send(html);
+})
+
 // Processar o form Newsletter para JSON
 servidor.post('/processa_newsletter', function (req, res) {
     const {email} = req.body;
