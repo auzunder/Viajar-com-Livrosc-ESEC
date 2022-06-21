@@ -462,9 +462,9 @@ servidor.get("/voluntariado_Page1", function(req, res) {
     // Titulo da página
     html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
-    html += '<link rel="stylesheet" href="css/forms.css"><link rel="stylesheet" href="css/infoConta.css">';
+    html += '<link rel="stylesheet" href="css/forms2.css"><link rel="stylesheet" href="css/infoConta.css">';
     // JavaScript para dados de Sessões de Livros
-    html += '<script src="/javascript/forms.js"></script>';
+    html += '<script src="/javascript/forms.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
     // Finalizar <head> tag
     html += acabarHead;
     // div wrapper 
@@ -578,9 +578,7 @@ servidor.get("/voluntariado_Page3", function(req, res) {
     // Titulo da página
     html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
-    html += '<link type="text/css" rel="stylesheet" href="/css/home.css">';
-    // JavaScript para dados de Sessões de Livros
-    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    html += '<link rel="stylesheet" href="css/forms3.css"><link rel="stylesheet" href="css/infoConta.css">';
     // Finalizar <head> tag
     html += acabarHead;
     // div wrapper 
