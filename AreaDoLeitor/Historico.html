@@ -1,0 +1,282 @@
+<!-- Registo de utilizador -->
+
+            <div id="registoPopUp" class="registerUser">
+                <div class="registo">
+                    <div class="registoContent">
+                        <div id="animacaoSessao" class="animacaoSessao">
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animacaoSessao"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_II.json"
+                                })
+                            </script>
+                        </div>
+                        <form class="form">
+                            <input id="nome" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')">
+                            <input id="emailReg" class="inputInfo" type="email" placeholder="Email" required maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
+                            <input id="password1" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')">
+                            <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required oninput="this.setCustomValidity('')">
+                            <button class="botaoForm" type="submit" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
+                            <p class="alternativa">Tens conta? <a href="#" onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIM de Registo de utilizador -->
+
+            <!-- Iniciar Sessão -->
+
+            <div id="iniciarSessaoPopUp" class="registerUser">
+                <div class="registo">
+                    <div class="registoContent">
+                        <div id="animacaoSessao2" class="animacaoSessao">
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("animacaoSessao2"),
+                                    renderer:"svg",
+                                    loop: true,
+                                    autoplay: true,
+                                    path: "/Imagens/Animações/Animação_II.json"
+                                })
+                            </script>
+                        </div>
+                        <form class="form">
+                            <input id="name" class="inputInfo" type="text" placeholder="Nome" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('É necessário que prencher o nome');">
+                            <input id="password" class="inputInfo" type="password" placeholder="Password" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('A password não pode estar vazia');">
+                            <button class="botaoForm" type="submit" onclick="fechar('iniciarSessaoPopUp', true)">Iniciar Sessão</button>
+                            <p class="alternativa">Não tens conta? <a href="#" onclick="abrirFechar('registoPopUp' ,'iniciarSessaoPopUp', false)"> Registar</a>.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIM de Iniciar Sessão -->
+
+            <div id=container>
+                <div id="ghost"></div>
+
+                <!-- ALERT UI ONLY -->
+                
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>ATENÇÃO!</strong> Esta secção de website é apenas para demonstração por não existir base de dados. Mesmo assim optámos por fazer uma demonstração de UX/UI.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--Conteudo-->
+                
+                <div class="separadorAreaLeitor marginTop">
+                    <img src="/Imagens/AreaDoLeitor/SeparadorAreaLeitor.svg">
+                </div>
+                <div class="navBarAreaLeitor marginTop">
+                    <a href="/AreaDoLeitor/InformaçoesDeConta.html"><text>Conta</text></a>
+                    <a href="/AreaDoLeitor/Favoritos.html"><text>Favoritos</text></a>
+                    <a href="/AreaDoLeitor/Histórico.html"><text class="ativo">Histórico</text></a>
+                    <a href="/AreaDoLeitor/Ajuda.html"><text>Ajuda</text></a>
+                </div>
+
+                <div class="areaLeitorBackground marginTopBottom">
+                    <div class="areaLeitorContentContainer marginTopBottom">
+                        <!-- Conteudo Area Leitor -->
+
+                        <div class="imgPerfil">
+                            <img src="/Imagens/AreaDoLeitor/fotoPerfil.png">
+                        </div>
+
+                        
+                        <div class="hitoricoBlock">
+                            <div class="separador">
+                                <img src="/Imagens/AreaDoLeitor/Separador_Ontem.svg">
+                            </div>
+                            <div class="historicoSessoes">
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00001.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>O Principezinho</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00002.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>Todos devemos ser feministas</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00003.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>Posso cheirar-te o rabo?</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hitoricoBlock">
+                            <div class="separador">
+                                <img src="/Imagens/AreaDoLeitor/Separador_SemanaPassada.svg">
+                            </div>
+                            <div class="historicoSessoes">
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00004.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>O leão que temos cá dentro</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00005.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>Baleira na banheira</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="livroSection">
+                                    <div class="livro">
+                                        <a href="#">
+                                            <div class="bookHistoricoImg">
+                                                <img src="/Imagens/Calendário/Livro_00006.jpg">
+                                            </div>
+                                            <div class="bookHistoricoContent">
+                                                <div class="bookHistoricoTitle">
+                                                    <h3>A máquina de retrato</h2>
+                                                </div>
+                                                <div class="bookHistoricoSessionInfo">
+                                                    <div class="infoLine">
+                                                        <p class="strong">Hora:</p>
+                                                        <p>11h20</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Duração:</p>
+                                                        <p>120 min</p>
+                                                    </div>
+                                                    <div class="infoLine">
+                                                        <p class="strong">Orador:</p>
+                                                        <p>Nome Completo do/a Orador/a</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FIM Conteudo Area Leitor -->
+                    </div>
+                </div>
+
+                <!--FIM de Conteudo-->
+
+            </div>

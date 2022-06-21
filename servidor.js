@@ -869,7 +869,7 @@ servidor.get("/comentarios", function (req, res) {
 servidor.get("/historico", function(req, res) {
     // Tentar abrir ficheiro
     try {
-        var historico_content = fs.readFileSync('Histórico.html', 'utf-8');
+        var historico_content = fs.readFileSync('AreaDoLeitor/Historico.html', 'utf-8');
     }
     // Caso nao consiga da log do erro
     catch (error){
@@ -882,10 +882,10 @@ servidor.get("/historico", function(req, res) {
     // Abrir <head> tag
     html += head;
     // Titulo da página
-    html += '<title> Comentários | Viajar com Livros </title>';
+    html += '<title> Histórico | Viajar com Livros </title>';
     html += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';
     // Css único da página
-    html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css"><link type="text/css" rel="stylesheet" href="/css/historico.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/historico.css">';
     html += '<script src="/javascript/IniciarSessao.js"></script>';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
