@@ -1,3 +1,368 @@
+* {
+    font-family: Maven Pro;
+}
+
+.marginTop {
+    margin-top: 1.5vw;
+}
+
+.marginTopBottom {
+    margin: 1.5vw 0;
+}
+
+.separadorAreaLeitor {
+    width: 100%;
+}
+
+.separadorAreaLeitor img {
+    width: 100%;
+    margin: 0;
+}
+
+.navBarAreaLeitor {
+    display: flex;
+    background-color: #E5E5E5;
+    padding: 0 10%;
+    justify-content: space-evenly;
+}
+
+.navBarAreaLeitor a {
+    padding: 0.5vw 1vw;
+    text-decoration: none;
+}
+
+.navBarAreaLeitor a text {
+    font-size: 1.5vw;
+    line-height: 2vw;
+    color: black;
+    opacity: 0.5;
+}
+
+.ativo {
+    opacity: 1 !important;
+}
+
+.areaLeitorBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+}
+
+.areaLeitorContentContainer {
+    border-radius: 1vw;
+    background-color: white;
+    width: 65%;
+}
+
+.flexboxStyle {
+    display: flex;
+}
+
+.flexflowColumn {
+    flex-flow: column;
+}
+
+.spacebetween {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.imgPerfil {
+    display: flex;
+    justify-content: center;
+    padding: 1vw;
+}
+
+.imgPerfil img {
+    width: 5vw;
+    object-fit: fill;
+    border: #467C79 dashed 0.2vw;
+    border-radius: 100%;
+}
+
+
+/* ALERT */
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-dismissible {
+    padding-right: 4rem;
+}
+
+.fade {
+    transition: opacity .15s linear;
+}
+
+.alert {
+    position: relative;
+    padding: 1vw 1.25vw;
+    margin-bottom: 1vw;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: 1vw;
+}
+
+.alert strong {
+    font-weight: 900;
+    font-size: 1vw;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1vw 1.25vw;
+    color: inherit;
+}
+
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled),
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+.close {
+    float: right;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.close span {
+    font-size: 2vw;
+}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.registerUser {
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes sessaoIn {
+    from {
+        top: 50vh;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.registo {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+    padding: 1.5vw;
+    border-radius: 1.25vw;
+    animation: sessaoIn 300ms ease-out;
+}
+
+.registoContent {
+    border: #fff dashed 2px;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.animacaoSessao,
+.form {
+    flex: 1;
+}
+
+.animacaoSessao {
+    height: 100%;
+    width: 20vw;
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 1.5vw;
+    width: 80%;
+    text-align: center;
+    align-items: center;
+}
+
+.inputInfo,
+.botaoForm {
+    margin: 0.5vw;
+    padding: 0.5vw;
+    font-size: 1vw;
+}
+
+.alternativa,
+.alternativa a {
+    font-size: 0.75vw;
+}
+
+.inputInfo {
+    border-radius: 0.5vw;
+    border: #000 1px solid;
+    background-color: transparent;
+    line-height: 1vw;
+    width: -webkit-fill-available;
+}
+
+.botaoForm {
+    line-height: 100%;
+    border-radius: 0.5vw;
+    border: #000 1px solid;
+    background-color: black;
+    color: white;
+    line-height: 1vw;
+    width: 75%;
+}
+
+@media only screen and (max-width: 1275px) {
+    .responsiveToColumn {
+        flex-flow: column;
+    }
+
+    .navBarAreaLeitor a text {
+        font-size: 3vw;
+        line-height: 4vw;
+    }
+
+    .alert,
+    .alert strong {
+        font-size: 2vw;
+        line-height: 2.75vw;
+    }
+
+    .close span {
+        font-size: 5vw;
+    }
+
+    .animacaoSessao {
+        width: 40vw;
+    }
+
+    .registo {
+        border-radius: 5vw;
+        padding: 3.5vw;
+    }
+
+    .registoContent {
+        border-radius: 2.5vw;
+    }
+
+    .form {
+        padding: 3.5vw;
+    }
+
+    .inputInfo,
+    .botaoForm {
+        margin: 0.5vw;
+        padding: 0.5vw;
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+
+    .alternativa,
+    .alternativa a {
+        font-size: 2vw;
+    }
+
+    .inputInfo {
+        border-radius: 1vw;
+    }
+
+    .botaoForm {
+        line-height: 100%;
+        border-radius: 1vw;
+        font-size: 2vw;
+        line-height: 2vw;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .navBarAreaLeitor a text,
+    .alert,
+    .alert strong {
+        font-size: 4vw;
+        line-height: 5vw;
+    }
+
+    .close span {
+        font-size: 10vw;
+    }
+
+    .animacaoSessao {
+        width: 60vw;
+    }
+
+    .registo {
+        border-radius: 5vw;
+        padding: 5.25vw;
+    }
+
+    .registoContent {
+        border-radius: 4vw;
+    }
+
+    .form {
+        padding: 5.25vw;
+        width: 80%;
+    }
+
+    .inputInfo,
+    .botaoForm {
+        margin: 2vw;
+        padding: 1vw;
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+
+    .alternativa,
+    .alternativa a {
+        font-size: 3vw;
+    }
+
+    .inputInfo {
+        border-radius: 1.5vw;
+    }
+
+    .botaoForm {
+        line-height: 100%;
+        border-radius: 1.5vw;
+        font-size: 4vw;
+        line-height: 4vw;
+        width: 75%;
+    }
+}
 h3{
     font-size: 2vw;
     line-height: 4vw;
@@ -83,6 +448,371 @@ h3{
 .infoLine{
     padding: 0.25vw;
     display: flex;
+}
+
+.marginTop{
+    margin-top: 1.5vw;
+}
+
+.marginTopBottom{
+    margin: 1.5vw 0;
+}
+
+.separadorAreaLeitor{
+    width: 100%;
+}
+
+.separadorAreaLeitor img{
+    width: 100%;
+    margin: 0;
+}
+
+.navBarAreaLeitor{
+    display: flex;
+    background-color: #E5E5E5;
+    padding: 0 10%;
+    justify-content: space-evenly;
+}
+
+.navBarAreaLeitor a{
+    padding: 0.5vw 1vw;
+    text-decoration: none;
+}
+
+.navBarAreaLeitor a text{
+    font-size: 1.5vw;
+    line-height: 2vw;
+    color: black;
+    opacity: 0.5;
+}
+
+.ativo{
+    opacity: 1 !important;
+}
+
+.areaLeitorBackground{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+}
+
+.flexboxStyle{
+    display: flex;
+}
+
+.flexflowColumn{
+    flex-flow: column;
+}
+
+.spacebetween{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.favPerfil{
+    width: 100%;
+    border-right: 2px solid black;
+}
+
+.imgBackgroundPerfil {
+    width: 100%;
+    position: relative;
+}
+
+.imgBackgroundPerfil img{
+    width: 100%;
+}
+
+
+
+p.nomePerfil {
+    width: 100%;
+    text-align: center;
+    margin-top: min(120px, 150px);
+}
+
+p.agendaPerfil {
+    width: 100%;
+    text-align: center;
+    font-family: Caveat;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.agendaLivros {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    overflow: auto;
+}
+
+.dataLivros{
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+    border-top: 1px solid black;}
+p.dataAgendado{
+    font-family: caveat;
+    font-size: 20px;
+}
+
+p.livroAgendado{
+    margin-top: 3px;
+    font-size: 11px;
+}
+
+/* ALERT */
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-dismissible {
+    padding-right: 4rem;
+}
+
+.fade {
+    transition: opacity .15s linear;
+}
+
+.alert {
+    position: relative;
+    padding: 1vw 1.25vw;
+    margin-bottom: 1vw;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: 1vw;
+}
+
+.alert strong{
+    font-weight: 900;
+    font-size: 1vw;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1vw 1.25vw;
+    color: inherit;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.close {
+    float: right;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.close span{font-size: 2vw;}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.registerUser{
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes sessaoIn {
+    from{
+        top: 50vh;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.registo{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #C6E4E2;
+    padding: 1.5vw;
+    border-radius: 1.25vw;
+    animation: sessaoIn 300ms ease-out;
+}
+
+.registoContent{
+    border: #fff dashed 2px;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.animacaoSessao, .form{
+    flex: 1;
+}
+
+.animacaoSessao{
+    height: 100%;
+    width: 20vw;
+}
+
+.form{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 1.5vw;
+    width: 80%;
+    text-align: center;
+    align-items: center;
+}
+
+.inputInfo, .botaoForm{
+    margin: 0.5vw;
+    padding: 0.5vw;
+    font-size: 1vw;
+}
+
+.alternativa, .alternativa a{
+    font-size: 0.75vw;
+}
+
+.inputInfo{
+    border-radius: 0.5vw;
+    border:#000 1px solid;
+    background-color: transparent;
+    line-height: 1vw;
+    width: -webkit-fill-available;
+}
+
+.botaoForm{
+    line-height: 100%;
+    border-radius: 0.5vw;
+    border:#000 1px solid;
+    background-color: black;
+    color: white;
+    line-height: 1vw;
+    width: 75%;
+}
+
+@media only screen and (max-width: 1275px) {
+    .responsiveToColumn{
+        flex-flow: column;
+    }
+    .navBarAreaLeitor a text{
+        font-size: 3vw;
+        line-height: 4vw;
+    }
+
+    .alert, .alert strong{
+        font-size: 2vw;
+        line-height: 2.75vw;
+    }
+    
+    .close span{font-size: 5vw;}
+
+    .animacaoSessao{width: 40vw;}
+
+    .registo{
+        border-radius: 5vw;
+        padding: 3.5vw;
+    }
+
+    .registoContent{border-radius: 2.5vw;}
+    
+    .form{
+        padding: 3.5vw;
+    }
+    
+    .inputInfo, .botaoForm{
+        margin: 0.5vw;
+        padding: 0.5vw;
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+    
+    .alternativa, .alternativa a{
+        font-size: 2vw;
+    }
+    
+    .inputInfo{
+        border-radius: 1vw;
+    }
+    
+    .botaoForm{
+        line-height: 100%;
+        border-radius: 1vw;
+        font-size: 2vw;
+        line-height: 2vw;
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .navBarAreaLeitor a text, .alert, .alert strong{
+        font-size: 4vw;
+        line-height: 5vw;
+    }
+    
+    .close span{font-size: 10vw;}
+
+    .animacaoSessao{width: 60vw;}
+
+    .registo{
+        border-radius: 5vw;
+        padding: 5.25vw;
+    }
+
+    .registoContent{border-radius: 4vw;}
+    
+    .form{
+        padding: 5.25vw;
+        width: 80%;
+    }
+    
+    .inputInfo, .botaoForm{
+        margin: 2vw;
+        padding: 1vw;
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    
+    .alternativa, .alternativa a{
+        font-size: 3vw;
+    }
+    
+    .inputInfo{
+        border-radius: 1.5vw;
+    }
+    
+    .botaoForm{
+        line-height: 100%;
+        border-radius: 1.5vw;
+        font-size: 4vw;
+        line-height: 4vw;
+        width: 75%;
+    }
 }
 
 @media only screen and (max-width: 1275px) {

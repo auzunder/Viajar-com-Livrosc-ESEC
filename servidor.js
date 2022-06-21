@@ -867,11 +867,65 @@ servidor.get("/comentarios", function (req, res) {
 });
 
 servidor.get("/historico", function(req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var historico_content = fs.readFileSync('AreaDoLeitor/Historico.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
     var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Histórico | Viajar com Livros </title>';
+    html += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/historico.css">';
+    html += '<script src="/javascript/IniciarSessao.js"></script>';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
     html += topo;
-    html += 0;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // Conteudo da pagina
+    html += historico_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
     html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
     res.send(html);
+
+    //log(req.session.username, req.path);
 })
 
 
