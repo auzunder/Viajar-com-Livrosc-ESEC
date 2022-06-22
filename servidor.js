@@ -829,7 +829,74 @@ servidor.get("/conta", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
+
+servidor.get("/contaalterar", function (req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var contaalterar_content = fs.readFileSync('InformacoesDeConta_AlterarInfo.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
+    var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Informações de Conta Alterar | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/infoConta.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
+    html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // HTML relativo a Login e Registo
+    //html += loginRegist;
+    // Conteudo da pagina
+    html += contaalterar_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
+    html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
+    res.send(html);
+
+    //log(req.session.username, req.path);
+});
+
+
+
 servidor.get("/favoritos", session_validate, function (req, res) {
+
     // Tentar abrir ficheiro
     try {
         var favoritos_content = fs.readFileSync('Favoritos.html', 'utf-8');
