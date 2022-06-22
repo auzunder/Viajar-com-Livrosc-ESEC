@@ -1,26 +1,54 @@
-#calendarioID{font-family: "Caveat" !important;}
+/*/
+div{
+    border: 1px solid black;
+}
+/**/
+
+.MenuLateral .MesActive{
+    background-color: #E8F4F3;
+    color:#428883;
+}
 
 .MenuLateral{
+    background-color: #428883;
     display: grid;
     grid-row: 1;
     width: 15%;
     height: 100%;
+    border-top-left-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+}
+
+#Dezembro{
+    border-bottom-left-radius: 1vw;
 }
 
 .MenuLateral > *{
     font-family: "Caveat" !important;
     font-size: 24px;
     display: flex;
-    border: 1px black solid;
     min-height: 5vh;
     text-align: center;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
-.MenuLateral>*>* {
+.MenuLateral>.AnoMesDiv>* {
     font-family: "Caveat" !important;
     font-size: 30px;
+}
+
+.MenuLateral>.AnoMesDiv>*>* {
+    color: white;
+}
+
+#imgPerfil img{
+    height: 115px;
+    margin: 25px;
+    object-fit: fill;
+    border: #467C79 dashed 0.2vw;
+    border-radius: 100%;
 }
 
 .calendarioBg{
@@ -28,6 +56,7 @@
     background-color: white;
     border-radius: 1vw;
     min-height: 50vh;
+    display: flex;
 }
 
 .AnoMesDiv{
@@ -35,4 +64,50 @@
     text-align: center;
     align-items: center;
     justify-content: space-evenly;
+}
+
+#CalendarioContent{
+    width: 55%;
+    background-color: #E8F4F3;
+}
+
+#imgPerfil{
+    display: flex;
+    justify-content: center;
+}
+
+#AgendaContent {
+    width: 30%;
+}
+
+#diasSemana{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#diasSemana div{
+    display: flex;
+    font-size: 30px;
+    font-family: "Caveat";
+    font-weight: bold;
+    width: 15%;
+    justify-content: center;
+}
+
+.dias{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 30px 0px;
+}
+
+.dias div{
+    width: calc(100%/7);
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

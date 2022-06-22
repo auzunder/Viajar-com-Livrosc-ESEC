@@ -164,7 +164,7 @@ servidor.post("/Login", function (req, res) {
                         res.redirect("/conta") // É redirecionado diretamente para pagina de conta
                     }else{
                         console.log("Password não digitada corretamente.");
-                        res.send("Password não digitada corretamente.<br><a href='/'>Voltar à Pagina inicial</a> ")
+                        res.send("Password digitada <bold>incorretamente.</bold><br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                 }else{
                     console.log("Utilizador nao registado");
