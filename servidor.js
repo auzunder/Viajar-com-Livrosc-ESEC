@@ -80,7 +80,7 @@ servidor.get("/", function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick='+'abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -89,7 +89,7 @@ servidor.get("/", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    //html += loginRegist;
+    html += loginRegist;
     // Conteudo da pagina
     html += home_content;
     // Fechar DIV WRAPPER

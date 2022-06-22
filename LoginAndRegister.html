@@ -22,9 +22,9 @@
                 <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required
                     oninput="this.setCustomValidity('')">
                 <button class="botaoForm" type="submit"
-                    onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
+                    onclick="session_abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
                 <p class="alternativa">Tens conta? <a href="#"
-                        onclick="abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
+                        onclick="session_abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
             </form>
         </div>
     </div>
@@ -51,10 +51,10 @@
                 <input id="password" class="inputInfo" type="password" placeholder="Password" required
                     oninput="this.setCustomValidity('')"
                     oninvalid="this.setCustomValidity('A password não pode estar vazia');">
-                <button class="botaoForm" type="submit" onclick="fechar('iniciarSessaoPopUp', true)">Iniciar
+                <button class="botaoForm" type="submit" onclick="session_fechar('iniciarSessaoPopUp', true)">Iniciar
                     Sessão</button>
                 <p class="alternativa">Não tens conta? <a href="#"
-                        onclick="abrirFechar('registoPopUp' ,'iniciarSessaoPopUp', false)"> Registar</a>.</p>
+                        onclick="session_abrirFechar('registoPopUp' ,'iniciarSessaoPopUp', false)"> Registar</a>.</p>
             </form>
         </div>
     </div>
