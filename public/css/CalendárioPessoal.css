@@ -1,0 +1,38 @@
+#calendarioID{font-family: "Caveat" !important;}
+
+.MenuLateral{
+    display: grid;
+    grid-row: 1;
+    width: 15%;
+    height: 100%;
+}
+
+.MenuLateral > *{
+    font-family: "Caveat" !important;
+    font-size: 24px;
+    display: flex;
+    border: 1px black solid;
+    min-height: 5vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.MenuLateral>*>* {
+    font-family: "Caveat" !important;
+    font-size: 30px;
+}
+
+.calendarioBg{
+    width: 65%;
+    background-color: white;
+    border-radius: 1vw;
+    min-height: 50vh;
+}
+
+.AnoMesDiv{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+}

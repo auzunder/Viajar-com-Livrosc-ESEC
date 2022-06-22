@@ -46,11 +46,10 @@ const acabarHtml = '</body></html>'
 const session_validate = (req, res, next) => {
     var anon = {
         nome : "anonimo",
-        pass : "",
         idade : 0,
-        genero : "",
-        email : "",
-        contacto : ""
+        genero : "por Identificar",
+        email : "exemplo@exemplo.com",
+        contacto : "9XXXXXXXX"
     };
     if (!req.session.username){
         req.session.username = anon.nome;
@@ -93,7 +92,7 @@ servidor.get("/", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username != "anonimo") {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -152,10 +151,16 @@ servidor.post("/Login", function (req, res) {
                     if (loginCar.password == logins[index].password){
                         console.log("O email e password foram digitados corretamente");
                         req.session.username = logins[index].nome;
-                        req.session.idade = logins[index].nome;
-                        req.session.genero = logins[index].nome;
                         req.session.email = logins[index].email;
-                        req.session.contacto = logins[index].nome;
+                        if (logins[index].idade){
+                            req.session.idade = logins[index].idade;
+                        };
+                        if (logins[index].genero){
+                            req.session.genero = logins[index].genero;
+                        };
+                        if (logins[index].contacto){
+                            req.session.contacto = logins[index].contacto;
+                        };
                         res.redirect("/conta") // É redirecionado diretamente para pagina de conta
                     }else{
                         console.log("Password não digitada corretamente.");
@@ -255,7 +260,7 @@ servidor.get("/sobre_nos", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -315,7 +320,7 @@ servidor.get("/calendario", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -375,7 +380,7 @@ servidor.get("/biblioteca", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -434,7 +439,7 @@ servidor.get("/fotografias", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -494,7 +499,7 @@ servidor.get("/videos", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -553,7 +558,7 @@ servidor.get("/noticias", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -613,7 +618,7 @@ servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -673,7 +678,7 @@ servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -731,7 +736,7 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -760,7 +765,6 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     // Enviar HTML final para o cliente
     res.send(html);
 })
-
 
 servidor.get("/conta", session_validate, function (req, res) {
     // Tentar abrir ficheiro
@@ -793,7 +797,7 @@ servidor.get("/conta", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -856,7 +860,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -922,7 +926,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -987,7 +991,7 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1051,7 +1055,7 @@ servidor.get("/historico", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1081,10 +1085,73 @@ servidor.get("/historico", session_validate, function (req, res) {
     res.send(html);
 
     //log(req.session.username, req.path);
-})
+});
 
+servidor.get("/calendarioPessoal", session_validate, function (req, res) {
+    // Tentar abrir ficheiro
+    try {
+        var calendárioPessoal_content = fs.readFileSync('CalendárioPessoal.html', 'utf-8');
+    }
+    // Caso nao consiga da log do erro
+    catch (error){
+        console.error("Erro ao ler ficheiros de conteudo.")
+        console.error(error)
+    }
+    // Apresentação do Site
+    var html = "";
+    html += iniciarHtml;
+    // Abrir <head> tag
+    html += head;
+    // Titulo da página
+    html += '<title> Informações de Conta | Viajar com Livros </title>';
+    // Css único da página
+    html += '<link type="text/css" rel="stylesheet" href="/css/infoConta.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/CalendárioPessoal.css">';
+    // JavaScript para dados de Sessões de Livros
+    html += '<script src="/javascript/CalendarioMetadata.js"></script>';
+    // Finalizar <head> tag
+    html += acabarHead;
+    // div wrapper 
+    html += '<div id="wrapper">';
+    // Abrir Navbar
+    html += topo;
+    // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
+    if (req.session.username) {
+        // HTML do botão direcionado para a Conta (Caso tenha login feito)
+        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    } 
+    // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
+    else{
+        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
+        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
+        html += '</div>';
+    }
+    // HTML icone para NavBar responsiva
+    html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+    // HTML relativo a Login e Registo
+    //html += loginRegist;
+    // Conteudo da pagina
+    html += calendárioPessoal_content;
+    // Fechar DIV WRAPPER
+    html += '</div>'; 
+    // Footer
+    html += fundo;
+    // Fechar HTML
+    html += acabarHtml;
+    // Enviar HTML final para o cliente
+    res.send(html);
 
-servidor.get("/ajuda", function (req, res) {
+    console.log(req.session.username, req.path);
+});
+
+servidor.get("/ajuda", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
@@ -1115,7 +1182,7 @@ servidor.get("/ajuda", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1178,7 +1245,7 @@ servidor.get("/forminscricao", session_validate, function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
