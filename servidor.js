@@ -131,11 +131,14 @@ servidor.post("/Login", function (req, res) {
                     console.log("O email inserido já foi registado anteriormente");
                     if (loginCar.password == logins[index].password){
                         console.log("O email e password foram digitados corretamente");
+                        res.redirect("/conta")
                     }else{
                         console.log("Password não digitada corretamente.");
+                        res.send("Password não digitada corretamente.<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                 }else{
-                    res.send("Utilizador nao registado");
+                    console.log("Utilizador nao registado");
+                    res.send("Utilizador nao registado<br><a href='/'>Voltar à Pagina inicial</a> ")
                 }
             }
         }
