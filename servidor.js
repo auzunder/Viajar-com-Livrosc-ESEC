@@ -3,6 +3,7 @@ const express = require('express');
 const sha1 = require('sha1');
 const fs = require('fs');
 const { send } = require('process');
+const { receiveMessageOnPort } = require('worker_threads');
 
 const servidor = express();
 var porta = 8080;
@@ -1341,6 +1342,64 @@ servidor.get("/forminscricao", session_validate, function (req, res) {
     // Enviar HTML final para o cliente
     res.send(html);
 });
+
+
+servidor.post("/InscRealizada", function (req, res) {
+    //colocar referencia de sessão
+    var {nomeForm, emailForm, tlmForm, receiveEmail} = req.body;
+    if (receiveEmail == "on") {
+        receiveEmail = true;
+    }else{
+        receiveEmail = false;
+    }
+    var formInsc = {"nome": nomeForm, "email" : emailForm, "Contacto" : tlmForm, "Receber Email": receiveEmail};
+    var FormInscFinal = [];
+
+    fs.readFile('InscreveForm.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            if (data){
+                inscricao_JSON = JSON.parse(data);
+                for(var i in inscricao_JSON){
+                    FormInscFinal.push(inscricao_JSON[i]);
+                }
+                console.log(FormInscFinal);
+                // Escrever tudo de novo no JSON
+                FormInscFinal.push(formInsc);
+                console.log(formInsc);
+                json = JSON.stringify(FormInscFinal);
+                console.log(json);
+                fs.writeFile('InscreveForm.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.error("erro ao guardar os dados no servidor");
+                        res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
+                    }
+                    else {
+                        console.log("Dados guardados com sucesso no servidor");
+                        res.send("Sessão registada com sucesso. <br><a href='/'>Voltar à Pagina inicial</a> ")
+                    };
+                });
+            }else{
+                FormInscFinal.push(formInsc);
+                console.log(formInsc);
+                json = JSON.stringify(FormInscFinal);
+                console.log(json);
+                fs.writeFile('InscreveForm.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.error("erro ao guardar os dados no servidor");
+                        res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
+                    }
+                    else {
+                        console.log("Dados guardados com sucesso no servidor");
+                        res.send("Sessão registada com sucesso. <br><a href='/'>Voltar à Pagina inicial</a> ")
+                    };
+                });
+            }
+        }
+    });
+
+})
 
 // Processar o form Newsletter para JSON
 servidor.post('/processa_newsletter', function (req, res) {
