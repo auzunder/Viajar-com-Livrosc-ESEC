@@ -47,6 +47,7 @@ function session_abrirFechar(popUpaAbrir, popUpafechar, check) {
         var email = document.getElementById("emailReg");
         var pass1 = document.getElementById("password1");
         var pass2 = document.getElementById("password2");
+        console.log(name, email, pass1, pass2)
 
         name.oninvalid = function (){name.setCustomValidity('É necessário que prencher o nome');};
         email.oninvalid = function (){email.setCustomValidity('É necessário que prencher o email');};

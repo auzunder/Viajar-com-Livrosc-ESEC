@@ -13,16 +13,15 @@
                 </script>
             </div>
             <form action="/Registo" method="post" class="form">
-                <input name="nomeRegisto" id="nome" class="inputInfo" type="text" placeholder="Nome" required
+                <input name="nomeRegisto" id="nomeRegisto" class="inputInfo" type="text" placeholder="Nome" required
                     oninput="this.setCustomValidity('')">
-                <input name="emailRegisto" id="emailReg" class="inputInfo" type="email" placeholder="Email" required maxLength="64"
+                <input name="emailRegisto" id="emailRegisto" class="inputInfo" type="email" placeholder="Email" required maxLength="64"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninput="this.setCustomValidity('')">
                 <input name="passwordRegisto" id="password1" class="inputInfo" type="password" placeholder="Password" required
                     oninput="this.setCustomValidity('')">
                 <input id="password2" class="inputInfo" type="password" placeholder="Repita a Passord" required
                     oninput="this.setCustomValidity('')">
-                <button class="botaoForm" type="submit"
-                    onclick="session_abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true)">Registar Conta</button>
+                <button class="botaoForm" type="submit">Registar Conta</button> <!-- onclick="session_abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', true) -->
                 <p class="alternativa">Tens conta? <a href="#"
                         onclick="session_abrirFechar('iniciarSessaoPopUp' ,'registoPopUp', false)">Iniciar sessão</a>.</p>
             </form>
@@ -45,7 +44,7 @@
                 </script>
             </div>
             <form action="/Login" method="post" class="form">
-                <input name="nome" id="name" class="inputInfo" type="text" placeholder="Nome" required
+                <input name="email" id="name" class="inputInfo" type="email" placeholder="Email" required maxLength="64" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     oninput="this.setCustomValidity('')"
                     oninvalid="this.setCustomValidity('É necessário que prencher o nome');">
                 <input name="password" id="password" class="inputInfo" type="password" placeholder="Password" required
