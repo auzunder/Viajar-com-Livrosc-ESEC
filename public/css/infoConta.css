@@ -1,6 +1,4 @@
-.imgContainer{
-    padding: 3vw;
-}
+
 
 .fotoDePerfil{
     width: 15vw;
@@ -16,15 +14,18 @@
 .userData{
     flex: 1;
     flex-flow: column;
-    padding: 2.2vw;
 }
 
 .userName{
-    gap: 25%;
+    font-family: caveat;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 35px;
 }
 
 .contentResponsiveFont{
     font-size: 1.35vw;
+    text-align: center;
     line-height: 2.5vw;
 }
 
@@ -64,7 +65,7 @@
     flex: 1;
     border: #000000 1px dashed;
 }
-
+/*
 
 @media only screen and (max-width: 1275px) {
     .imgContainer{
@@ -107,4 +108,36 @@
         height: 3.75vw;
         width: 25vw;
     }
+}*/
+
+.infoContaBg{
+    width: 65%;
+    background-color: white;
+    border-radius: 1vw;
+    min-height: 60vh;
+    padding-bottom: 50px;
+}
+
+.imgContainer {
+    width: 100%;
+    position: relative;
+    height: calc(60vh * .3);
+}
+
+.imgContainer img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 1vw 1vw 0 0;
+}
+
+.imgPerfil{
+    width: 10vw !important;
+    bottom: -50% !important;
+}
+
+.flexboxStyle {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }

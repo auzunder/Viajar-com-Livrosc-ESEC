@@ -524,7 +524,7 @@ servidor.get("/voluntariado_Page1", function(req, res) {
     // Titulo da página
     html += '<title> Voluntariado | Viajar com Livros </title>';
     // Css único da página
-    html += '<link rel="stylesheet" href="css/forms2.css"><link rel="stylesheet" href="css/infoConta.css">';
+    html += '<link rel="stylesheet" href="css/forms2.css"><link rel="stylesheet" href="css/infoConta.css href="css/forms.css">';
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/forms.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
     // Finalizar <head> tag
@@ -945,7 +945,7 @@ servidor.get("/comentarios", function (req, res) {
 servidor.get("/historico", function(req, res) {
     // Tentar abrir ficheiro
     try {
-        var historico_content = fs.readFileSync('AreaDoLeitor/Historico.html', 'utf-8');
+        var historico_content = fs.readFileSync('Historico.html', 'utf-8');
     }
     // Caso nao consiga da log do erro
     catch (error){
