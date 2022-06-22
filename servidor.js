@@ -2,6 +2,7 @@ const session = require('express-session');
 const express = require('express');
 const sha1 = require('sha1');
 const fs = require('fs');
+const { send } = require('process');
 
 const servidor = express();
 var porta = 8080;
@@ -105,48 +106,97 @@ servidor.get("/", function (req, res) {
 });
 
 servidor.post("/Login", function (req, res) {
-    var {nome, password} = req.body;
-    password = sha1(password);
-    console.log(nome, " ", password);
-    var logins = {};
+    var {email, password} = req.body;
+    var loginCar = {"email" : email, "password" : sha1(password)};
+    console.log(loginCar);
+    var logins = [];
+    var emails = [];
+    var index;
     // Ler ficheiro atual JSON
-
-    res.send("Login")
-})
-
-
-servidor.post("/Registo", function (req, res) {
-
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err);
         } else {
-            logins_JSON = JSON.parse(data);
-            for(var i in logins_JSON){
-                logins.push(logins_JSON[i]);
+            if (data){
+                logins_JSON = JSON.parse(data);
+                for(var i in logins_JSON){
+                    emails.push(logins_JSON[i].email);
+                    if (logins_JSON[i].email == loginCar.email){
+                        index = i;
+                    }
+                    logins.push(logins_JSON[i]);
+                }
+                console.log(logins);
+                if (emails.includes(loginCar.email)){
+                    console.log("O email inserido já foi registado anteriormente");
+                    if (loginCar.password == logins[index].password){
+                        console.log("O email e password foram digitados corretamente");
+                    }else{
+                        console.log("Password não digitada corretamente.");
+                    }
+                }else{
+                    res.send("Utilizador nao registado");
+                }
             }
-            if (logins.includes(email)){
-                console.log("O email inserido já foi enviado anteriormente")
-                res.send("O email inserido já foi enviado anteriormente");
+        }
+    });
+})
+
+servidor.post("/Registo", function (req, res) {
+    var {nomeRegisto, emailRegisto, passwordRegisto} = req.body;
+    var loginCar = {"nome": nomeRegisto, "email" : emailRegisto, "password" : sha1(passwordRegisto)};
+    var logins = [];
+    var emails = [];
+    fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            if (data){
+                logins_JSON = JSON.parse(data);
+                for(var i in logins_JSON){
+                    emails.push(logins_JSON[i].email);
+                    logins.push(logins_JSON[i]);
+                }
+                console.log(logins);
+                if (emails.includes(loginCar.email)){
+                    console.log("O email inserido já foi registado anteriormente")
+                    res.send("O email inserido já foi registado anteriormente<br><a href='/'>Voltar à Pagina inicial</a> ")
+                }else{
+                    // Escrever tudo de novo no JSON
+                    logins.push(loginCar);
+                    console.log(loginCar);
+                    json = JSON.stringify(logins);
+                    console.log(json);
+                    fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
+                        if (err) {
+                            console.error("erro ao guardar os dados no servidor");
+                            res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
+                        }
+                        else {
+                            console.log("Dados guardados com sucesso no servidor");
+                            res.send("Utilizador Registado com sucesso. Para continuar, faça o login.<br><a href='/'>Voltar à Pagina inicial</a> ")
+                        };
+                    });
+                }
             }else{
-                // Escrever tudo de novo no JSON
-                json = JSON.stringify(Object.assign({}, logins));
+                logins.push(loginCar);
+                console.log(loginCar);
+                json = JSON.stringify(logins);
                 console.log(json);
                 fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
-                        res.send("erro ao guardar os dados no servidor");
+                        res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                     else {
                         console.log("Dados guardados com sucesso no servidor");
-                        res.send("Dados guardados com sucesso no servidor");
+                        res.send("Utilizador Registado com sucesso. Para continuar, faça o login.<br><a href='/'>Voltar à Pagina inicial</a> ")
                     };
                 });
             }
-            console.log(emails.includes(email));
         }
     });
-    res.send("Registo")
+
 })
 
 
