@@ -5,6 +5,11 @@ const fs = require('fs');
 const { send } = require('process');
 const { receiveMessageOnPort } = require('worker_threads');
 
+// ALGORITMO DE CIRAÇÃO DE ID UNICO :)
+//  var time_based_id = Date.now().toString(16).slice(2)
+//  var random_based_id = Math.random().toString(16).slice(2)
+//  var id = time_based_id + random_based_id
+
 const servidor = express();
 var porta = 8080;
 
