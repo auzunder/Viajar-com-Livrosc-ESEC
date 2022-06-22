@@ -104,9 +104,49 @@ servidor.get("/", function (req, res) {
     //console.log(req, req.session, req.session.username, req.path);
 });
 
-servidor.get("/AreaDoLeitor/login", function (req, res) {
+servidor.post("/Login", function (req, res) {
+    var {nome, password} = req.body;
+    password = sha1(password);
+    console.log(nome, " ", password);
+    var logins = {};
+    // Ler ficheiro atual JSON
 
-    res.send("login")
+    res.send("Login")
+})
+
+
+servidor.post("/Registo", function (req, res) {
+
+    fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            logins_JSON = JSON.parse(data);
+            for(var i in logins_JSON){
+                logins.push(logins_JSON[i]);
+            }
+            if (logins.includes(email)){
+                console.log("O email inserido já foi enviado anteriormente")
+                res.send("O email inserido já foi enviado anteriormente");
+            }else{
+                // Escrever tudo de novo no JSON
+                json = JSON.stringify(Object.assign({}, logins));
+                console.log(json);
+                fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.error("erro ao guardar os dados no servidor");
+                        res.send("erro ao guardar os dados no servidor");
+                    }
+                    else {
+                        console.log("Dados guardados com sucesso no servidor");
+                        res.send("Dados guardados com sucesso no servidor");
+                    };
+                });
+            }
+            console.log(emails.includes(email));
+        }
+    });
+    res.send("Registo")
 })
 
 
