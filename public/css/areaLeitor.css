@@ -294,7 +294,7 @@ button.close {
     line-height: 1vw;
     width: 75%;
 }
-
+/*
 @media only screen and (max-width: 1275px) {
     .responsiveToColumn{
         flex-flow: column;
@@ -393,3 +393,5 @@ button.close {
         width: 75%;
     }
 }
+
+*/
