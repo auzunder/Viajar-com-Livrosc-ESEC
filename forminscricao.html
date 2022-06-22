@@ -8,7 +8,7 @@
     <div id="calendarIllustration"><img src="Imagens/Calendário/CalendarIllustration.svg"></div>
     <div class="timeline"></div>
      <div class="navBarAreaLeitor marginTop">
-        <a href="/informacoesDeConta"><text>Conta</text></a>
+        <a href="/conta"><text>Conta</text></a>
         <a href="/favoritos"><text>Favoritos</text></a>
         <a href="/historico"><text>Histórico</text></a>
         <a href="/comentarios"><text>Comentários</text></a>
@@ -31,31 +31,31 @@
                 </div>
 
                 <div class = "sessao-content-campos">
-                    <form  method="get" class="form-insc">
+                    <form  method="post" class="form-insc" action="/InscRealizada">
                         <div class="input-placement">
-                            <input type="text" id="Nome" name="Nome" required class="form-input-style">
+                            <input type="text" id="Nome" name="nomeForm" required class="form-input-style">
                             <span class="span-text">Nome</span>
                         </div>
 
                         <div class="input-placement">
-                            <input type="email" id="Email" name="Email" required class="form-input-style">
+                            <input type="email" id="Email" name="emailForm" required class="form-input-style">
                             <span class="span-text">E-mail</span>
                         </div>
 
                         <div class="input-placement">
-                            <input type="tel" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
+                            <input type="tel" id="Telemovel" name="tlmForm" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
                             <span class="span-text">Telemóvel</span>
                         </div>
                         
                         <div class="input-radio">
                             <label class="container">Ativar notificação de lembrete no dia anterior á sessão em que se increveu.
-                                <input type="checkbox" >
+                                <input type="checkbox" name="receiveEmail">
                                 <span class="checkmark"></span>
                               </label>
                         </div>
     
                         <div class="next">
-                            <input type="submit" onclick="saveData()" class="next-button boxInnerOutterShadow" value="Confirmar">
+                            <input type="submit" class="next-button boxInnerOutterShadow" value="Confirmar">
                         </div>
                     </form>
                 </div>
