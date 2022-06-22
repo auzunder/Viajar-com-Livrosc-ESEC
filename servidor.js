@@ -42,8 +42,28 @@ const iniciarHtml = '<!DOCTYPE html><html><head>';
 const acabarHead = '</head><body>'
 const acabarHtml = '</body></html>'
 
+// Midleware sessao anonima
+const session_validate = (req, res, next) => {
+    var anon = {
+        nome : "anonimo",
+        pass : "",
+        idade : 0,
+        genero : "",
+        email : "",
+        contacto : ""
+    };
+    if (!req.session.username){
+        req.session.username = anon.nome;
+        req.session.idade = anon.idade;
+        req.session.genero = anon.genero;
+        req.session.email = anon.email;
+        req.session.contacto = anon.contacto;
+    };
+    console.log(req.session.username)
+    next()
+}
 
-servidor.get("/", function (req, res) {
+servidor.get("/", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
@@ -71,7 +91,7 @@ servidor.get("/", function (req, res) {
     // Abrir Navbar
     html += topo;
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
-    if (req.session.username) {
+    if (req.session.username != "anonimo") {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
         html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
@@ -102,7 +122,7 @@ servidor.get("/", function (req, res) {
     // Enviar HTML final para o cliente
     res.send(html);
 
-    //console.log(req, req.session, req.session.username, req.path);
+    console.log(req.session, req.session.username, req.path);
 });
 
 servidor.post("/Login", function (req, res) {
@@ -131,7 +151,12 @@ servidor.post("/Login", function (req, res) {
                     console.log("O email inserido já foi registado anteriormente");
                     if (loginCar.password == logins[index].password){
                         console.log("O email e password foram digitados corretamente");
-                        res.redirect("/conta")
+                        req.session.username = logins[index].nome;
+                        req.session.idade = logins[index].nome;
+                        req.session.genero = logins[index].nome;
+                        req.session.email = logins[index].email;
+                        req.session.contacto = logins[index].nome;
+                        res.redirect("/conta") // É redirecionado diretamente para pagina de conta
                     }else{
                         console.log("Password não digitada corretamente.");
                         res.send("Password não digitada corretamente.<br><a href='/'>Voltar à Pagina inicial</a> ")
@@ -202,8 +227,7 @@ servidor.post("/Registo", function (req, res) {
 
 })
 
-
-servidor.get("/sobre_nos", function(req, res) {
+servidor.get("/sobre_nos", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
@@ -261,7 +285,7 @@ servidor.get("/sobre_nos", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/calendario", function(req, res) {
+servidor.get("/calendario", session_validate, function (req, res) {
      // Tentar abrir ficheiro
     try {
         var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
@@ -321,7 +345,7 @@ servidor.get("/calendario", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/biblioteca", function(req, res) {
+servidor.get("/biblioteca", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -382,7 +406,7 @@ servidor.get("/biblioteca", function(req, res) {
 
 })
 
-servidor.get("/fotografias", function(req, res) {
+servidor.get("/fotografias", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
@@ -440,7 +464,7 @@ servidor.get("/fotografias", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/videos", function(req, res) {
+servidor.get("/videos", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
@@ -500,7 +524,7 @@ servidor.get("/videos", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/noticias", function(req, res) {
+servidor.get("/noticias", session_validate, function (req, res) {
    
     // Tentar abrir ficheiro
     try {
@@ -559,7 +583,7 @@ servidor.get("/noticias", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page1", function(req, res) {
+servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
@@ -619,7 +643,7 @@ servidor.get("/voluntariado_Page1", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page2", function(req, res) {
+servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
@@ -679,7 +703,7 @@ servidor.get("/voluntariado_Page2", function(req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page3", function(req, res) {
+servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
@@ -738,7 +762,7 @@ servidor.get("/voluntariado_Page3", function(req, res) {
 })
 
 
-servidor.get("/conta", function (req, res) {
+servidor.get("/conta", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var conta_content = fs.readFileSync('InformacoesDeConta.html', 'utf-8');
@@ -801,7 +825,7 @@ servidor.get("/conta", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/favoritos", function (req, res) {
+servidor.get("/favoritos", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var favoritos_content = fs.readFileSync('Favoritos.html', 'utf-8');
@@ -864,7 +888,7 @@ servidor.get("/favoritos", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/amigos", function (req, res) {
+servidor.get("/amigos", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var amigos_content = fs.readFileSync('Amigos.html', 'utf-8');
@@ -930,7 +954,7 @@ servidor.get("/amigos", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/comentarios", function (req, res) {
+servidor.get("/comentarios", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var comentarios_content = fs.readFileSync('comentarios.html', 'utf-8');
@@ -995,7 +1019,7 @@ servidor.get("/comentarios", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/historico", function(req, res) {
+servidor.get("/historico", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var historico_content = fs.readFileSync('Historico.html', 'utf-8');
@@ -1124,7 +1148,7 @@ servidor.get("/ajuda", function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/forminscricao", function(req, res) {
+servidor.get("/forminscricao", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var form_inscricao_content = fs.readFileSync('forminscricao.html', 'utf-8');
@@ -1220,112 +1244,3 @@ servidor.post('/processa_newsletter', function (req, res) {
         }
     });
 });
-
-
-
-
-/*
-
-// quando é usado o método GET no formulário
-servidor.get('/processaformulario', function (req, res) {
-    var nome = req.query.nome;
-    var dn = req.query.dn;
-    var email = req.query.email;
-    var telefone = req.query.telefone;
-    var morada = req.query.morada;
-    res.type('html');
-    var html = "";
-    html += topo;
-    if (nome && dn && telefone && email && morada) {
-        html += '<p>\n';
-        html += 'nome: ' + nome + '<br>\n';
-        html += 'dn: ' + dn + '<br>\n';
-        html += 'telefone: ' + telefone + '<br>\n';
-        html += 'email: ' + email + '<br>\n';
-        html += 'morada: ' + morada + '<br>\n';
-        html += '</p>\n';
-
-        var dados = nome + ";" + dn + ";" + telefone + ";" + email + ";" + morada + "\n";
-        //experimentar com fs.writeFile() em vez de fs.appendFile()
-        fs.appendFile('dados.txt', dados, function (err) {
-            if (err) {
-                console.error("erro ao guardar os dados no servidor");
-            }
-            else {
-                console.log("dados guardados com sucesso no servidor");
-            }
-        });
-    }
-    else {
-        html += '<p>por favor, preencha os dados todos</p>\n';
-    }
-    html += fundo;
-    res.send(html);
-});
-
-// quando é usado o método POST no formulário
-servidor.post('/processaFormulario', function (req, res) {
-    var nome = req.body.nome;
-    var dn = req.body.dn;
-    var email = req.body.email;
-    var telefone = req.body.telefone;
-    var morada = req.body.morada;
-    res.type('html');
-    var html = "";
-    html += topo;
-    if (nome && dn && telefone && email && morada) {
-        html += '<p>\n';
-        html += 'nome: ' + nome + '<br>\n';
-        html += 'dn: ' + dn + '<br>\n';
-        html += 'telefone: ' + telefone + '<br>\n';
-        html += 'email: ' + email + '<br>\n';
-        html += 'morada: ' + morada + '<br>\n';
-        html += '</p>\n';
-
-        var dados = nome + ";" + dn + ";" + telefone + ";" + email + ";" + morada + "\n";
-        //experimentar com fs.writeFile() em vez de fs.appendFile()
-        fs.appendFile('dados.txt', dados, function (err) {
-            if (err) {
-                console.error("erro ao guardar os dados no servidor");
-            }
-            else {
-                console.log("dados guardados com sucesso no servidor");
-            }
-        });
-    }
-    else {
-        html += '<p>por favor, preencha os dados todos</p>\n';
-    }
-    html += fundo;
-    res.send(html);
-});
-
-servidor.get('/mostradados', function (req, res) {
-    fs.readFile('./dados.txt', function (err, data) {
-        if (err) {
-            res.type('html');
-            var html = "";
-            html += topo;
-            html += "<h1>ficheiro não encontrado</h1>\n";
-            html += fundo;
-            res.status(404).send(html);
-        }
-        else {
-            res.type('html');
-            var html = "";
-            html += topo;
-            html += "<h1>dados</h1>\n";
-            html += '<p>\n';
-            var linhas = data.toString().split('\n');
-            for (var i = 0; i < linhas.length; i++) {
-                html += linhas[i] + '<br>\n';
-            }
-            html += '</p>\n';
-            html += fundo;
-            res.send(html);
-        }
-    });
-});
-
-*/
-
