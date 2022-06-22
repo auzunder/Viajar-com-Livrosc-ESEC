@@ -1,0 +1,147 @@
+#calendarIllustration img,
+#calendarIllustration{
+    width: 100%;
+    margin: 10px 0;
+}
+
+#title{
+    padding: 0px 0;
+    text-align: center;
+}
+
+.sessao-livro {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    margin-top: 60px;
+    font-family: caveat;
+    font-size: 40px;
+    line-height: 40px;
+}
+.sessao-content {
+    
+    width: 80%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .sessao-dados{
+    display: flex;
+    margin: 0 20px 20px 20px;
+    gap: 80px;
+  }
+
+  .sessao-content-campos {
+    width: 80%;
+    padding-bottom: 8vw;
+    padding-top: 30px;
+  }
+
+  .input-placement {
+    padding-right: 8px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .span-text {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: black;
+  }
+
+  .form-input-style {
+    padding: 7px 0 7px 5px;
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid black;
+  }
+
+.sessao-form {
+    width: 80%;
+}
+
+.sessao-img{
+    width: 20%;
+}
+.sessao-img img{
+    width: calc(100% - 10px);
+}
+
+.next {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.next-button{
+    margin-top: 30px;
+    margin-bottom: 80px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius:12px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.container {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transform: rotate(45deg);
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  
+  .container .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+  }

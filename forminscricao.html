@@ -1,6 +1,12 @@
      <!--Conteudo-->
-
+     
      <div id="ghost"></div>
+
+     <div id="title">
+        <h1>Inscrição</h1>
+    </div>
+    <div id="calendarIllustration"><img src="Imagens/Calendário/CalendarIllustration.svg"></div>
+    <div class="timeline"></div>
      <div class="navBarAreaLeitor marginTop">
         <a href="/informacoesDeConta"><text>Conta</text></a>
         <a href="/favoritos"><text>Favoritos</text></a>
@@ -10,12 +16,55 @@
         <a href="/amigos"><text class="ativo">Amigos</text></a>
     </div>
     <div class="areaLeitorBackground marginTopBottom">
-        <div class="amigoContentContainer marginTopBottom">
-            <div>
-            <p class="info-livro">As Aventuras de Sininho</p>
+        <div class="amigoContentContainer marginTopBottom"></div>
+    </div>
+    <div>
+        <p class="sessao-livro AmigosTitle">As aventuras de sininho</p>
+        <div class = "sessao-content">
+            <div class="sessao-form"> 
+
+                <div class="sessao-dados">
+                    <p>Dia:</p>
+                    <p>Hora:</p>
+                    <p>Duração:</p>
+                    <p>Oradora:</p>
+                </div>
+
+                <div class = "sessao-content-campos">
+                    <form  method="get" class="form-insc">
+                        <div class="input-placement">
+                            <input type="text" id="Nome" name="Nome" required class="form-input-style">
+                            <span class="span-text">Nome</span>
+                        </div>
+
+                        <div class="input-placement">
+                            <input type="email" id="Email" name="Email" required class="form-input-style">
+                            <span class="span-text">E-mail</span>
+                        </div>
+
+                        <div class="input-placement">
+                            <input type="tel" id="Telemovel" name="Telemovel" required maxlength ='9' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' class="form-input-style">
+                            <span class="span-text">Telemóvel</span>
+                        </div>
+                        
+                        <div class="input-radio">
+                            <label class="container">Ativar notificação de lembrete no dia anterior á sesão em que se increveu.
+                                <input type="checkbox" >
+                                <span class="checkmark"></span>
+                              </label>
+                        </div>
+    
+                        <div class="next">
+                            <input type="submit" onclick="saveData()" class="next-button boxInnerOutterShadow" value="Confirmar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="sessao-img">
+                <img src="/Imagens/Calendário/Livro_00001.jpg" alt="Livro Princepezinho">
             </div>
         </div>
     </div>
-
 
       <!--FIM de Conteudo-->
