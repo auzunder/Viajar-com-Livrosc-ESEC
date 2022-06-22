@@ -1,6 +1,6 @@
 var modal = document.getElementById("registoPopUp")
 
-function clearInputs() {
+function session_clearInputs() {
     if (modal == document.getElementById("registoPopUp")){
         document.getElementById("nome").value = '';
         document.getElementById("emailReg").value = '';
@@ -12,13 +12,13 @@ function clearInputs() {
     };
 }
 
-function abrir(id) {
+function session_abrir(id) {
     modal = document.getElementById(id)
     modal.style.display = "flex"
     clearInputs()
 }
 
-function fechar(id, check) {
+function session_fechar(id, check) {
     if(check == false){
         modal = document.getElementById(id)
         modal.style.display = "none"
@@ -37,10 +37,10 @@ function fechar(id, check) {
     }
 }
 
-function abrirFechar(popUpaAbrir, popUpafechar, check) {
+function session_abrirFechar(popUpaAbrir, popUpafechar, check) {
     if(check == false){
-        fechar(popUpafechar, false);
-        abrir(popUpaAbrir);
+        session_fechar(popUpafechar, false);
+        session_abrir(popUpaAbrir);
     }
     else{
         var name = document.getElementById("nome");
@@ -56,8 +56,8 @@ function abrirFechar(popUpaAbrir, popUpafechar, check) {
             if(email.value.includes('@') && email.value.includes('.')){
                 if(pass1.value != '' && pass2.value != ''){
                     if(pass1.value == pass2.value){
-                        fechar(popUpafechar, false);
-                        abrir(popUpaAbrir);
+                        session_fechar(popUpafechar, false);
+                        session_abrir(popUpaAbrir);
                     }else{
                         pass2.setCustomValidity('A password repedida não corresponde à password original.');
                         console.log("A password repedida não corresponde à password original.")
@@ -78,7 +78,7 @@ function abrirFechar(popUpaAbrir, popUpafechar, check) {
 }
 
 window.onclick = function (event){
-    if (event.target == modal){
+    if (event.target == document.getElementById("registoPopUp") || event.target == document.getElementById("iniciarSessaoPopUp")){
         modal.style.display = "none"
     }
 }

@@ -29,7 +29,7 @@ try{
     var head = fs.readFileSync('head.html', 'utf-8');
     var topo = fs.readFileSync('NavBar.html', 'utf-8');
     var fundo = fs.readFileSync('Footer.html', 'utf-8');
-    var loginRegist = fs.readlinkSync('LoginAndRegister.html', 'utf-8');
+    var loginRegist = fs.readFileSync('LoginAndRegister.html', 'utf-8');
 }
 catch (error){
     console.error("Erro ao ler ficheiros de NarBar ou Footer.")
@@ -80,7 +80,7 @@ servidor.get("/", function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick='+'abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -155,7 +155,7 @@ servidor.get("/sobre_nos", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += sobre_nos_content;
     // Fechar DIV WRAPPER
@@ -215,7 +215,7 @@ servidor.get("/calendario", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += calendario_content;
     // Fechar DIV WRAPPER
@@ -275,7 +275,7 @@ servidor.get("/biblioteca", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += biblioteca_content;
     // Fechar DIV WRAPPER
@@ -334,7 +334,7 @@ servidor.get("/fotografias", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += galeria_foto_content;
     // Fechar DIV WRAPPER
@@ -394,7 +394,7 @@ servidor.get("/videos", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += galeria_video_content;
     // Fechar DIV WRAPPER
@@ -453,7 +453,7 @@ servidor.get("/noticias", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += noticias_content;
     // Fechar DIV WRAPPER
@@ -513,7 +513,7 @@ servidor.get("/voluntariado_Page1", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += voluntariado_content;
     // Fechar DIV WRAPPER
@@ -573,7 +573,7 @@ servidor.get("/voluntariado_Page2", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += voluntariado2_content;
     // Fechar DIV WRAPPER
@@ -631,7 +631,7 @@ servidor.get("/voluntariado_Page3", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += voluntariado3_content;
     // Fechar DIV WRAPPER
@@ -693,7 +693,7 @@ servidor.get("/conta", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += conta_content;
     // Fechar DIV WRAPPER
@@ -756,7 +756,7 @@ servidor.get("/favoritos", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += favoritos_content;
     // Fechar DIV WRAPPER
@@ -822,7 +822,7 @@ servidor.get("/amigos", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += amigos_content;
     // Fechar DIV WRAPPER
@@ -887,7 +887,7 @@ servidor.get("/comentarios", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += comentarios_content;
     // Fechar DIV WRAPPER
@@ -951,7 +951,7 @@ servidor.get("/historico", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += historico_content;
     // Fechar DIV WRAPPER
@@ -1015,7 +1015,7 @@ servidor.get("/ajuda", function (req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += '<div id=ghost></div>'
     html += ajuda_content;
@@ -1078,7 +1078,7 @@ servidor.get("/forminscricao", function(req, res) {
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
     // HTML relativo a Login e Registo
-    html += loginRegist;
+    //html += loginRegist;
     // Conteudo da pagina
     html += form_inscricao_content;
     // Fechar DIV WRAPPER
