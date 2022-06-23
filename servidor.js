@@ -833,7 +833,6 @@ servidor.get("/conta", session_validate, function (req, res) {
         }
     });
     var DadosTotais =(JSON.parse(informacao));
-    var infoConta = {};
     console.log("path: ", req.path, "user: ", req.session.username)
     console.log(req.session.index)
     if (req.session.index) {
@@ -859,7 +858,6 @@ servidor.get("/conta", session_validate, function (req, res) {
 
     //log(req.session.username, req.path);
 });
-
 
 servidor.get("/contaAlterar", function (req, res) {
     // Tentar abrir ficheiro
@@ -914,8 +912,30 @@ servidor.get("/contaAlterar", function (req, res) {
     html += contaalterar_content;
 
     if (req.session.index) {
-        // Fechar DIV WRAPPER
-        html += '</div>'; 
+        const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
+            if (err){
+                console.log(err);
+            }
+        });
+        var DadosTotais =(JSON.parse(informacao));
+        console.log("path: ", req.path, "user: ", req.session.username)
+        var nome_infoConta = DadosTotais[req.session.index].nome;
+        var email_infoConta = DadosTotais[req.session.index].email;
+        var telemovel_infoConta = DadosTotais[req.session.index].telemovel;
+        var idade_infoConta = DadosTotais[req.session.index].idade;
+        var genero_infoConta = DadosTotais[req.session.index].genero;
+        html += '<form action = "/processaContaAlterar" method="post"><div class="flexboxStyle"><p class="userName">'+nome_infoConta+'</p></div>';
+        html += '<p class="contentResponsiveFont">Nome:<input name="nomeAlterado" id="inputName" class="inputInfoPerfil inputMargem" placeholder="'+nome_infoConta+'"></input></p>';
+        html += '<p class="contentResponsiveFont">Idade:<input type="number" name="idadeAlterado" id="inputAge" class="inputInfoPerfil inputMargem" placeholder="'+idade_infoConta+'"></input></p>';
+        if(genero_infoConta=="Feminino"){
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" checked value="feminino"> Feminino</p>'
+        }else if(genero_infoConta == "Masculino"){
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" checked class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="feminino"> Feminino</p>'
+        }
+        html += '<p class="contentResponsiveFont">Email Parental:<input name="emailAlterado" id="inputEmail" class="inputInfoPerfil inputMargem" placeholder="'+email_infoConta+'"></p>';
+        html += '<p class="contentResponsiveFont">Contacto telefónico:<input name="telemovelAlterado" id="inputPhone" class="inputInfoPerfil inputMargem" placeholder="'+telemovel_infoConta+'"></input></p>';
+        html += '<div class="alterarUserData flexboxStyle"><button type="submit" class="contentResponsiveFont boxInnerOutterShadow guardarInfo">Guardar</button><button class="contentResponsiveFont boxInnerOutterShadow">Voltar</button></div>';
+        html += '</form></div></div></div></div>';
         // Footer
         html += fundo;
         // Fechar HTML
@@ -929,7 +949,81 @@ servidor.get("/contaAlterar", function (req, res) {
     }
 });
 
+servidor.post("/processaContaAlterar", function (req, res) {
+    var {nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado} = req.body;
+    console.log(nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado);
 
+    const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        }
+        
+    });
+    var DadosTotais =(JSON.parse(informacao));
+    var OldData = DadosTotais[req.session.index];
+    console.log('------------------------------------------------------------')
+    console.log(OldData);
+    // var Agenda_old = DadosTotais[req.session.index].Agenda;
+    // var Favoritos_old = DadosTotais[req.session.index].Favoritos;
+    // var Comentarios_old = DadosTotais[req.session.index].Comentarios;
+
+    var LoginCar = OldData
+    if(nomeAlterado){
+        LoginCar["nome"] = nomeAlterado;
+    }
+    if(idadeAlterado){
+        LoginCar["idade"] = idadeAlterado;
+    }
+    if(generoAlterado){
+        LoginCar["genero"] = generoAlterado;
+    }
+    if(emailAlterado){
+        LoginCar["email"] = emailAlterado;
+    }
+    if(telemovelAlterado){
+        LoginCar["telemovel"] = telemovelAlterado;
+    }
+    console.log('------------------------------------------------------------')
+    console.log(LoginCar);
+    var logins = [];
+    fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            if (data){
+                logins_JSON = JSON.parse(data);
+
+                for(var i in logins_JSON){
+                    logins.push(logins_JSON[i]);
+                }
+
+                console.log('------------------------LOGINS OLD------------------------------------')
+                console.log(logins);
+
+                logins[req.session.index] = LoginCar;
+
+                console.log('--------------------------LOGINS----------------------------------')
+                console.log(logins);
+
+                json = JSON.stringify(logins);
+                console.log(json);
+
+                fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.error("erro ao guardar os dados no servidor");
+                        res.send("Erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
+                    }
+                    else {
+                        console.log("Dados guardados com sucesso no servidor");
+                        res.redirect("/conta");
+                    };
+                });
+            }
+        }
+    });
+    //log(req.session.username, req.path)
+    }
+);
 
 servidor.get("/favoritos", session_validate, function (req, res) {
 
@@ -1070,7 +1164,6 @@ servidor.get("/amigos", session_validate, function (req, res) {
     }
 });
 
-
 servidor.get("/comentarios", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
@@ -1168,9 +1261,6 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     }
 });
 
-
-
-
 servidor.post("/processaComentario", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     
@@ -1178,8 +1268,6 @@ servidor.post("/processaComentario", session_validate, function (req, res) {
 
     //log(req.session.username, req.path);
 });
-
-
 
 servidor.get("/historico", session_validate, function (req, res) {
     // Tentar abrir ficheiro
@@ -1441,7 +1529,6 @@ servidor.get("/forminscricao", session_validate, function (req, res) {
     // Enviar HTML final para o cliente
     res.send(html);
 });
-
 
 servidor.post("/InscRealizada", function (req, res) {
     //colocar referencia de sessão
