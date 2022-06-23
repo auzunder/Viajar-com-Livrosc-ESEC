@@ -1096,15 +1096,20 @@ servidor.get("/comentarios", session_validate, function (req, res) {
         
     });
     var DadosTotais =(JSON.parse(informacao));
-    var CommentsFeitos = DadosTotais[req.session.index].Comentarios;
-    console.log(CommentsFeitos);
-
-    for (var i = 0; i < CommentsFeitos.length; i++) {
+    var CommentsFeitos;
+    if (req.session.index) {
+        CommentsFeitos = DadosTotais[req.session.index].Comentarios;
         
-        html += '<div class="comentario"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt=""></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Commentario + '</p></div></div>';
         
+        for (var i = 0; i < CommentsFeitos.length; i++) {
+            var comentarioEscolhido = "comentario"+ i;
+            html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Commentario + '</p></div></div>';
+            
+        }
+    }else{
+        html += '<h2>Pára de ser burro! Inicia sessão</h2>'
     }
-
+        
     
    //FIM Conteudo Area Leitor 
     html += '</div></div>';
@@ -1112,12 +1117,24 @@ servidor.get("/comentarios", session_validate, function (req, res) {
 
     // Fechar DIV WRAPPER
     html += '</div>'; 
+    html += '<script>function editarComentario(id){console.log(id);console.log(document.getElementById(id));document.getElementById('+"'" + "id" + "'"+').innerHTML = "";}</script>';
     // Footer
     html += fundo;
     // Fechar HTML
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+
+    //log(req.session.username, req.path);
+});
+
+
+
+
+servidor.post("/processaComentario", session_validate, function (req, res) {
+    // Tentar abrir ficheiro
+    
+    res.send('Processa Comentário');
 
     //log(req.session.username, req.path);
 });
