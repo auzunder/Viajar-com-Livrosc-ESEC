@@ -151,6 +151,7 @@ servidor.post("/Login", function (req, res) {
                     if (logins_JSON[i].email == loginCar.email){
                         index = i;
                         req.session.index = i;
+                        console.log(req.session.index);
                     }
                     logins.push(logins_JSON[i]);
                 }
@@ -826,20 +827,41 @@ servidor.get("/conta", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += conta_content;
+    const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
+        if (err){
+            console.log(err);
+        }
+    });
+    var DadosTotais =(JSON.parse(informacao));
+    var infoConta = {};
+    console.log("path: ", req.path, "user: ", req.session.username)
+    console.log(req.session.index)
+    if (req.session.index) {
+        var nome_infoConta = DadosTotais[req.session.index].nome;
+        var email_infoConta = DadosTotais[req.session.index].email;
+        var telemovel_infoConta = DadosTotais[req.session.index].telemovel;
+        var idade_infoConta = DadosTotais[req.session.index].idade;
+        var genero_infoConta = DadosTotais[req.session.index].genero;
+        html += '<div class="flexboxStyle"><p class="userName">'+nome_infoConta+'</p></div><p class="contentResponsiveFont">Idade: '+ idade_infoConta +'</p><p class="contentResponsiveFont">Gênero: '+ genero_infoConta +'</p><p class="contentResponsiveFont">Email Parental: '+ email_infoConta +'</p><p class="contentResponsiveFont">Contacto telefónico: '+ telemovel_infoConta +'</p><div class="alterarUserData flexboxStyle"><a href="/contaAlterar"><button class="contentResponsiveFont boxInnerOutterShadow">Alterar</button></a></div></div></div></div>';
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
+        
     // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
 
     //log(req.session.username, req.path);
 });
 
 
-servidor.get("/contaalterar", function (req, res) {
+servidor.get("/contaAlterar", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var contaalterar_content = fs.readFileSync('InformacoesDeConta_AlterarInfo.html', 'utf-8');
@@ -890,16 +912,21 @@ servidor.get("/contaalterar", function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += contaalterar_content;
-    // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
 
-    //log(req.session.username, req.path);
+    if (req.session.index) {
+        // Fechar DIV WRAPPER
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
 });
 
 
@@ -955,17 +982,20 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     // HTML relativo a Login e Registo
     //html += loginRegist;
     // Conteudo da pagina
-    html += favoritos_content;
-    // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
-
-    //log(req.session.username, req.path);
+    if (req.session.index) {
+        // Fechar DIV WRAPPER
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
 });
 
 servidor.get("/amigos", session_validate, function (req, res) {
@@ -1022,16 +1052,21 @@ servidor.get("/amigos", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += amigos_content;
-    // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
 
-    //log(req.session.username, req.path);
+    if (req.session.index) {
+        // Fechar DIV WRAPPER
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
 });
 
 
@@ -1118,14 +1153,18 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     // Fechar DIV WRAPPER
     html += '</div>'; 
     html += '<script>function editarComentario(id){console.log(id);console.log(document.getElementById(id));document.getElementById('+"'" + "id" + "'"+').innerHTML = "";}</script>';
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
-
-    //log(req.session.username, req.path);
+    if (req.session.index) {
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
 });
 
 
@@ -1193,16 +1232,20 @@ servidor.get("/historico", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += historico_content;
-    // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
-
-    //log(req.session.username, req.path);
+    if (req.session.index) {
+        // Fechar DIV WRAPPER
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
 });
 
 servidor.get("/calendarioPessoal", session_validate, function (req, res) {
@@ -1257,15 +1300,20 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += calendárioPessoal_content;
-    // Fechar DIV WRAPPER
-    html += '</div>'; 
-    // Footer
-    html += fundo;
-    // Fechar HTML
-    html += acabarHtml;
-    // Enviar HTML final para o cliente
-    res.send(html);
-
+    if (req.session.index) {
+        // Fechar DIV WRAPPER
+        html += '</div>'; 
+        // Footer
+        html += fundo;
+        // Fechar HTML
+        html += acabarHtml;
+        // Enviar HTML final para o cliente
+        res.send(html);
+        //log(req.session.username, req.path)
+    }else{
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        res.status(403).send(htmlForbiden);
+    }
     console.log(req.session.username, req.path);
 });
 
