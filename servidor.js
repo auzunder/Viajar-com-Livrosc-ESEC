@@ -982,6 +982,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     // HTML relativo a Login e Registo
     //html += loginRegist;
     // Conteudo da pagina
+    html += favoritos_content;
     if (req.session.index) {
         // Fechar DIV WRAPPER
         html += '</div>'; 
