@@ -53,13 +53,12 @@ const acabarHtml = '</body></html>'
 
 // Midleware sessao anonima
 const logging = (req, res, next) => {
-    console.log("Path: ", req.session.path);
-    console.log("User: ", req.session.username);
+    console.log("Path: ", req.session);
     console.log("Date: ", Date());
     next()
 }
 
-servidor.get("/", function (req, res) {
+servidor.get("/", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
@@ -118,20 +117,20 @@ servidor.get("/", function (req, res) {
     // Enviar HTML final para o cliente
     res.send(html);
 
-    console.log(req.session, req.session.username, req.path);
+    log(req.session.username, req.path);
 });
 
-servidor.post("/Login", function (req, res) {
+servidor.post("/Login", logging, function (req, res) {
     var {email, password} = req.body;
     var loginCar = {"email" : email, "password" : sha1(password)};
-    console.log(loginCar);
+    //console.log(loginCar);
     var logins = [];
     var emails = [];
     var index;
     // Ler ficheiro atual JSON
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         } else {
             if (data){
                 logins_JSON = JSON.parse(data);
@@ -140,15 +139,15 @@ servidor.post("/Login", function (req, res) {
                     if (logins_JSON[i].email == loginCar.email){
                         index = i;
                         req.session.index = i;
-                        console.log(req.session.index);
+                        //console.log(req.session.index);
                     }
                     logins.push(logins_JSON[i]);
                 }
-                console.log(logins);
+                //console.log(logins);
                 if (emails.includes(loginCar.email)){
-                    console.log("O email inserido já foi registado anteriormente");
+                    //console.log("O email inserido já foi registado anteriormente");
                     if (loginCar.password == logins[index].password){
-                        console.log("O email e password foram digitados corretamente");
+                        //console.log("O email e password foram digitados corretamente");
                         req.session.username = logins[index].nome;
                         req.session.email = logins[index].email;
                         if (logins[index].idade){
@@ -162,26 +161,27 @@ servidor.post("/Login", function (req, res) {
                         };
                         res.redirect("/conta") // É redirecionado diretamente para pagina de conta
                     }else{
-                        console.log("Password não digitada corretamente.");
+                        //console.log("Password não digitada corretamente.");
                         res.send("Password digitada <bold>incorretamente.</bold><br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                 }else{
-                    console.log("Utilizador nao registado");
+                    //console.log("Utilizador nao registado");
                     res.send("Utilizador nao registado<br><a href='/'>Voltar à Pagina inicial</a> ")
                 }
             }
         }
     });
+    log(req.session.username, req.path);
 })
 
-servidor.post("/Registo", function (req, res) {
+servidor.post("/Registo", logging, function (req, res) {
     var {nomeRegisto, emailRegisto, passwordRegisto} = req.body;
     var loginCar = {"nome": nomeRegisto, "email" : emailRegisto, "password" : sha1(passwordRegisto)};
     var logins = [];
     var emails = [];
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         } else {
             if (data){
                 logins_JSON = JSON.parse(data);
@@ -189,49 +189,50 @@ servidor.post("/Registo", function (req, res) {
                     emails.push(logins_JSON[i].email);
                     logins.push(logins_JSON[i]);
                 }
-                console.log(logins);
+                //console.log(logins);
                 if (emails.includes(loginCar.email)){
-                    console.log("O email inserido já foi registado anteriormente")
+                    //console.log("O email inserido já foi registado anteriormente")
                     res.send("O email inserido já foi registado anteriormente<br><a href='/'>Voltar à Pagina inicial</a> ")
                 }else{
                     // Escrever tudo de novo no JSON
                     logins.push(loginCar);
-                    console.log(loginCar);
+                    //console.log(loginCar);
                     json = JSON.stringify(logins);
-                    console.log(json);
+                    //console.log(json);
                     fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
                         if (err) {
                             console.error("erro ao guardar os dados no servidor");
                             res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                         }
                         else {
-                            console.log("Dados guardados com sucesso no servidor");
+                            //console.log("Dados guardados com sucesso no servidor");
                             res.send("Utilizador Registado com sucesso. Para continuar, faça o login.<br><a href='/'>Voltar à Pagina inicial</a> ")
                         };
                     });
                 }
             }else{
                 logins.push(loginCar);
-                console.log(loginCar);
+                //console.log(loginCar);
                 json = JSON.stringify(logins);
-                console.log(json);
+                //console.log(json);
                 fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
                         res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                     else {
-                        console.log("Dados guardados com sucesso no servidor");
+                        //console.log("Dados guardados com sucesso no servidor");
                         res.send("Utilizador Registado com sucesso. Para continuar, faça o login.<br><a href='/'>Voltar à Pagina inicial</a> ")
                     };
                 });
             }
         }
     });
+    log(req.session.username, req.path);
 
 })
 
-servidor.get("/sobre_nos", function (req, res) {
+servidor.get("/sobre_nos", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
@@ -287,9 +288,10 @@ servidor.get("/sobre_nos", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/calendario", function (req, res) {
+servidor.get("/calendario", logging, function (req, res) {
      // Tentar abrir ficheiro
     try {
         var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
@@ -347,9 +349,10 @@ servidor.get("/calendario", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/biblioteca", function (req, res) {
+servidor.get("/biblioteca", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -407,10 +410,11 @@ servidor.get("/biblioteca", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 
 })
 
-servidor.get("/fotografias", function (req, res) {
+servidor.get("/fotografias", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
@@ -466,9 +470,10 @@ servidor.get("/fotografias", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/videos", function (req, res) {
+servidor.get("/videos", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
@@ -526,9 +531,10 @@ servidor.get("/videos", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/noticias", function (req, res) {
+servidor.get("/noticias", logging, function (req, res) {
    
     // Tentar abrir ficheiro
     try {
@@ -585,9 +591,10 @@ servidor.get("/noticias", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/voluntariado_Page1", function (req, res) {
+servidor.get("/voluntariado_Page1", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
@@ -645,9 +652,10 @@ servidor.get("/voluntariado_Page1", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/voluntariado_Page2", function (req, res) {
+servidor.get("/voluntariado_Page2", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
@@ -705,9 +713,10 @@ servidor.get("/voluntariado_Page2", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/voluntariado_Page3", function (req, res) {
+servidor.get("/voluntariado_Page3", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
@@ -763,9 +772,15 @@ servidor.get("/voluntariado_Page3", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 })
 
-servidor.get("/conta", function (req, res) {
+servidor.get("/processaTerminoSessao", logging, function (req, res) {
+    req.session.destroy();
+    res.redirect("/");
+})
+
+servidor.get("/conta", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var conta_content = fs.readFileSync('InformacoesDeConta.html', 'utf-8');
@@ -796,9 +811,9 @@ servidor.get("/conta", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -818,12 +833,12 @@ servidor.get("/conta", function (req, res) {
     html += conta_content;
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
         if (err){
-            console.log(err);
+            //console.log(err);
         }
     });
     var DadosTotais =(JSON.parse(informacao));
-    console.log("path: ", req.path, "user: ", req.session.username)
-    console.log(req.session.index)
+    //console.log("path: ", req.path, "user: ", req.session.username)
+    //console.log(req.session.index)
     if (req.session.index) {
         var nome_infoConta = DadosTotais[req.session.index].nome;
         var email_infoConta = DadosTotais[req.session.index].email;
@@ -842,13 +857,10 @@ servidor.get("/conta", function (req, res) {
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
-        
-    // Fechar DIV WRAPPER
-
-    //log(req.session.username, req.path);
+    log(req.session.username, req.path);
 });
 
-servidor.get("/contaAlterar", function (req, res) {
+servidor.get("/contaAlterar", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var contaalterar_content = fs.readFileSync('InformacoesDeConta_AlterarInfo.html', 'utf-8');
@@ -879,9 +891,9 @@ servidor.get("/contaAlterar", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/AreaDoLeitor/area_do_utilizador" id="areaLeitorAnchor">';
+        html += '<a href="processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -903,11 +915,11 @@ servidor.get("/contaAlterar", function (req, res) {
     if (req.session.index) {
         const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
             if (err){
-                console.log(err);
+                //console.log(err);
             }
         });
         var DadosTotais =(JSON.parse(informacao));
-        console.log("path: ", req.path, "user: ", req.session.username)
+        //console.log("path: ", req.path, "user: ", req.session.username)
         var nome_infoConta = DadosTotais[req.session.index].nome;
         var email_infoConta = DadosTotais[req.session.index].email;
         var telemovel_infoConta = DadosTotais[req.session.index].telemovel;
@@ -933,27 +945,27 @@ servidor.get("/contaAlterar", function (req, res) {
         html += acabarHtml;
         // Enviar HTML final para o cliente
         res.send(html);
-        //log(req.session.username, req.path)
     }else{
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
+    log(req.session.username, req.path);
 });
 
-servidor.post("/processaContaAlterar", function (req, res) {
+servidor.post("/processaContaAlterar", logging, function (req, res) {
     var {nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado} = req.body;
-    console.log(nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado);
+    //console.log(nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado);
 
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         }
         
     });
     var DadosTotais =(JSON.parse(informacao));
     var OldData = DadosTotais[req.session.index];
-    console.log('------------------------------------------------------------')
-    console.log(OldData);
+    //console.log('------------------------------------------------------------')
+    //console.log(OldData);
     // var Agenda_old = DadosTotais[req.session.index].Agenda;
     // var Favoritos_old = DadosTotais[req.session.index].Favoritos;
     // var Comentarios_old = DadosTotais[req.session.index].Comentarios;
@@ -974,12 +986,12 @@ servidor.post("/processaContaAlterar", function (req, res) {
     if(telemovelAlterado){
         LoginCar["telemovel"] = telemovelAlterado;
     }
-    console.log('------------------------------------------------------------')
-    console.log(LoginCar);
+    //console.log('------------------------------------------------------------')
+    //console.log(LoginCar);
     var logins = [];
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         } else {
             if (data){
                 logins_JSON = JSON.parse(data);
@@ -988,16 +1000,16 @@ servidor.post("/processaContaAlterar", function (req, res) {
                     logins.push(logins_JSON[i]);
                 }
 
-                console.log('------------------------LOGINS OLD------------------------------------')
-                console.log(logins);
+                //console.log('------------------------LOGINS OLD------------------------------------')
+                //console.log(logins);
 
                 logins[req.session.index] = LoginCar;
 
-                console.log('--------------------------LOGINS----------------------------------')
-                console.log(logins);
+                //console.log('--------------------------LOGINS----------------------------------')
+                //console.log(logins);
 
                 json = JSON.stringify(logins);
-                console.log(json);
+                //console.log(json);
 
                 fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
                     if (err) {
@@ -1005,18 +1017,18 @@ servidor.post("/processaContaAlterar", function (req, res) {
                         res.send("Erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                     else {
-                        console.log("Dados guardados com sucesso no servidor");
+                        //console.log("Dados guardados com sucesso no servidor");
                         res.redirect("/conta");
                     };
                 });
             }
         }
     });
-    //log(req.session.username, req.path)
+    log(req.session.username, req.path)
     }
 );
 
-servidor.get("/favoritos", function (req, res) {
+servidor.get("/favoritos", logging, function (req, res) {
 
     // Tentar abrir ficheiro
     try {
@@ -1048,9 +1060,9 @@ servidor.get("/favoritos", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -1078,13 +1090,13 @@ servidor.get("/favoritos", function (req, res) {
 
         const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                console.log(err);
+                //console.log(err);
             }
         });
 
         const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                console.log(err);
+                //console.log(err);
             }
         });
 
@@ -1093,11 +1105,11 @@ servidor.get("/favoritos", function (req, res) {
         var Livros = InfoLivroSessoes_json.Livros;
         var Favoritos;
 
-        console.log("---------------------------Livros------------------------------")
-        console.log(Livros);
+        //console.log("---------------------------Livros------------------------------")
+        //console.log(Livros);
 
-        console.log("---------------------------Favoritos------------------------------")
-        console.log(InfoContas_json[req.session.index].Favoritos);
+        //console.log("---------------------------Favoritos------------------------------")
+        //console.log(InfoContas_json[req.session.index].Favoritos);
 
         if (req.session.index) {
             Favoritos = InfoContas_json[req.session.index].Favoritos;
@@ -1123,14 +1135,15 @@ servidor.get("/favoritos", function (req, res) {
         html += acabarHtml;
         // Enviar HTML final para o cliente
         res.send(html);
-        //log(req.session.username, req.path)
+        
     }else{
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
+    log(req.session.username, req.path);
 });
 
-servidor.get("/amigos", function (req, res) {
+servidor.get("/amigos", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var amigos_content = fs.readFileSync('Amigos.html', 'utf-8');
@@ -1164,9 +1177,9 @@ servidor.get("/amigos", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -1194,14 +1207,14 @@ servidor.get("/amigos", function (req, res) {
         html += acabarHtml;
         // Enviar HTML final para o cliente
         res.send(html);
-        //log(req.session.username, req.path)
     }else{
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
+    log(req.session.username, req.path);
 });
 
-servidor.get("/comentarios", function (req, res) {
+servidor.get("/comentarios", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var comentarios_content = fs.readFileSync('comentarios.html', 'utf-8');
@@ -1234,9 +1247,9 @@ servidor.get("/comentarios", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -1257,7 +1270,7 @@ servidor.get("/comentarios", function (req, res) {
 
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         }
         
     });
@@ -1265,17 +1278,17 @@ servidor.get("/comentarios", function (req, res) {
     var CommentsFeitos;
     if (req.session.index) {
         CommentsFeitos = DadosTotais[req.session.index].Comentarios;
-        // console.log("User Data: ",  DadosTotais[req.session.index]);
-        // console.log("Coments do User: ", CommentsFeitos);
+        // //console.log("User Data: ",  DadosTotais[req.session.index]);
+        // //console.log("Coments do User: ", CommentsFeitos);
         
         
         for (var i = 0; i < CommentsFeitos.length; i++) {
             var comentarioEscolhido = "comentario"+ i;
-            // console.log("Comentário: ", comentarioEscolhido);
-            // console.log(CommentsFeitos[i]);
-            // console.log(CommentsFeitos[i].LivroComment);
-            // console.log(CommentsFeitos[i].DataComment);
-            // console.log(CommentsFeitos[i].Comentario);
+            // //console.log("Comentário: ", comentarioEscolhido);
+            // //console.log(CommentsFeitos[i]);
+            // //console.log(CommentsFeitos[i].LivroComment);
+            // //console.log(CommentsFeitos[i].DataComment);
+            // //console.log(CommentsFeitos[i].Comentario);
             html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Comentario + '</p></div></div>';
         }
     }else{
@@ -1289,7 +1302,7 @@ servidor.get("/comentarios", function (req, res) {
 
     // Fechar DIV WRAPPER
     html += '</div>'; 
-    html += '<script>function editarComentario(id){console.log(id);console.log(document.getElementById(id));document.getElementById('+"'" + "id" + "'"+').innerHTML = "";}</script>';
+    html += '<script>function editarComentario(id){//console.log(id);//console.log(document.getElementById(id));document.getElementById('+"'" + "id" + "'"+').innerHTML = "";}</script>';
     if (req.session.index) {
         // Footer
         html += fundo;
@@ -1302,17 +1315,40 @@ servidor.get("/comentarios", function (req, res) {
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
+    log(req.session.username, req.path);
 });
 
-servidor.post("/processaComentario", function (req, res) {
+servidor.post("/processaComentario", logging, function (req, res) {
     // Tentar abrir ficheiro
     
     res.send('Processa Comentário');
 
-    //log(req.session.username, req.path);
+    log(req.session.username, req.path);
 });
 
-servidor.get("/historico", function (req, res) {
+//Função para tranformar a data em formato AAAAMMDD em DD/MM/AAAA e adicionar ao dicionário
+function reverse(string){
+    var dataToString = String(string).split("").reverse().join("");
+    var index = 0
+    var valor = ""
+    var list = []
+    for (num of dataToString){
+        index += 1
+        if ((index == 2) || index == 4){
+            list += String(num);
+            valor += list.toString().split('').reverse().join("");
+            valor += "/";
+            list = []
+        }
+        else{
+            list += String(num)
+        }
+    }
+    valor += list.toString().split('').reverse().join("");
+    return valor
+}
+
+servidor.get("/historico", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var historico_content = fs.readFileSync('Historico.html', 'utf-8');
@@ -1344,9 +1380,9 @@ servidor.get("/historico", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -1364,65 +1400,99 @@ servidor.get("/historico", function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += historico_content;
-    const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
-        if (err){
-            console.log(err);
-        }
-    });
-
-    const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
-        if (err){
-            console.log(err);
-        }
-    });
-
-    var InfoLivroSessoes_json =(JSON.parse(InfoLivrosSessoes));
-    var InfoContas_json =(JSON.parse(InfoContas));
-    var Sessoes = InfoLivroSessoes_json.Sessoes;
-    var Agenda;
-
-    console.log("---------------------------Livros------------------------------")
-    console.log(Sessoes);
-
-    console.log("---------------------------Favoritos------------------------------")
-    console.log(InfoContas_json[req.session.index].Agenda);
-
-    // Bloco HTML Livro
-    html += '<div class="livroSection"><div class="livro"><a href="#"><div class="bookHistoricoImg">';
-
-    // Alterar Imagem do livro respetivamente
-    html += '<img src="/Imagens/Calendário/Livro_00001.jpg">';
-
-    html += '</div><div class="bookHistoricoContent"><div class="bookHistoricoTitle">';
-
-    //Alterar Nome do Livro da sessao
-    html += '<h3>O Principezinho</h2>';
-
-    html += '</div><div class="bookHistoricoSessionInfo"><div class="infoLine"><p class="strong">Data:</p>';
-
-    //Alterar a Data da sessão
-    html += '<p>22/07/2022</p>';
-
-    html += '</div><div class="infoLine"><p class="strong">Hora:</p>';
-
-    //Alterar a Hora da Sessão
-    html += '<p>11h20</p>';
-
-    html += '</div><div class="infoLine"><p class="strong">Duração:</p>';
-
-    // Alterar Duração da sessão
-    html += '<p>120 min</p>';
-
-    html += '</div><div class="infoLine"><p class="strong">Orador:</p>';
-
-    //Alterar Nome do Orador da Sessão
-    html += '<p>Nome Completo do/a Orador/a</p>';
-
-    html += '</div></div></div></a></div></div>';
-                                                    
-
-    html += '</div></div><!-- FIM Conteudo Area Leitor --></div></div><!--FIM de Conteudo--></div>';
     if (req.session.index) {
+        const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                //console.log(err);
+            }
+        });
+    
+        const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                //console.log(err);
+            }
+        });
+    
+        var InfoLivroSessoes_json =(JSON.parse(InfoLivrosSessoes));
+        var InfoContas_json =(JSON.parse(InfoContas));
+        var Sessoes = InfoLivroSessoes_json.Sessoes;
+
+        // Criação de data juntamente com horario para organização em timeline de forma ordenada
+        for (livro of Sessoes){
+            var hora = "0"
+            if (String(livro.hora).length == 1){
+                hora += String(livro.hora);
+            }else{
+                hora = String(livro.hora);
+            }
+            var data = String(livro.data)
+            var minuto = String(livro.minuto)
+            livro.dataCompleta = data + "-" + hora + ":" + minuto
+            //console.log(livro);
+        }
+
+        // Oraanizar sessões por data Crescente
+        Sessoes.sort(function (a, b) {
+            if (a.dataCompleta < b.dataCompleta) {
+                // passar livro a frente um index
+                return 1;
+            }
+            if (a.dataCompleta > b.dataCompleta) {
+                // recuar livro um valor no index
+                return -1;
+            }
+            // continuar na mesma posição
+            return 0;
+        });
+    
+        //console.log("---------------------------Livros------------------------------")
+        //console.log(Sessoes);
+    
+        //console.log("---------------------------Favoritos------------------------------")
+        //console.log(InfoContas_json[req.session.index].Agenda);
+        for (let i = 0; i < Sessoes.length; i++) {
+            var session = Sessoes[i];
+            var id =  session.session_ID;
+            if (InfoContas_json[req.session.index].Agenda.includes(id)){
+                //console.log(session);
+                // Bloco HTML Livro
+                html += '<div class="livroSection"><div class="livro"><a href="#"><div class="bookHistoricoImg">';
+            
+                // Alterar Imagem do livro respetivamente
+                html += '<img src="/Imagens/Calendário/Livro_'+session.ref+'.jpg">';
+            
+                html += '</div><div class="bookHistoricoContent"><div class="bookHistoricoTitle">';
+            
+                //Alterar Nome do Livro da sessao
+                html += '<h3>'+session.livro+'</h2>';
+            
+                html += '</div><div class="bookHistoricoSessionInfo"><div class="infoLine"><p class="strong">Data:</p>';
+            
+                //Alterar a Data da sessão
+                html += '<p>'+ reverse(session.data)+'</p>';
+            
+                html += '</div><div class="infoLine"><p class="strong">Hora:</p>';
+            
+                //Alterar a Hora da Sessão
+                html += '<p>'+session.hora+'</p>';
+            
+                html += '</div><div class="infoLine"><p class="strong">Duração:</p>';
+            
+                // Alterar Duração da sessão
+                html += '<p>'+session.duração+'</p>';
+            
+                html += '</div><div class="infoLine"><p class="strong">Orador:</p>';
+            
+                //Alterar Nome do Orador da Sessão
+                html += '<p>'+session.orador+'</p>';
+            
+                html += '</div></div></div></a></div></div>';
+            };
+        };
+    
+                                                        
+    
+        html += '</div></div><!-- FIM Conteudo Area Leitor --></div></div><!--FIM de Conteudo--></div>';
         // Fechar DIV WRAPPER
         html += '</div>'; 
         // Footer
@@ -1436,9 +1506,10 @@ servidor.get("/historico", function (req, res) {
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
+    log(req.session.username, req.path);
 });
 
-servidor.get("/calendarioPessoal", function (req, res) {
+servidor.get("/calendarioPessoal", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var calendárioPessoal_content = fs.readFileSync('CalendárioPessoal.html', 'utf-8');
@@ -1474,9 +1545,9 @@ servidor.get("/calendarioPessoal", function (req, res) {
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
     if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
-        html += '<a href="/conta" id="areaLeitorAnchor">';
+        html += '<a href="/processaTerminoSessao" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
-        html += '<div id="leitorText">Area do Leitor</div>';
+        html += '<div id="leitorText">Terminar Sessão</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
         html += '</div>';
     } 
@@ -1511,10 +1582,10 @@ servidor.get("/calendarioPessoal", function (req, res) {
         var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
-    console.log(req.session.username, req.path);
+    log(req.session.username, req.path);
 });
 
-servidor.get("/ajuda", function (req, res) {
+servidor.get("/ajuda", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
@@ -1574,11 +1645,10 @@ servidor.get("/ajuda", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
-
-    //log(req.session.username, req.path);
+    log(req.session.username, req.path);
 });
 
-servidor.get("/forminscricao", function (req, res) {
+servidor.get("/forminscricao", logging, function (req, res) {
     // Tentar abrir ficheiro
     try {
         var form_inscricao_content = fs.readFileSync('forminscricao.html', 'utf-8');
@@ -1636,9 +1706,10 @@ servidor.get("/forminscricao", function (req, res) {
     html += acabarHtml;
     // Enviar HTML final para o cliente
     res.send(html);
+    log(req.session.username, req.path);
 });
 
-servidor.post("/InscRealizada", function (req, res) {
+servidor.post("/InscRealizada", logging, function (req, res) {
     //colocar referencia de sessão
     var {nomeForm, emailForm, tlmForm, receiveEmail} = req.body;
     if (receiveEmail == "on") {
@@ -1651,47 +1722,48 @@ servidor.post("/InscRealizada", function (req, res) {
 
     fs.readFile('InscreveForm.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         } else {
             if (data){
                 inscricao_JSON = JSON.parse(data);
                 for(var i in inscricao_JSON){
                     FormInscFinal.push(inscricao_JSON[i]);
                 }
-                console.log(FormInscFinal);
+                //console.log(FormInscFinal);
                 // Escrever tudo de novo no JSON
                 FormInscFinal.push(formInsc);
-                console.log(formInsc);
+                //console.log(formInsc);
                 json = JSON.stringify(FormInscFinal);
-                console.log(json);
+                //console.log(json);
                 fs.writeFile('InscreveForm.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
                         res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                     else {
-                        console.log("Dados guardados com sucesso no servidor");
+                        //console.log("Dados guardados com sucesso no servidor");
                         res.send("Sessão registada com sucesso. <br><a href='/'>Voltar à Pagina inicial</a> ")
                     };
                 });
             }else{
                 FormInscFinal.push(formInsc);
-                console.log(formInsc);
+                //console.log(formInsc);
                 json = JSON.stringify(FormInscFinal);
-                console.log(json);
+                //console.log(json);
                 fs.writeFile('InscreveForm.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
                         res.send("erro ao guardar os dados no servidor<br><a href='/'>Voltar à Pagina inicial</a> ")
                     }
                     else {
-                        console.log("Dados guardados com sucesso no servidor");
+                        //console.log("Dados guardados com sucesso no servidor");
                         res.send("Sessão registada com sucesso. <br><a href='/'>Voltar à Pagina inicial</a> ")
                     };
                 });
             }
         }
     });
+    log(req.session.username, req.path);
 
 })
 
@@ -1702,32 +1774,46 @@ servidor.post('/processa_newsletter', function (req, res) {
     // Ler ficheiro atual JSON
     fs.readFile('Newsletter_Emails.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            console.log(err);
+            //console.log(err);
         } else {
             emails_JSON = JSON.parse(data);
             for(var i in emails_JSON){
                 emails.push(emails_JSON[i]);
             }
             if (emails.includes(email)){
-                console.log("O email inserido já foi enviado anteriormente")
+                //console.log("O email inserido já foi enviado anteriormente")
                 res.send("O email inserido já foi enviado anteriormente");
             }else{
                 emails.push(email);
                 // Escrever tudo de novo no JSON
                 json = JSON.stringify(Object.assign({}, emails));
-                console.log(json);
+                //console.log(json);
                 fs.writeFile('Newsletter_Emails.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
                         res.send("erro ao guardar os dados no servidor");
                     }
                     else {
-                        console.log("Dados guardados com sucesso no servidor");
+                        //console.log("Dados guardados com sucesso no servidor");
                         res.send("Dados guardados com sucesso no servidor");
                     };
                 });
             }
-            console.log(emails.includes(email));
         }
     });
+    log(req.session.username, req.path);
 });
+
+// função para logging
+function log(username, caminho) {
+    if (username == null) {
+        username = "anónimo";
+    }
+    var log = username + "; " + caminho + "; " + new Date().toString() + "\n";
+    try {
+        fs.appendFileSync("log.txt", log);
+    }
+    catch (error) {
+        console.error("erro ao registar entrada no log");
+    }
+}
