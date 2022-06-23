@@ -10,6 +10,7 @@ const { receiveMessageOnPort } = require('worker_threads');
 //  var random_based_id = Math.random().toString(16).slice(2)
 //  var id = time_based_id + random_based_id
 
+
 const servidor = express();
 var porta = 8080;
 
@@ -47,6 +48,7 @@ catch (error){
 const iniciarHtml = '<!DOCTYPE html><html><head>';
 const acabarHead = '</head><body>'
 const acabarHtml = '</body></html>'
+
 
 // Midleware sessao anonima
 const session_validate = (req, res, next) => {
@@ -148,6 +150,7 @@ servidor.post("/Login", function (req, res) {
                     emails.push(logins_JSON[i].email);
                     if (logins_JSON[i].email == loginCar.email){
                         index = i;
+                        req.session.index = i;
                     }
                     logins.push(logins_JSON[i]);
                 }
@@ -1031,6 +1034,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
+
 servidor.get("/comentarios", session_validate, function (req, res) {
     // Tentar abrir ficheiro
     try {
@@ -1084,6 +1088,28 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += comentarios_content;
+
+    const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        }
+        
+    });
+    var DadosTotais =(JSON.parse(informacao));
+    var CommentsFeitos = DadosTotais[req.session.index].Comentarios;
+    console.log(CommentsFeitos);
+
+    for (var i = 0; i < CommentsFeitos.length; i++) {
+        
+        html += '<div class="comentario"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt=""></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Commentario + '</p></div></div>';
+        
+    }
+
+    
+   //FIM Conteudo Area Leitor 
+    html += '</div></div>';
+    //FIM de Conteudo
+
     // Fechar DIV WRAPPER
     html += '</div>'; 
     // Footer
@@ -1095,6 +1121,8 @@ servidor.get("/comentarios", session_validate, function (req, res) {
 
     //log(req.session.username, req.path);
 });
+
+
 
 servidor.get("/historico", session_validate, function (req, res) {
     // Tentar abrir ficheiro
