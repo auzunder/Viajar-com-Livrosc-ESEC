@@ -949,7 +949,6 @@ servidor.get("/contaAlterar", function (req, res) {
     }
 });
 
-
 servidor.post("/processaContaAlterar", function (req, res) {
     var {nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado} = req.body;
     console.log(nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado);
@@ -1025,7 +1024,6 @@ servidor.post("/processaContaAlterar", function (req, res) {
     //log(req.session.username, req.path)
     }
 );
-
 
 servidor.get("/favoritos", session_validate, function (req, res) {
 
