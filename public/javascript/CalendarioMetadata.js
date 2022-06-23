@@ -145,7 +145,7 @@ function defaultFilters() {
         return value.dataCompleta > datetime;
     });
     
-    // Obraginzar sessões por data Crescente
+    // Oraanizar sessões por data Crescente
     calendar_books.sort(function (a, b) {
         if (a.dataCompleta > b.dataCompleta) {
             // passar livro a frente um index
