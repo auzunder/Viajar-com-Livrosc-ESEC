@@ -4,6 +4,7 @@ const sha1 = require('sha1');
 const fs = require('fs');
 const { send } = require('process');
 const { receiveMessageOnPort } = require('worker_threads');
+const { Console } = require('console');
 
 // ALGORITMO DE CIRAÇÃO DE ID UNICO :)
 //  var time_based_id = Date.now().toString(16).slice(2)
@@ -52,20 +53,20 @@ const acabarHtml = '</body></html>'
 
 // Midleware sessao anonima
 const session_validate = (req, res, next) => {
-    var anon = {
-        nome : "anonimo",
-        idade : 0,
-        genero : "por Identificar",
-        email : "exemplo@exemplo.com",
-        contacto : "9XXXXXXXX"
-    };
-    if (!req.session.username){
-        req.session.username = anon.nome;
-        req.session.idade = anon.idade;
-        req.session.genero = anon.genero;
-        req.session.email = anon.email;
-        req.session.contacto = anon.contacto;
-    };
+    // var anon = {
+    //     nome : "anonimo",
+    //     idade : 0,
+    //     genero : "por Identificar",
+    //     email : "exemplo@exemplo.com",
+    //     contacto : "9XXXXXXXX"
+    // };
+    // if (!req.session.username){
+    //     req.session.username = anon.nome;
+    //     req.session.idade = anon.idade;
+    //     req.session.genero = anon.genero;
+    //     req.session.email = anon.email;
+    //     req.session.contacto = anon.contacto;
+    // };
     console.log(req.session.username)
     next()
 }
@@ -98,7 +99,7 @@ servidor.get("/", session_validate, function (req, res) {
     // Abrir Navbar
     html += topo;
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
-    if (req.session.username != "anonimo") {
+    if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
         html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
@@ -108,7 +109,7 @@ servidor.get("/", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="#" id="areaLeitorAnchor" onclick='+'abrir("iniciarSessaoPopUp")>';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -278,7 +279,7 @@ servidor.get("/sobre_nos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -338,7 +339,7 @@ servidor.get("/calendario", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -398,7 +399,7 @@ servidor.get("/biblioteca", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -457,7 +458,7 @@ servidor.get("/fotografias", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -517,7 +518,7 @@ servidor.get("/videos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -576,7 +577,7 @@ servidor.get("/noticias", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -636,7 +637,7 @@ servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -696,7 +697,7 @@ servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -754,7 +755,7 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -815,7 +816,7 @@ servidor.get("/conta", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -898,7 +899,7 @@ servidor.get("/contaAlterar", function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1067,7 +1068,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1075,11 +1076,19 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     }
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+
     // HTML relativo a Login e Registo
     //html += loginRegist;
     // Conteudo da pagina
     html += favoritos_content;
     if (req.session.index) {
+        
+        html += '<div class="imgBackgroundPerfilFav"><div class="imgPerfilFav"><img src="/Imagens/AreaDoLeitor/fotoPerfil.png">';
+        // Alterar apresentação do nome
+        html += '<p class="nomePerfilFav">Edgar Tavares</p></div></div>';
+        html += '</div><div class="horizontalLine"><p class="livrosFavoritos">Favoritos</p><div class="favoritos"><div class="favoritosGrid">';
+        html += '<div class="bookSection"><div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_00001.jpg"></a></div><div class="bookName">O Principezinho</div></div>';
+        html += '</div></div></div></div></div>';
         // Fechar DIV WRAPPER
         html += '</div>'; 
         // Footer
@@ -1137,7 +1146,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1207,7 +1216,7 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1311,7 +1320,7 @@ servidor.get("/historico", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1379,7 +1388,7 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1447,7 +1456,7 @@ servidor.get("/ajuda", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1510,7 +1519,7 @@ servidor.get("/forminscricao", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
