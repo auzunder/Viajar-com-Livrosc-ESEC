@@ -90,7 +90,7 @@ $(document).ready(function() {
             everyYear: !0
         }, {
             id: "in8bha4",
-            name: "Holiday #2",
+            name: "Olá mundo",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             date: today,
             type: "holiday"

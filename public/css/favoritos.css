@@ -96,6 +96,7 @@ p.livrosFavoritos {
     height: 100%;
     background-image: url("/Imagens/AreaDoLeitor/nuvens.svg");
     position: relative;
+    border-bottom-left-radius: 1vw;
 }
 
 p.nomePerfilFav {

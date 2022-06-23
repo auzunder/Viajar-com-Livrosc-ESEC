@@ -12,35 +12,13 @@ body {
 	padding: 0;
 	margin: 0;
 }
-body {
-	background-image: -o-linear-gradient(45deg, #6ac1c5, #bda5ff);
-	background-attachment: fixed;
-	background-image: linear-gradient(45deg, #6ac1c5, #bda5ff);
-	background-repeat: no-repeat;
-	min-height: 100vh;
+.calendario-log {
+    width: 100%;
+    background-color: #c6e4e2;
+    margin-top: calc(1.5vw + 4px);
+    padding: 10px;
 }
-::-moz-selection {
-	color: #fff;
-	background-color: #aeaaf5;
-}
-::selection {
-	color: #fff;
-	background-color: #aeaaf5;
-}
-::-webkit-scrollbar {
-	width: 10px;
-	height: 5px;
-}
-::-webkit-scrollbar-track {
-	background: #fff;
-}
-::-webkit-scrollbar-thumb {
-	background: #8e899c;
-	border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-	background: #6c6875;
-}
+
 .clearfix::after {
 	content: "";
 	clear: both;
@@ -55,6 +33,9 @@ header {
 	-webkit-box-shadow: 0 5px 8px -3px rgba(0, 0, 0, .5);
 	box-shadow: 0 5px 8px -3px rgba(0, 0, 0, .5);
 	z-index: 999;
+}
+.event-list {
+    margin-top: 40px;
 }
 .header-container {
 	width: 100%;
@@ -436,4 +417,23 @@ code span.violet {
 	.header-container>ul>li>a {
 		font-size: 12px
 	}
+}
+
+tr:first-child {
+    display: flex;
+    width: 500%;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.royal-navy th[colspan="7"] {
+    height: 100px;
+    aspect-ratio: 1/1;
+    border: 2px dashed #467C79;
+    border-radius: 50%;
+    background-color: white;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(/Imagens/AreaDoLeitor/fotoPerfil.png);
 }
