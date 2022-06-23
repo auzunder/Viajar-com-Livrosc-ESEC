@@ -1358,6 +1358,10 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     html += '<link type="text/css" rel="stylesheet" href="/css/infoConta.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/areaLeitor.css">';
     html += '<link type="text/css" rel="stylesheet" href="/css/CalendárioPessoal.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/evo-calendar.min.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/evo-calendar.royal-navy.min.css">';
+    html += '<link type="text/css" rel="stylesheet" href="/css/demo.css">';
+
     // JavaScript para dados de Sessões de Livros
     html += '<script src="/javascript/CalendarioMetadata.js"></script>';
     // Finalizar <head> tag
@@ -1389,6 +1393,9 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += calendárioPessoal_content;
+    html += '<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>';
+    html += '<script src="/javascript/evo-calendar.js"></script>';
+    html += '<script src="/javascript/demo.js"></script>';
     if (req.session.index) {
         // Fechar DIV WRAPPER
         html += '</div>'; 
@@ -1405,6 +1412,8 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     }
     console.log(req.session.username, req.path);
 });
+
+
 
 servidor.get("/ajuda", session_validate, function (req, res) {
     // Tentar abrir ficheiro
