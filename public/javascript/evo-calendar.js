@@ -605,7 +605,7 @@
         
         _.$active.events = [];
         // Event date
-        var title = _.formatDate(_.$active.date, _.options.eventHeaderFormat, _.options.language);
+        var title = "Agenda";
         _.$elements.eventEl.find('.event-header > p').text(title);
         // Event list
         var eventListEl = _.$elements.eventEl.find('.event-list');
@@ -705,7 +705,8 @@
         
         _.calculateDays();
 
-        title = _.formatDate(new Date(_.$label.months[_.$active.month] +' 1 '+ _.$active.year), _.options.titleFormat, _.options.language);
+        title = " ";
+        // title = _.formatDate(new Date(_.$label.months[_.$active.month] +' 1 '+ _.$active.year), _.options.titleFormat, _.options.language);
         _.$elements.innerEl.find('.calendar-table th').text(title);
 
         _.$elements.innerEl.find('.calendar-body').remove(); // Clear days
