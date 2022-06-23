@@ -13,9 +13,8 @@ function session_clearInputs() {
 }
 
 function session_abrir(id) {
-    modal = document.getElementById(id)
-    modal.style.display = "flex"
-    clearInputs()
+    document.getElementById(id).style.display = "flex"
+    session_clearInputs()
 }
 
 function session_fechar(id, check) {

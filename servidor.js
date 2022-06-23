@@ -4,6 +4,7 @@ const sha1 = require('sha1');
 const fs = require('fs');
 const { send } = require('process');
 const { receiveMessageOnPort } = require('worker_threads');
+const { Console } = require('console');
 
 // ALGORITMO DE CIRAÇÃO DE ID UNICO :)
 //  var time_based_id = Date.now().toString(16).slice(2)
@@ -51,26 +52,14 @@ const acabarHtml = '</body></html>'
 
 
 // Midleware sessao anonima
-const session_validate = (req, res, next) => {
-    var anon = {
-        nome : "anonimo",
-        idade : 0,
-        genero : "por Identificar",
-        email : "exemplo@exemplo.com",
-        contacto : "9XXXXXXXX"
-    };
-    if (!req.session.username){
-        req.session.username = anon.nome;
-        req.session.idade = anon.idade;
-        req.session.genero = anon.genero;
-        req.session.email = anon.email;
-        req.session.contacto = anon.contacto;
-    };
-    console.log(req.session.username)
+const logging = (req, res, next) => {
+    console.log("Path: ", req.session.path);
+    console.log("User: ", req.session.username);
+    console.log("Date: ", Date());
     next()
 }
 
-servidor.get("/", session_validate, function (req, res) {
+servidor.get("/", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
@@ -98,7 +87,7 @@ servidor.get("/", session_validate, function (req, res) {
     // Abrir Navbar
     html += topo;
     // Verificação de inicio de sessão para saber se vai fazer login ou vai para a Area de Utilizador
-    if (req.session.username != "anonimo") {
+    if (req.session.username) {
         // HTML do botão direcionado para a Conta (Caso tenha login feito)
         html += '<a href="/conta" id="areaLeitorAnchor">';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
@@ -108,7 +97,7 @@ servidor.get("/", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="#" id="areaLeitorAnchor" onclick='+'abrir("iniciarSessaoPopUp")>';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -242,7 +231,7 @@ servidor.post("/Registo", function (req, res) {
 
 })
 
-servidor.get("/sobre_nos", session_validate, function (req, res) {
+servidor.get("/sobre_nos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
@@ -278,7 +267,7 @@ servidor.get("/sobre_nos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -300,7 +289,7 @@ servidor.get("/sobre_nos", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/calendario", session_validate, function (req, res) {
+servidor.get("/calendario", function (req, res) {
      // Tentar abrir ficheiro
     try {
         var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
@@ -338,7 +327,7 @@ servidor.get("/calendario", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -360,7 +349,7 @@ servidor.get("/calendario", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/biblioteca", session_validate, function (req, res) {
+servidor.get("/biblioteca", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -398,7 +387,7 @@ servidor.get("/biblioteca", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -421,7 +410,7 @@ servidor.get("/biblioteca", session_validate, function (req, res) {
 
 })
 
-servidor.get("/fotografias", session_validate, function (req, res) {
+servidor.get("/fotografias", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
@@ -457,7 +446,7 @@ servidor.get("/fotografias", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -479,7 +468,7 @@ servidor.get("/fotografias", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/videos", session_validate, function (req, res) {
+servidor.get("/videos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
@@ -517,7 +506,7 @@ servidor.get("/videos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -539,7 +528,7 @@ servidor.get("/videos", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/noticias", session_validate, function (req, res) {
+servidor.get("/noticias", function (req, res) {
    
     // Tentar abrir ficheiro
     try {
@@ -576,7 +565,7 @@ servidor.get("/noticias", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -598,7 +587,7 @@ servidor.get("/noticias", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page1", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
@@ -636,7 +625,7 @@ servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -658,7 +647,7 @@ servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page2", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
@@ -696,7 +685,7 @@ servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -718,7 +707,7 @@ servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page3", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
@@ -754,7 +743,7 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -776,7 +765,7 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/conta", session_validate, function (req, res) {
+servidor.get("/conta", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var conta_content = fs.readFileSync('InformacoesDeConta.html', 'utf-8');
@@ -815,7 +804,7 @@ servidor.get("/conta", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -898,7 +887,7 @@ servidor.get("/contaAlterar", function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -928,9 +917,11 @@ servidor.get("/contaAlterar", function (req, res) {
         html += '<p class="contentResponsiveFont">Nome:<input name="nomeAlterado" id="inputName" class="inputInfoPerfil inputMargem" placeholder="'+nome_infoConta+'"></input></p>';
         html += '<p class="contentResponsiveFont">Idade:<input type="number" name="idadeAlterado" id="inputAge" class="inputInfoPerfil inputMargem" placeholder="'+idade_infoConta+'"></input></p>';
         if(genero_infoConta=="Feminino"){
-            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" checked value="feminino"> Feminino</p>'
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" checked value="Feminino"> Feminino</p>'
         }else if(genero_infoConta == "Masculino"){
-            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" checked class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="feminino"> Feminino</p>'
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" checked class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="Feminino"> Feminino</p>'
+        }else{
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="Feminino"> Feminino</p>'
         }
         html += '<p class="contentResponsiveFont">Email Parental:<input name="emailAlterado" id="inputEmail" class="inputInfoPerfil inputMargem" placeholder="'+email_infoConta+'"></p>';
         html += '<p class="contentResponsiveFont">Contacto telefónico:<input name="telemovelAlterado" id="inputPhone" class="inputInfoPerfil inputMargem" placeholder="'+telemovel_infoConta+'"></input></p>';
@@ -1025,7 +1016,7 @@ servidor.post("/processaContaAlterar", function (req, res) {
     }
 );
 
-servidor.get("/favoritos", session_validate, function (req, res) {
+servidor.get("/favoritos", function (req, res) {
 
     // Tentar abrir ficheiro
     try {
@@ -1065,7 +1056,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1073,11 +1064,57 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     }
     // HTML icone para NavBar responsiva
     html += '</a><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div></header></div>';
+
     // HTML relativo a Login e Registo
     //html += loginRegist;
     // Conteudo da pagina
     html += favoritos_content;
     if (req.session.index) {
+        
+        html += '<div class="imgBackgroundPerfilFav"><div class="imgPerfilFav"><img src="/Imagens/AreaDoLeitor/fotoPerfil.png">';
+        // Alterar apresentação do nome
+        html += '<p class="nomePerfilFav">'+req.session.username+'</p></div></div>';
+        html += '</div><div class="horizontalLine"><p class="livrosFavoritos">Favoritos</p><div class="favoritos"><div class="favoritosGrid">';
+
+        const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            }
+        });
+
+        const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            }
+        });
+
+        var InfoLivroSessoes_json =(JSON.parse(InfoLivrosSessoes));
+        var InfoContas_json =(JSON.parse(InfoContas));
+        var Livros = InfoLivroSessoes_json.Livros;
+        var Favoritos;
+
+        console.log("---------------------------Livros------------------------------")
+        console.log(Livros);
+
+        console.log("---------------------------Favoritos------------------------------")
+        console.log(InfoContas_json[req.session.index].Favoritos);
+
+        if (req.session.index) {
+            Favoritos = InfoContas_json[req.session.index].Favoritos;
+            
+            var val_temp = Object.values(Livros);
+            
+            for (var i = 0; i < Favoritos.length; i++) {
+                var fav_temp = Favoritos[i].toString();
+                // Bloco HTML Livro
+                html += '<div class="bookSection"><div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_'+fav_temp+'.jpg"></a></div><div class="bookName">'+ Livros[parseInt(fav_temp)-1]+'</div></div>';
+
+            }
+        }else{
+            html += '<h2>Pára de ser burro! Inicia sessão</h2>'
+        }
+
+        html += '</div></div></div></div></div>';
         // Fechar DIV WRAPPER
         html += '</div>'; 
         // Footer
@@ -1093,7 +1130,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/amigos", session_validate, function (req, res) {
+servidor.get("/amigos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var amigos_content = fs.readFileSync('Amigos.html', 'utf-8');
@@ -1135,7 +1172,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1164,7 +1201,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/comentarios", session_validate, function (req, res) {
+servidor.get("/comentarios", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var comentarios_content = fs.readFileSync('comentarios.html', 'utf-8');
@@ -1205,7 +1242,7 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1261,7 +1298,7 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     }
 });
 
-servidor.post("/processaComentario", session_validate, function (req, res) {
+servidor.post("/processaComentario", function (req, res) {
     // Tentar abrir ficheiro
     
     res.send('Processa Comentário');
@@ -1269,7 +1306,7 @@ servidor.post("/processaComentario", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/historico", session_validate, function (req, res) {
+servidor.get("/historico", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var historico_content = fs.readFileSync('Historico.html', 'utf-8');
@@ -1309,7 +1346,7 @@ servidor.get("/historico", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1337,7 +1374,7 @@ servidor.get("/historico", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/calendarioPessoal", session_validate, function (req, res) {
+servidor.get("/calendarioPessoal", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var calendárioPessoal_content = fs.readFileSync('CalendárioPessoal.html', 'utf-8');
@@ -1381,7 +1418,7 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1413,9 +1450,13 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     console.log(req.session.username, req.path);
 });
 
+<<<<<<< HEAD
 
 
 servidor.get("/ajuda", session_validate, function (req, res) {
+=======
+servidor.get("/ajuda", function (req, res) {
+>>>>>>> ff22da44c03ad218d01db42c1650a91d87ad9ed6
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
@@ -1454,7 +1495,7 @@ servidor.get("/ajuda", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
@@ -1479,7 +1520,7 @@ servidor.get("/ajuda", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/forminscricao", session_validate, function (req, res) {
+servidor.get("/forminscricao", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var form_inscricao_content = fs.readFileSync('forminscricao.html', 'utf-8');
@@ -1517,7 +1558,7 @@ servidor.get("/forminscricao", session_validate, function (req, res) {
     } 
     // HTML do botão direcionado para a Inicio de sessão (Caso seja utilizador anónimo)
     else{
-        html += '<a href="/AreaDoLeitor/login" id="areaLeitorAnchor">';
+        html += '<a href="#" id="areaLeitorAnchor" onclick=session_abrir("iniciarSessaoPopUp")>';
         html += '<div id="areaLeitor" class="boxInnerOutterShadow pointer responsiveHeight">';
         html += '<div id="leitorText">Area do Leitor</div>';
         html += '<img id="leitorIcon" src="/Imagens/Icons/AreaLeitor.svg">';
