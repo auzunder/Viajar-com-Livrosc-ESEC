@@ -928,9 +928,11 @@ servidor.get("/contaAlterar", function (req, res) {
         html += '<p class="contentResponsiveFont">Nome:<input name="nomeAlterado" id="inputName" class="inputInfoPerfil inputMargem" placeholder="'+nome_infoConta+'"></input></p>';
         html += '<p class="contentResponsiveFont">Idade:<input type="number" name="idadeAlterado" id="inputAge" class="inputInfoPerfil inputMargem" placeholder="'+idade_infoConta+'"></input></p>';
         if(genero_infoConta=="Feminino"){
-            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" checked value="feminino"> Feminino</p>'
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" checked value="Feminino"> Feminino</p>'
         }else if(genero_infoConta == "Masculino"){
-            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" checked class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="feminino"> Feminino</p>'
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" checked class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="Feminino"> Feminino</p>'
+        }else{
+            html += '<p class="contentResponsiveFont">Gênero:<input type="radio" name="generoAlterado" value="Masculino" class="inputMargem"> Masculino <input class="inputMargem" type="radio" name="generoAlterado" value="Feminino"> Feminino</p>'
         }
         html += '<p class="contentResponsiveFont">Email Parental:<input name="emailAlterado" id="inputEmail" class="inputInfoPerfil inputMargem" placeholder="'+email_infoConta+'"></p>';
         html += '<p class="contentResponsiveFont">Contacto telefónico:<input name="telemovelAlterado" id="inputPhone" class="inputInfoPerfil inputMargem" placeholder="'+telemovel_infoConta+'"></input></p>';
