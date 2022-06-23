@@ -23,16 +23,19 @@ p.livrosFavoritos {
 
 .bookSection{
     margin-top: 25px;
-    min-height: 400px;
+    min-height: 230px;
     position: relative;
     border-bottom: 1px solid #333;
 }
 
 .bookImageSection{
     padding: 10px;
+    height: 80%;
 }
 
 .bookImg{
+    aspect-ratio: auto;
+    max-height: 100%;
     position: relative;
     width: 100%;
     transition: 250ms;
@@ -53,6 +56,8 @@ p.livrosFavoritos {
     font-size: 15px;
     margin-bottom: 10px;
     font-weight: 700;
+    padding: 0 10px;
+    width: 100%;
 }
 
 .buttonFav{
@@ -63,4 +68,42 @@ p.livrosFavoritos {
     background-color: white;
     border-radius: 1vw;
     padding: 0.5vw 3vw;
+}
+
+.imgPerfilFav {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imgPerfilFav img{
+    width: 100%;
+    object-fit: fill;
+    border: #467C79 dashed 0.2vw;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.imgBackgroundPerfilFav {
+    width: 100%;
+    height: 100%;
+    background-image: url("/Imagens/AreaDoLeitor/nuvens.svg");
+    position: relative;
+}
+
+p.nomePerfilFav {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 40px;
+    line-height: 40px;
+    font-family: caveat;
+    font-weight: 700;
+    background-color: #C6E4E2;
 }
