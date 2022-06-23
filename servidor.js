@@ -1265,12 +1265,18 @@ servidor.get("/comentarios", function (req, res) {
     var CommentsFeitos;
     if (req.session.index) {
         CommentsFeitos = DadosTotais[req.session.index].Comentarios;
+        // console.log("User Data: ",  DadosTotais[req.session.index]);
+        // console.log("Coments do User: ", CommentsFeitos);
         
         
         for (var i = 0; i < CommentsFeitos.length; i++) {
             var comentarioEscolhido = "comentario"+ i;
-            html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Commentario + '</p></div></div>';
-            
+            // console.log("Comentário: ", comentarioEscolhido);
+            // console.log(CommentsFeitos[i]);
+            // console.log(CommentsFeitos[i].LivroComment);
+            // console.log(CommentsFeitos[i].DataComment);
+            // console.log(CommentsFeitos[i].Comentario);
+            html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Comentario + '</p></div></div>';
         }
     }else{
         html += '<h2>Pára de ser burro! Inicia sessão</h2>'
@@ -1358,6 +1364,64 @@ servidor.get("/historico", function (req, res) {
     //html += loginRegist;
     // Conteudo da pagina
     html += historico_content;
+    const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        }
+    });
+
+    const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+        if (err){
+            console.log(err);
+        }
+    });
+
+    var InfoLivroSessoes_json =(JSON.parse(InfoLivrosSessoes));
+    var InfoContas_json =(JSON.parse(InfoContas));
+    var Sessoes = InfoLivroSessoes_json.Sessoes;
+    var Agenda;
+
+    console.log("---------------------------Livros------------------------------")
+    console.log(Sessoes);
+
+    console.log("---------------------------Favoritos------------------------------")
+    console.log(InfoContas_json[req.session.index].Agenda);
+
+    // Bloco HTML Livro
+    html += '<div class="livroSection"><div class="livro"><a href="#"><div class="bookHistoricoImg">';
+
+    // Alterar Imagem do livro respetivamente
+    html += '<img src="/Imagens/Calendário/Livro_00001.jpg">';
+
+    html += '</div><div class="bookHistoricoContent"><div class="bookHistoricoTitle">';
+
+    //Alterar Nome do Livro da sessao
+    html += '<h3>O Principezinho</h2>';
+
+    html += '</div><div class="bookHistoricoSessionInfo"><div class="infoLine"><p class="strong">Data:</p>';
+
+    //Alterar a Data da sessão
+    html += '<p>22/07/2022</p>';
+
+    html += '</div><div class="infoLine"><p class="strong">Hora:</p>';
+
+    //Alterar a Hora da Sessão
+    html += '<p>11h20</p>';
+
+    html += '</div><div class="infoLine"><p class="strong">Duração:</p>';
+
+    // Alterar Duração da sessão
+    html += '<p>120 min</p>';
+
+    html += '</div><div class="infoLine"><p class="strong">Orador:</p>';
+
+    //Alterar Nome do Orador da Sessão
+    html += '<p>Nome Completo do/a Orador/a</p>';
+
+    html += '</div></div></div></a></div></div>';
+                                                    
+
+    html += '</div></div><!-- FIM Conteudo Area Leitor --></div></div><!--FIM de Conteudo--></div>';
     if (req.session.index) {
         // Fechar DIV WRAPPER
         html += '</div>'; 
@@ -1450,13 +1514,7 @@ servidor.get("/calendarioPessoal", function (req, res) {
     console.log(req.session.username, req.path);
 });
 
-<<<<<<< HEAD
-
-
-servidor.get("/ajuda", session_validate, function (req, res) {
-=======
 servidor.get("/ajuda", function (req, res) {
->>>>>>> ff22da44c03ad218d01db42c1650a91d87ad9ed6
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
