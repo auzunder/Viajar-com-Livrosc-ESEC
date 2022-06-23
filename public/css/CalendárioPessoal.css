@@ -111,3 +111,49 @@ div{
     justify-content: center;
     align-items: center;
 }
+
+#AgendaContent .titulo{
+    font-family: Caveat;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    color: #428883;
+    justify-content: center;
+    margin: 40px 0px;
+}
+
+.blocoAgenda{
+    border-bottom: solid black 1px;
+    display: flex;
+    align-items: center;
+}
+.colorID{
+    width: 60px;
+    height: 60px;
+    margin: 30px;
+    background-color: yellow;
+    border-radius: 100%;
+}
+.sessionInfo *{
+    padding: 5px;
+}
+
+.sessionInfo .Data{
+    font-family: Caveat;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.sessionInfo .nomeLivro {
+    font-size: 20px;
+}
+
+.dia-depois,
+.dia-anterior{
+    opacity: 0.5;
+}
+
+.today{
+    font-weight: bold;
+    color: red;
+}

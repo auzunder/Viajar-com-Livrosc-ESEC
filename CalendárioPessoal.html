@@ -75,7 +75,7 @@
                     <div>20</div>
                     <div>21</div>
                     <div>22</div>
-                    <div>23</div>
+                    <div class="today">23</div>
                     <div>24</div>
                     <div>25</div>
                     <div>26</div>
@@ -94,8 +94,8 @@
             </div>
         </div>
         <div id="AgendaContent">
-            <div id="titulo"> Agenda </div>
-            <div id="agenda"> 
+            <div class="titulo"> Agenda </div>
+            <div class="agenda"> 
                 <div class="blocoAgenda">
                     <div class="colorID"></div>
                     <div class="sessionInfo">
@@ -111,5 +111,35 @@
         </div>
     </div>
 </div>
+
+<script>
+    const date = new Date();
+    const year = date.getFullYear();
+    const monthDays = document.querySelector('dias')
+
+    var months = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
+    ];
+
+    document.querySelector("Ano").innerHTML = year;
+
+    for (let index = 1; index <= 31; index++) {
+        days += '<div>${i}</div>';
+        monthDays.innerHTML = days;
+    }
+    
+    console.log(month)
+</script>
 
 <!--FIM de Conteudo-->
