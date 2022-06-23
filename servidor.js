@@ -1292,7 +1292,11 @@ servidor.get("/comentarios", logging, function (req, res) {
             // //console.log(CommentsFeitos[i].LivroComment);
             // //console.log(CommentsFeitos[i].DataComment);
             // //console.log(CommentsFeitos[i].Comentario);
-            html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' + CommentsFeitos[i].Comentario + '</p></div></div>';
+            html += '<div class="comentario" id="comentario'+ i +'"><div class="comentarioInfo"><div class="dadosComentario"><p class="nomeLivro">' 
+            + CommentsFeitos[i].LivroComment + '</p><p class="dataComentario">' + CommentsFeitos[i].DataComment 
+            + '</p></div><div class="opcoesComentario"><div class="editComent ComentSize"><img src="/Imagens/Icons/edit.svg" alt="Editar Comentário" onclick="editarComentario('+"'" 
+            + comentarioEscolhido + "'" + ')"></div><div class="deleteComent ComentSize"><img src="/Imagens/Icons/lixo.svg" alt=""></div></div></div><div class="comentarioContent"><p>' 
+            + CommentsFeitos[i].Comentario + '</p></div></div>';
         }
     }else{
         html += '<h2>Pára de ser burro! Inicia sessão</h2>'
