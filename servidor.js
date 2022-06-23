@@ -52,26 +52,14 @@ const acabarHtml = '</body></html>'
 
 
 // Midleware sessao anonima
-const session_validate = (req, res, next) => {
-    // var anon = {
-    //     nome : "anonimo",
-    //     idade : 0,
-    //     genero : "por Identificar",
-    //     email : "exemplo@exemplo.com",
-    //     contacto : "9XXXXXXXX"
-    // };
-    // if (!req.session.username){
-    //     req.session.username = anon.nome;
-    //     req.session.idade = anon.idade;
-    //     req.session.genero = anon.genero;
-    //     req.session.email = anon.email;
-    //     req.session.contacto = anon.contacto;
-    // };
-    console.log(req.session.username)
+const logging = (req, res, next) => {
+    console.log("Path: ", req.session.path);
+    console.log("User: ", req.session.username);
+    console.log("Date: ", Date());
     next()
 }
 
-servidor.get("/", session_validate, function (req, res) {
+servidor.get("/", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var home_content = fs.readFileSync('Home.html', 'utf-8');
@@ -243,7 +231,7 @@ servidor.post("/Registo", function (req, res) {
 
 })
 
-servidor.get("/sobre_nos", session_validate, function (req, res) {
+servidor.get("/sobre_nos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var sobre_nos_content = fs.readFileSync('SobreOProjeto.html', 'utf-8');
@@ -301,7 +289,7 @@ servidor.get("/sobre_nos", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/calendario", session_validate, function (req, res) {
+servidor.get("/calendario", function (req, res) {
      // Tentar abrir ficheiro
     try {
         var calendario_content = fs.readFileSync('Calendario.html', 'utf-8');
@@ -361,7 +349,7 @@ servidor.get("/calendario", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/biblioteca", session_validate, function (req, res) {
+servidor.get("/biblioteca", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var biblioteca_content = fs.readFileSync('Biblioteca.html', 'utf-8');
@@ -422,7 +410,7 @@ servidor.get("/biblioteca", session_validate, function (req, res) {
 
 })
 
-servidor.get("/fotografias", session_validate, function (req, res) {
+servidor.get("/fotografias", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_foto_content = fs.readFileSync('Fotografias.html', 'utf-8');
@@ -480,7 +468,7 @@ servidor.get("/fotografias", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/videos", session_validate, function (req, res) {
+servidor.get("/videos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var galeria_video_content = fs.readFileSync('videos.html', 'utf-8');
@@ -540,7 +528,7 @@ servidor.get("/videos", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/noticias", session_validate, function (req, res) {
+servidor.get("/noticias", function (req, res) {
    
     // Tentar abrir ficheiro
     try {
@@ -599,7 +587,7 @@ servidor.get("/noticias", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page1", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado_content = fs.readFileSync('forms.html', 'utf-8');
@@ -659,7 +647,7 @@ servidor.get("/voluntariado_Page1", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page2", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado2_content = fs.readFileSync('forms2.html', 'utf-8');
@@ -719,7 +707,7 @@ servidor.get("/voluntariado_Page2", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
+servidor.get("/voluntariado_Page3", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var voluntariado3_content = fs.readFileSync('forms3.html', 'utf-8');
@@ -777,7 +765,7 @@ servidor.get("/voluntariado_Page3", session_validate, function (req, res) {
     res.send(html);
 })
 
-servidor.get("/conta", session_validate, function (req, res) {
+servidor.get("/conta", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var conta_content = fs.readFileSync('InformacoesDeConta.html', 'utf-8');
@@ -1028,7 +1016,7 @@ servidor.post("/processaContaAlterar", function (req, res) {
     }
 );
 
-servidor.get("/favoritos", session_validate, function (req, res) {
+servidor.get("/favoritos", function (req, res) {
 
     // Tentar abrir ficheiro
     try {
@@ -1085,9 +1073,47 @@ servidor.get("/favoritos", session_validate, function (req, res) {
         
         html += '<div class="imgBackgroundPerfilFav"><div class="imgPerfilFav"><img src="/Imagens/AreaDoLeitor/fotoPerfil.png">';
         // Alterar apresentação do nome
-        html += '<p class="nomePerfilFav">Edgar Tavares</p></div></div>';
+        html += '<p class="nomePerfilFav">'+req.session.username+'</p></div></div>';
         html += '</div><div class="horizontalLine"><p class="livrosFavoritos">Favoritos</p><div class="favoritos"><div class="favoritosGrid">';
-        html += '<div class="bookSection"><div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_00001.jpg"></a></div><div class="bookName">O Principezinho</div></div>';
+
+        const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            }
+        });
+
+        const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            }
+        });
+
+        var InfoLivroSessoes_json =(JSON.parse(InfoLivrosSessoes));
+        var InfoContas_json =(JSON.parse(InfoContas));
+        var Livros = InfoLivroSessoes_json.Livros;
+        var Favoritos;
+
+        console.log("---------------------------Livros------------------------------")
+        console.log(Livros);
+
+        console.log("---------------------------Favoritos------------------------------")
+        console.log(InfoContas_json[req.session.index].Favoritos);
+
+        if (req.session.index) {
+            Favoritos = InfoContas_json[req.session.index].Favoritos;
+            
+            var val_temp = Object.values(Livros);
+            
+            for (var i = 0; i < Favoritos.length; i++) {
+                var fav_temp = Favoritos[i].toString();
+                // Bloco HTML Livro
+                html += '<div class="bookSection"><div class="bookImageSection"><a href="#"><img class="bookImg" src="/Imagens/Calendário/Livro_'+fav_temp+'.jpg"></a></div><div class="bookName">'+ Livros[parseInt(fav_temp)-1]+'</div></div>';
+
+            }
+        }else{
+            html += '<h2>Pára de ser burro! Inicia sessão</h2>'
+        }
+
         html += '</div></div></div></div></div>';
         // Fechar DIV WRAPPER
         html += '</div>'; 
@@ -1104,7 +1130,7 @@ servidor.get("/favoritos", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/amigos", session_validate, function (req, res) {
+servidor.get("/amigos", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var amigos_content = fs.readFileSync('Amigos.html', 'utf-8');
@@ -1175,7 +1201,7 @@ servidor.get("/amigos", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/comentarios", session_validate, function (req, res) {
+servidor.get("/comentarios", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var comentarios_content = fs.readFileSync('comentarios.html', 'utf-8');
@@ -1272,7 +1298,7 @@ servidor.get("/comentarios", session_validate, function (req, res) {
     }
 });
 
-servidor.post("/processaComentario", session_validate, function (req, res) {
+servidor.post("/processaComentario", function (req, res) {
     // Tentar abrir ficheiro
     
     res.send('Processa Comentário');
@@ -1280,7 +1306,7 @@ servidor.post("/processaComentario", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/historico", session_validate, function (req, res) {
+servidor.get("/historico", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var historico_content = fs.readFileSync('Historico.html', 'utf-8');
@@ -1348,7 +1374,7 @@ servidor.get("/historico", session_validate, function (req, res) {
     }
 });
 
-servidor.get("/calendarioPessoal", session_validate, function (req, res) {
+servidor.get("/calendarioPessoal", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var calendárioPessoal_content = fs.readFileSync('CalendárioPessoal.html', 'utf-8');
@@ -1417,7 +1443,7 @@ servidor.get("/calendarioPessoal", session_validate, function (req, res) {
     console.log(req.session.username, req.path);
 });
 
-servidor.get("/ajuda", session_validate, function (req, res) {
+servidor.get("/ajuda", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var ajuda_content = fs.readFileSync('Ajuda.html', 'utf-8');
@@ -1481,7 +1507,7 @@ servidor.get("/ajuda", session_validate, function (req, res) {
     //log(req.session.username, req.path);
 });
 
-servidor.get("/forminscricao", session_validate, function (req, res) {
+servidor.get("/forminscricao", function (req, res) {
     // Tentar abrir ficheiro
     try {
         var form_inscricao_content = fs.readFileSync('forminscricao.html', 'utf-8');
