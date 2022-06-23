@@ -79,7 +79,9 @@
     width: 100%;
     position: relative;
 }
-
+.horizontalLine {
+    margin-bottom: 20px;
+}
 .imgBackgroundPerfil img{
     width: 100%;
 }
