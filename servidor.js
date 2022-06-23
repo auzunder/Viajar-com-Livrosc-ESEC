@@ -130,7 +130,7 @@ servidor.post("/Login", logging, function (req, res) {
     // Ler ficheiro atual JSON
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         } else {
             if (data){
                 logins_JSON = JSON.parse(data);
@@ -193,7 +193,7 @@ servidor.post("/Registo", logging, function (req, res) {
         var emails = [];
         fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                //console.log(err);
+                console.log(err);
             } else {
                 if (data){
                     logins_JSON = JSON.parse(data);
@@ -848,7 +848,7 @@ servidor.get("/conta", logging, function (req, res) {
     html += conta_content;
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
         if (err){
-            //console.log(err);
+            console.log(err);
         }
     });
     var DadosTotais =(JSON.parse(informacao));
@@ -930,7 +930,7 @@ servidor.get("/contaAlterar", logging, function (req, res) {
     if (req.session.index) {
         const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err){
             if (err){
-                //console.log(err);
+                console.log(err);
             }
         });
         var DadosTotais =(JSON.parse(informacao));
@@ -970,21 +970,15 @@ servidor.get("/contaAlterar", logging, function (req, res) {
 servidor.post("/processaContaAlterar", logging, function (req, res) {
     var {nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado} = req.body;
     //console.log(nomeAlterado, idadeAlterado, generoAlterado, emailAlterado, telemovelAlterado);
-
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         }
-        
     });
     var DadosTotais =(JSON.parse(informacao));
     var OldData = DadosTotais[req.session.index];
     //console.log('------------------------------------------------------------')
     //console.log(OldData);
-    // var Agenda_old = DadosTotais[req.session.index].Agenda;
-    // var Favoritos_old = DadosTotais[req.session.index].Favoritos;
-    // var Comentarios_old = DadosTotais[req.session.index].Comentarios;
-
     var LoginCar = OldData
     if(nomeAlterado){
         LoginCar["nome"] = nomeAlterado;
@@ -1006,26 +1000,20 @@ servidor.post("/processaContaAlterar", logging, function (req, res) {
     var logins = [];
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         } else {
             if (data){
                 logins_JSON = JSON.parse(data);
-
                 for(var i in logins_JSON){
                     logins.push(logins_JSON[i]);
                 }
-
                 //console.log('------------------------LOGINS OLD------------------------------------')
                 //console.log(logins);
-
                 logins[req.session.index] = LoginCar;
-
                 //console.log('--------------------------LOGINS----------------------------------')
                 //console.log(logins);
-
                 json = JSON.stringify(logins);
                 //console.log(json);
-
                 fs.writeFile('LoginInformations.json', json, 'utf8', function (err) {
                     if (err) {
                         console.error("erro ao guardar os dados no servidor");
@@ -1105,13 +1093,13 @@ servidor.get("/favoritos", logging, function (req, res) {
 
         const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                //console.log(err);
+                console.log(err);
             }
         });
 
         const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                //console.log(err);
+                console.log(err);
             }
         });
 
@@ -1285,7 +1273,7 @@ servidor.get("/comentarios", logging, function (req, res) {
 
     const informacao = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         }
         
     });
@@ -1418,13 +1406,13 @@ servidor.get("/historico", logging, function (req, res) {
     if (req.session.index) {
         const InfoLivrosSessoes = fs.readFileSync('Livros&Sessoes.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                //console.log(err);
+                console.log(err);
             }
         });
     
         const InfoContas = fs.readFileSync('LoginInformations.json', 'utf8', function readFileCallback(err, data){
             if (err){
-                //console.log(err);
+                console.log(err);
             }
         });
     
@@ -1737,7 +1725,7 @@ servidor.post("/InscRealizada", logging, function (req, res) {
 
     fs.readFile('InscreveForm.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         } else {
             if (data){
                 inscricao_JSON = JSON.parse(data);
@@ -1789,7 +1777,7 @@ servidor.post('/processa_newsletter', function (req, res) {
     // Ler ficheiro atual JSON
     fs.readFile('Newsletter_Emails.json', 'utf8', function readFileCallback(err, data){
         if (err){
-            //console.log(err);
+            console.log(err);
         } else {
             emails_JSON = JSON.parse(data);
             for(var i in emails_JSON){
