@@ -1,12 +1,11 @@
-window.onload() = function(){
-    editarComentario();
-    function editarComentario(id) {
-        console.log(id);
-        console.log(document.getElementById(id));
-        document.getElementById("'" + id + "'").innerHTML = "";        
-        
-    };
 
+function editarComentario(id) {
+    console.log(id);
+    console.log(document.getElementById(id));
+    document.getElementById("'" + id + "'").innerHTML = "";        
+    
 }
+
+
 
 
