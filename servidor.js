@@ -6,7 +6,8 @@ const { send } = require('process');
 const { receiveMessageOnPort } = require('worker_threads');
 const { Console } = require('console');
 
-// ALGORITMO DE CIRAÇÃO DE ID UNICO :)
+//  ALGORITMO DE CIRAÇÃO DE ID UNICO :)
+
 //  var time_based_id = Date.now().toString(16).slice(2)
 //  var random_based_id = Math.random().toString(16).slice(2)
 //  var id = time_based_id + random_based_id
@@ -121,12 +122,15 @@ servidor.get("/", logging, function (req, res) {
 });
 
 servidor.post("/Login", logging, function (req, res) {
+    // Variaveis formulario
     var {email, password} = req.body;
     var loginCar = {"email" : email, "password" : sha1(password)};
+
     //console.log(loginCar);
     var logins = [];
     var emails = [];
     var index;
+
     // Ler ficheiro atual JSON
     fs.readFile('LoginInformations.json', 'utf8', function readFileCallback(err, data){
         if (err){
@@ -135,12 +139,14 @@ servidor.post("/Login", logging, function (req, res) {
             if (data){
                 logins_JSON = JSON.parse(data);
                 for(var i in logins_JSON){
+                    // Lista com emails registados
                     emails.push(logins_JSON[i].email);
                     if (logins_JSON[i].email == loginCar.email){
                         index = i;
                         req.session.index = i;
                         //console.log(req.session.index);
                     }
+                    // Lista com todos os logins
                     logins.push(logins_JSON[i]);
                 }
                 //console.log(logins);
@@ -177,6 +183,7 @@ servidor.post("/Login", logging, function (req, res) {
 servidor.post("/Registo", logging, function (req, res) {
     var {nomeRegisto, emailRegisto, passwordRegisto, confirmarPass} = req.body;
     if (passwordRegisto==confirmarPass){
+        // Variavel base com estruturação de dados
         var loginCar = {"nome": nomeRegisto, 
                         "email" : emailRegisto, 
                         "password" : sha1(passwordRegisto), 
@@ -242,10 +249,13 @@ servidor.post("/Registo", logging, function (req, res) {
         });
         log(req.session.username, req.path);
     }else{
-        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 406</h2><br><p>Not Acceptable: Tens de confirmar a tua password corretamente </p></body></html>"
+        // Caso a password duplicada seja diferente da original.
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 406</h2><br><p>Not Acceptable: Tens de confirmar a tua password corretamente <br><a href='/'>Voltar à Pagina inicial</a> </p></body></html>"
         res.status(406).send(htmlForbiden);
     }
 })
+
+// Resto do Website
 
 servidor.get("/sobre_nos", logging, function (req, res) {
     // Tentar abrir ficheiro
@@ -790,6 +800,8 @@ servidor.get("/voluntariado_Page3", logging, function (req, res) {
     log(req.session.username, req.path);
 })
 
+// Area Leitor -->
+
 servidor.get("/processaTerminoSessao", logging, function (req, res) {
     req.session.destroy();
     res.redirect("/");
@@ -869,7 +881,7 @@ servidor.get("/conta", logging, function (req, res) {
         // Enviar HTML final para o cliente
         res.send(html);
     }else{
-        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta <br><a href='/'>Voltar à Pagina inicial</a></p></body></html>"
         res.status(403).send(htmlForbiden);
     }
     log(req.session.username, req.path);
@@ -961,7 +973,7 @@ servidor.get("/contaAlterar", logging, function (req, res) {
         // Enviar HTML final para o cliente
         res.send(html);
     }else{
-        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta <br><a href='/'>Voltar à Pagina inicial</a></p></body></html>"
         res.status(403).send(htmlForbiden);
     }
     log(req.session.username, req.path);
@@ -1117,8 +1129,6 @@ servidor.get("/favoritos", logging, function (req, res) {
         if (req.session.index) {
             Favoritos = InfoContas_json[req.session.index].Favoritos;
             
-            var val_temp = Object.values(Livros);
-            
             for (var i = 0; i < Favoritos.length; i++) {
                 var fav_temp = Favoritos[i].toString();
                 // Bloco HTML Livro
@@ -1126,7 +1136,8 @@ servidor.get("/favoritos", logging, function (req, res) {
 
             }
         }else{
-            html += '<h2>Pára de ser burro! Inicia sessão</h2>'
+            var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta <br><a href='/'>Voltar à Pagina inicial</a></p></body></html>"
+            res.status(403).send(htmlForbiden);
         }
 
         html += '</div></div></div></div></div>';
@@ -1140,7 +1151,7 @@ servidor.get("/favoritos", logging, function (req, res) {
         res.send(html);
         
     }else{
-        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta<br><a href='/'>Voltar à Pagina inicial</a> </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
     log(req.session.username, req.path);
@@ -1211,7 +1222,7 @@ servidor.get("/amigos", logging, function (req, res) {
         // Enviar HTML final para o cliente
         res.send(html);
     }else{
-        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta </p></body></html>"
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta<br><a href='/'>Voltar à Pagina inicial</a> </p></body></html>"
         res.status(403).send(htmlForbiden);
     }
     log(req.session.username, req.path);
@@ -1299,7 +1310,8 @@ servidor.get("/comentarios", logging, function (req, res) {
             + CommentsFeitos[i].Comentario + '</p></div></div>';
         }
     }else{
-        html += '<h2>Pára de ser burro! Inicia sessão</h2>'
+        var htmlForbiden = "<!DOCTYPE  html><html><head></head><body><h2>Error Code: 403</h2><br><p>Forbiden: Inicia sessão para poderes entrar em /conta<br><a href='/'>Voltar à Pagina inicial</a> </p></body></html>"
+        res.status(403).send(htmlForbiden);
     }
         
     
@@ -1333,7 +1345,7 @@ servidor.post("/processaComentario", logging, function (req, res) {
     log(req.session.username, req.path);
 });
 
-//Função para tranformar a data em formato AAAAMMDD em DD/MM/AAAA e adicionar ao dicionário
+// Função para tranformar a data em formato AAAAMMDD em DD/MM/AAAA e adicionar ao dicionário
 function reverse(string){
     var dataToString = String(string).split("").reverse().join("");
     var index = 0

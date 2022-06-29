@@ -120,5 +120,39 @@
                 "Comentario": ""
             }
         ]
+    },
+    {
+        "nome": "ricard",
+        "email": "ricardodwadsadwaw@gmail.com",
+        "password": "5f6955d227a320c7f1f6c7da2a6d96a851a8118f",
+        "telemovel": "910000000",
+        "idade": "12",
+        "genero": "Masculino",
+        "Agenda": [],
+        "Favoritos": [],
+        "Comentarios": [
+            {
+                "LivroComment": "",
+                "DataComment": "",
+                "Comentario": ""
+            }
+        ]
+    },
+    {
+        "nome": "Ricardo",
+        "email": "ricardo@gmail.com",
+        "password": "7110eda4d09e062aa5e4a390b0a572ac0d2c0220",
+        "telemovel": "987634332",
+        "idade": "12",
+        "genero": "Masculino",
+        "Agenda": [],
+        "Favoritos": [],
+        "Comentarios": [
+            {
+                "LivroComment": "",
+                "DataComment": "",
+                "Comentario": ""
+            }
+        ]
     }
 ]

@@ -1,1 +1,8 @@
-[{"nome":"Edgar Nogueira Tavares","email":"edgarnogueiratavares@gmail.com","Contacto":"91039631","Receber Email":true}]
+[
+    {
+        "nome": "Edgar Nogueira Tavares",
+        "email": "edgarnogueiratavares@gmail.com",
+        "Contacto": "91039631",
+        "Receber Email": true
+    }
+]
